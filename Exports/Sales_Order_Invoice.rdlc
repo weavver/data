@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
+  <Author>Weavver, Inc.</Author>
+  <DataSources>
+    <DataSource Name="WeavverData">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>97527f58-c9e3-48ca-8309-2b9655bf8b98</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Sales_Order">
+      <Fields>
+        <Field Name="BillingContactAddress">
+          <DataField>BillingContactAddress</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="BillingContactAddressData">
+          <DataField>BillingContactAddressData</DataField>
+          <rd:TypeName>Weavver.Data.Logistics_Addresses</rd:TypeName>
+        </Field>
+        <Field Name="BillingContactEmail">
+          <DataField>BillingContactEmail</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BillingContactNameFirst">
+          <DataField>BillingContactNameFirst</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BillingContactNameLast">
+          <DataField>BillingContactNameLast</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BillingContactOrganization">
+          <DataField>BillingContactOrganization</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BillingContactPhoneExt">
+          <DataField>BillingContactPhoneExt</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BillingContactPhoneNum">
+          <DataField>BillingContactPhoneNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Cart">
+          <DataField>Cart</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CreatedAt">
+          <DataField>CreatedAt</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CreatedBy">
+          <DataField>CreatedBy</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="Notes">
+          <DataField>Notes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Orderee">
+          <DataField>Orderee</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="OrdereeData">
+          <DataField>OrdereeData</DataField>
+          <rd:TypeName>Weavver.Data.Logistics_Organizations</rd:TypeName>
+        </Field>
+        <Field Name="OrderNum">
+          <DataField>OrderNum</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="OrganizationId">
+          <DataField>OrganizationId</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="PrimaryContactAddress">
+          <DataField>PrimaryContactAddress</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="PrimaryContactAddressData">
+          <DataField>PrimaryContactAddressData</DataField>
+          <rd:TypeName>Weavver.Data.Logistics_Addresses</rd:TypeName>
+        </Field>
+        <Field Name="PrimaryContactEmail">
+          <DataField>PrimaryContactEmail</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PrimaryContactNameFirst">
+          <DataField>PrimaryContactNameFirst</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PrimaryContactNameLast">
+          <DataField>PrimaryContactNameLast</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PrimaryContactOrganization">
+          <DataField>PrimaryContactOrganization</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PrimaryContactPhoneExt">
+          <DataField>PrimaryContactPhoneExt</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PrimaryContactPhoneNum">
+          <DataField>PrimaryContactPhoneNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Status">
+          <DataField>Status</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Total">
+          <DataField>Total</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="UpdatedAt">
+          <DataField>UpdatedAt</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="UpdatedBy">
+          <DataField>UpdatedBy</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>WeavverData</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Weavver.Data</rd:DataSetName>
+        <rd:TableName>Sales_Order</rd:TableName>
+        <rd:ObjectDataSourceType>Weavver.Data.Sales_Order, Data.WeavverEntityContainer.Designer.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="Sales_OrderReportSettings">
+      <Fields>
+        <Field Name="ClientContactInfo">
+          <DataField>ClientContactInfo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HeaderLogo">
+          <DataField>HeaderLogo</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceTotal">
+          <DataField>InvoiceTotal</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PaymentURL">
+          <DataField>PaymentURL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="QRCode_MakePayment">
+          <DataField>QRCode_MakePayment</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+        <Field Name="VendorContactInfo">
+          <DataField>VendorContactInfo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>WeavverData</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Weavver.Data</rd:DataSetName>
+        <rd:TableName>Sales_OrderReportSettings</rd:TableName>
+        <rd:ObjectDataSourceType>Weavver.Data.Sales_OrderReportSettings, WeavverLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="Accounting_LedgerItems">
+      <Fields>
+        <Field Name="AccountId">
+          <DataField>AccountId</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="AccountName">
+          <DataField>AccountName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Amount">
+          <DataField>Amount</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="Code">
+          <DataField>Code</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CreatedAt">
+          <DataField>CreatedAt</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CreatedBy">
+          <DataField>CreatedBy</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="ExternalId">
+          <DataField>ExternalId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="LedgerType">
+          <DataField>LedgerType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Logistics_Organizations">
+          <DataField>Logistics_Organizations</DataField>
+          <rd:TypeName>Weavver.Data.Logistics_Organizations</rd:TypeName>
+        </Field>
+        <Field Name="Memo">
+          <DataField>Memo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OrganizationId">
+          <DataField>OrganizationId</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="PostAt">
+          <DataField>PostAt</DataField>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="Source">
+          <DataField>Source</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="System_Users">
+          <DataField>System_Users</DataField>
+          <rd:TypeName>Weavver.Data.System_User</rd:TypeName>
+        </Field>
+        <Field Name="System_Users1">
+          <DataField>System_Users1</DataField>
+          <rd:TypeName>Weavver.Data.System_User</rd:TypeName>
+        </Field>
+        <Field Name="TransactionId">
+          <DataField>TransactionId</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="UpdatedAt">
+          <DataField>UpdatedAt</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="UpdatedBy">
+          <DataField>UpdatedBy</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>WeavverData</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Weavver.Data</rd:DataSetName>
+        <rd:TableName>Accounting_LedgerItems</rd:TableName>
+        <rd:ObjectDataSourceType>Weavver.Data.Accounting_LedgerItems, Data.WeavverEntityContainer.Designer.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <Body>
+    <ReportItems>
+      <Image Name="QRCode_PayOnline">
+        <Source>Database</Source>
+        <Value>=First(Fields!QRCode_MakePayment.Value, "Sales_OrderReportSettings")</Value>
+        <MIMEType>image/png</MIMEType>
+        <Sizing>FitProportional</Sizing>
+        <ActionInfo>
+          <Actions>
+            <Action>
+              <Hyperlink>=First(Fields!PaymentURL.Value, "Sales_OrderReportSettings")</Hyperlink>
+            </Action>
+          </Actions>
+        </ActionInfo>
+        <Top>1.05917in</Top>
+        <Left>6.35083in</Left>
+        <Height>1.5in</Height>
+        <Width>1.5in</Width>
+        <ToolTip>Scan this code with your phone to pay online</ToolTip>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Textbox Name="Textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Client:</Value>
+                <Style>
+                  <TextDecoration>Underline</TextDecoration>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!ClientContactInfo.Value, "Sales_OrderReportSettings")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>1.54875in</Top>
+        <Left>0.91333in</Left>
+        <Height>1.01042in</Height>
+        <Width>1.87833in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="BillingContactAddress">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Invoice #</Value>
+                <ActionInfo>
+                  <Actions>
+                    <Action>
+                      <Hyperlink>=First(Fields!Id.Value, "Sales_Order")</Hyperlink>
+                    </Action>
+                  </Actions>
+                </ActionInfo>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!Id.Value, "Sales_Order")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>BillingContactAddress</rd:DefaultName>
+        <Top>1.25708in</Top>
+        <Left>0.65625in</Left>
+        <Height>0.21875in</Height>
+        <Width>4.09375in</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Image Name="HeaderLogo">
+        <Source>Database</Source>
+        <Value>=First(Fields!HeaderLogo.Value, "Sales_OrderReportSettings")</Value>
+        <MIMEType>image/png</MIMEType>
+        <Sizing>FitProportional</Sizing>
+        <ActionInfo>
+          <Actions>
+            <Action>
+              <Hyperlink>http://www.weavver.com</Hyperlink>
+            </Action>
+          </Actions>
+        </ActionInfo>
+        <Top>0.25in</Top>
+        <Left>0.375in</Left>
+        <Height>0.8125in</Height>
+        <Width>2.84375in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Payable To:</Value>
+                <Style>
+                  <TextDecoration>Underline</TextDecoration>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!VendorContactInfo.Value, "Sales_OrderReportSettings")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>1.54688in</Top>
+        <Left>3in</Left>
+        <Height>1.01042in</Height>
+        <Width>2in</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Pay Online</Value>
+                <ActionInfo>
+                  <Actions>
+                    <Action>
+                      <Hyperlink>=First(Fields!QRCode_MakePayment.Value, "Sales_OrderReportSettings")</Hyperlink>
+                    </Action>
+                  </Actions>
+                </ActionInfo>
+                <Style>
+                  <TextDecoration>Underline</TextDecoration>
+                  <Color>Blue</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <ActionInfo>
+          <Actions>
+            <Action>
+              <Hyperlink>=First(Fields!PaymentURL.Value, "Sales_OrderReportSettings")</Hyperlink>
+            </Action>
+          </Actions>
+        </ActionInfo>
+        <Top>2.44806in</Top>
+        <Left>6.60084in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="BillingContactAddress2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Order Date:   </Value>
+                <ActionInfo>
+                  <Actions>
+                    <Action>
+                      <Hyperlink>=First(Fields!Id.Value, "Sales_Order")</Hyperlink>
+                    </Action>
+                  </Actions>
+                </ActionInfo>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!CreatedAt.Value, "Sales_Order")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>BillingContactAddress</rd:DefaultName>
+        <Top>0.64597in</Top>
+        <Left>5.22916in</Left>
+        <Height>0.21875in</Height>
+        <Width>2.60417in</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox17">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Total:          </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!InvoiceTotal.Value, "Sales_OrderReportSettings")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox17</rd:DefaultName>
+        <Top>3.59389in</Top>
+        <Left>5.91334in</Left>
+        <Height>0.25in</Height>
+        <Width>1.92in</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Tablix Name="Tablix3">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>5.65458in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.5225in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.1875in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox29">
+                      <CanGrow>true</CanGrow>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Item</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox29</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox31">
+                      <CanGrow>true</CanGrow>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Amount</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox31</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Memo1">
+                      <CanGrow>true</CanGrow>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Memo.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Memo1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox32">
+                      <CanGrow>true</CanGrow>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Format(Abs(Fields!Amount.Value), "C")</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox32</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="Details" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <RepeatColumnHeaders>true</RepeatColumnHeaders>
+        <RepeatRowHeaders>true</RepeatRowHeaders>
+        <DataSetName>Accounting_LedgerItems</DataSetName>
+        <SortExpressions>
+          <SortExpression>
+            <Value>=Fields!Amount.Value</Value>
+          </SortExpression>
+        </SortExpressions>
+        <Top>2.93417in</Top>
+        <Left>0.65625in</Left>
+        <Height>0.4375in</Height>
+        <Width>7.17708in</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Textbox Name="Textbox35">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>INVOICE</Value>
+                <Style>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox35</rd:DefaultName>
+        <Top>0.34042in</Top>
+        <Left>6.83333in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox36">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Your Shopping Cart:</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox36</rd:DefaultName>
+        <Top>2.58in</Top>
+        <Left>0.65625in</Left>
+        <Height>0.25in</Height>
+        <Width>1.42708in</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>9.5in</Height>
+    <Style />
+  </Body>
+  <Width>8.4in</Width>
+  <Page>
+    <PageFooter>
+      <Height>0.27778in</Height>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox3">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Invoice powered by Weavver® Accounting</Value>
+                  <Style>
+                    <TextDecoration>Underline</TextDecoration>
+                    <Color>Blue</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox3</rd:DefaultName>
+          <ActionInfo>
+            <Actions>
+              <Action>
+                <Hyperlink>http://www.weavver.com</Hyperlink>
+              </Action>
+            </Actions>
+          </ActionInfo>
+          <Top>0.02778in</Top>
+          <Left>2.75in</Left>
+          <Height>0.25in</Height>
+          <Width>2.80209in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
+    <TopMargin>0.5in</TopMargin>
+    <BottomMargin>0.5in</BottomMargin>
+    <Style />
+  </Page>
+  <rd:ReportID>acf9e1ff-49be-40e9-b76d-44b805923375</rd:ReportID>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+</Report>

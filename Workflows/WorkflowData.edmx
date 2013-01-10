@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Weavver.Workflows.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="WeavverWorkflowsStoreContainer">
+          </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.ActivityExecutionStatus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.ActivityExecutionStatusEvent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.AddedActivity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.CompletedScope' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.EventAnnotation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.InstanceData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.InstanceState' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.RemovedActivity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.SqlTrackingServiceQfeLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.TrackingDataItemAnnotation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.TrackingPartitionSetName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.TrackingProfile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.UserEvent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.Workflow' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.System.Activities.DurableInstancing.InstanceMetadataChangesTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value1' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value2' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value3' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value4' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value5' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value6' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value7' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value8' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value9' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value10' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value11' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value12' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value13' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value14' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value15' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value16' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value17' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value18' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value19' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value20' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value21' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value22' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value23' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value24' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value25' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value26' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value27' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value28' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value29' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value30' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value31' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value32' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedPropertiesTable' was excluded.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.System.Activities.DurableInstancing.InstancesTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.System.Activities.DurableInstancing.KeysTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.System.Activities.DurableInstancing.LockOwnersTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.System.Activities.DurableInstancing.RunnableInstancesTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.System.Activities.DurableInstancing.ServiceDeploymentsTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_Activity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_ActivityExecutionStatus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_ActivityExecutionStatusEvent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_ActivityInstance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_AddedActivity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_DefaultTrackingProfile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_EventAnnotation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_RemovedActivity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_TrackingDataItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_TrackingDataItemAnnotation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_TrackingPartitionSetName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_TrackingProfile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_TrackingProfileInstance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_TrackingWorkflowEvent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_Type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_UserEvent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_Workflow' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_WorkflowInstance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.dbo.vw_WorkflowInstanceEvent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value1' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value2' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value3' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value4' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value5' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value6' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value7' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value8' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value9' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value10' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value11' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value12' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value13' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value14' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value15' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value16' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value17' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value18' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value19' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value20' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value21' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value22' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value23' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value24' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value25' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value26' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value27' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value28' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value29' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value30' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value31' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      warning 6005: The data type 'sql_variant' is not supported; the column 'Value32' in table 'weavver_workflows.System.Activities.DurableInstancing.InstancePromotedProperties' was excluded.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.System.Activities.DurableInstancing.Instances' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'weavver_workflows.System.Activities.DurableInstancing.ServiceDeployments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'weavver_workflows.dbo.TrackingPartitionInterval' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="TrackingPartitionInterval">
+        <Property Name="Interval" Type="char" MaxLength="1" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'weavver_workflows.System.Activities.DurableInstancing.SqlWorkflowInstanceStoreVersionTable' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="SqlWorkflowInstanceStoreVersionTable">
+        <Property Name="Major" Type="bigint" />
+        <Property Name="Minor" Type="bigint" />
+        <Property Name="Build" Type="bigint" />
+        <Property Name="Revision" Type="bigint" />
+        <Property Name="LastUpdated" Type="datetime" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'weavver_workflows.dbo.vw_TrackingPartitionInterval' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="vw_TrackingPartitionInterval">
+        <Property Name="Interval" Type="char" MaxLength="1" />
+      </EntityType>-->
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Weavver.Workflows" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="WorkflowContainer" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          </EntityContainer>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WeavverWorkflowsStoreContainer" CdmEntityContainer="WorkflowContainer">
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="WorkflowData">
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

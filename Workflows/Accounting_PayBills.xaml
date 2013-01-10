@@ -1,0 +1,46 @@
+﻿<Activity mc:Ignorable="sap" x:Class="Weavver.Workflows.Accounting.PayBills" sap:VirtualizedContainerService.HintSize="784,676" mva:VisualBasic.Settings="Assembly references and imported namespaces for internal implementation" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="clr-namespace:Microsoft.VisualBasic;assembly=System" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:s1="clr-namespace:System;assembly=System" xmlns:s2="clr-namespace:System;assembly=System.Xml" xmlns:s3="clr-namespace:System;assembly=System.Core" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System" xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=System.ServiceModel" xmlns:scg2="clr-namespace:System.Collections.Generic;assembly=System.Core" xmlns:scg3="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core" xmlns:st="clr-namespace:System.Text;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Flowchart sad:XamlDebuggerXmlReader.FileName="C:\Weavver\Main\Projects\WeavverLib\Accounting\PayBills.xaml" sap:VirtualizedContainerService.HintSize="744,636">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        <av:Point x:Key="ShapeLocation">70,32.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
+        <x:Double x:Key="Width">730</x:Double>
+      </scg3:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Null />
+    </Flowchart.StartNode>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">341,125</av:Point>
+          <av:Size x:Key="ShapeSize">218,130</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">150,305 150,335 270,335 270,240 259,240</av:PointCollection>
+        </scg3:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <InvokeMethod MethodName="{x:Null}" sap:VirtualizedContainerService.HintSize="218,130">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg3:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </InvokeMethod>
+    </FlowStep>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">430,549</av:Point>
+          <av:Size x:Key="ShapeSize">200,22</av:Size>
+        </scg3:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TerminateWorkflow sap:VirtualizedContainerService.HintSize="200,22" Reason="Completed">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg3:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </TerminateWorkflow>
+    </FlowStep>
+  </Flowchart>
+</Activity>
