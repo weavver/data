@@ -1,6 +1,8 @@
 bin
 obj
+
 *.config
 *.suo
 *.snk
-build
+*.user
+!src/App-default.config

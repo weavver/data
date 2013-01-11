@@ -17,7 +17,7 @@
     </UpgradeBackupLocation>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SignAssembly>false</SignAssembly>
-    <AssemblyOriginatorKeyFile>WeavverLib.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Weavver.Data.snk</AssemblyOriginatorKeyFile>
     <TargetFrameworkVersion>v4.0.1</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -125,14 +125,6 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="RabbitMQ.Client, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\VoiceScribe\3rd Party\RabbitMQ.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpCouch, Version=1.0.3953.24262, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\3rd Party\SharpCouch.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Activities" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -319,45 +311,6 @@
     <Compile Include="Utilities\HotSwapper.cs" />
     <Compile Include="Model\Communication_MessageTemplates.cs" />
     <Compile Include="Utilities\NumberConvertor.cs" />
-    <Compile Include="Web\AutoCompleteTextBox.cs" />
-    <Compile Include="Web\Calendar\WeavverCalendar.cs" />
-    <Compile Include="Web\Calendar\WeavverCalendarEventArgs.cs" />
-    <Compile Include="Web\Comet\HttpStreamThread.cs" />
-    <Compile Include="Web\Comet\HttpStreamThreadResult.cs" />
-    <Compile Include="Web\Comet\HttpStreamHandler.cs" />
-    <Compile Include="Web\DropDownMenu\WeavverDropDownMenu.cs" />
-    <Compile Include="Web\DropDownMenu\WeavverDropDownMenuDesigner.cs" />
-    <Compile Include="Web\DropDownMenu\WeavverDropDownMenuItem.cs" />
-    <Compile Include="Web\DropDownMenu\WeavverDropDownMenuItemCollection.cs" />
-    <Compile Include="Web\DropDownMenu\WeavverDropDownMenuPopupType.cs" />
-    <Compile Include="Web\DropDownMenu\WeavverDropDownMenuScrollType.cs" />
-    <Compile Include="Web\DropDownMenu\WeavverDropDownMenuType.cs" />
-    <Compile Include="Web\GroupBox\WeavverGroupBox.cs" />
-    <Compile Include="Web\GroupBox\WeavverGroupBoxItem.cs" />
-    <Compile Include="Web\GroupBox\WeavverGroupBoxItemCollection.cs" />
-    <Compile Include="Web\ListBox\WeavverListBox.cs" />
-    <Compile Include="Web\ListBox\WeavverListBoxItem.cs" />
-    <Compile Include="Web\ListBox\WeavverListBoxItemCollection.cs" />
-    <Compile Include="Web\WeavverMenuItem.cs" />
-    <Compile Include="Web\SkeletonPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Web\TabControl\WeavverDefaultTabControlTabTemplate.cs" />
-    <Compile Include="Web\TabControl\WeavverDesign.cs" />
-    <Compile Include="Web\TabControl\WeavverTabCollection.cs" />
-    <Compile Include="Web\TabControl\WeavverTabControl.cs" />
-    <Compile Include="Web\TabControl\WeavverTabControlBuilder.cs" />
-    <Compile Include="Web\TabControl\WeavverTabControlDesigner.cs" />
-    <Compile Include="Web\TabControl\WeavverTabControlTab.cs" />
-    <Compile Include="Web\TabControl\WeavverTabPanel.cs" />
-    <Compile Include="Web\WeavverDataGrid.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Web\WeavverGroupPanel.cs" />
-    <Compile Include="Web\WeavverTabControl.cs" />
-    <Compile Include="Web\WeavverTextBox.cs" />
-    <Compile Include="Web\WeavverWebControl.cs" />
-    <Compile Include="Web\WeavverYahooOnlineIndicator.cs" />
     <Compile Include="Workflows\WorkflowData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -386,13 +339,11 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>WeavverEntityContainer.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include=".git" />
     <None Include="App-default.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\DataSources\Weavver.Data.Accounting_LedgerItems.datasource" />
-    <None Include="Properties\DataSources\Weavver.Data.Sales_Order.datasource" />
-    <None Include="Properties\DataSources\Weavver.Data.Sales_OrderReportSettings.datasource" />
-    <None Include="WeavverLib.snk" />
+    <None Include="Weavver.Data.snk" />
     <EntityDeploy Include="Workflows\WorkflowData.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>WorkflowData.Designer.cs</LastGenOutput>
@@ -460,12 +411,6 @@
     </XamlAppDef>
   </ItemGroup>
   <ItemGroup>
-    <XamlAppDef Include="Workflows\VoiceScribe_Intake.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Vendors\Weavver.Vendors.csproj">
       <Project>{01490A61-F803-41A3-89D4-D6CAC7A97DA6}</Project>
       <Name>Weavver.Vendors</Name>
@@ -475,7 +420,9 @@
       <Name>Net</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include=".gitignore" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
