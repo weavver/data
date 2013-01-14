@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{c252feb5-a946-4202-b1d4-9916a0590387};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{3B5FE883-00B2-4AEA-94A3-4F62B653C177}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>WeavverDAL</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SGenUseProxyTypes>false</SGenUseProxyTypes>
+    <ConnectionString>
+    </ConnectionString>
+    <TargetFrameworkProfile />
+    <PermissionLevel>1</PermissionLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <DeployCode>true</DeployCode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <DeployCode>true</DeployCode>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Database</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>WeavverDAL.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\SqlServer.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DeployAssembly.sql" />
+    <Content Include="ForeignKeys\Accounting_Checks.sql" />
+    <Content Include="ForeignKeys\Accounting_LedgerItems.sql" />
+    <Content Include="ForeignKeys\Accounting_Reconcilliations.sql" />
+    <Content Include="ForeignKeys\Accounting_RecurringBilables.sql" />
+    <Content Include="ForeignKeys\Accounting_Accounts.sql" />
+    <Content Include="ForeignKeys\Accounting_OFXSettings.sql" />
+    <Content Include="ForeignKeys\HR_Tasks.sql" />
+    <Content Include="ForeignKeys\Sales_LicenseKeyActivations.sql" />
+    <Content Include="ForeignKeys\Sales_LicenseKeys.sql" />
+    <Content Include="ForeignKeys\Data_Links.sql" />
+    <Content Include="ForeignKeys\KnowledgeBase.sql" />
+    <Content Include="ForeignKeys\Logistics_FeatureOptions.sql" />
+    <Content Include="ForeignKeys\Logistics_Products.sql" />
+    <Content Include="ForeignKeys\Marketing_Blogs.sql" />
+    <Content Include="ForeignKeys\Sales_Orders.sql" />
+    <Content Include="ForeignKeys\Sales_ShoppingCartItems.sql" />
+    <Content Include="ForeignKeys\CustomerService_Tickets.sql" />
+    <Compile Include="Functions\Accounting_LedgerItems.cs" />
+    <Compile Include="Functions\Accounting_RecurringBillables.cs" />
+    <Compile Include="Functions\Accounting_AccountBalances.cs" />
+    <Compile Include="Functions\Common.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Functions\Sales_LicenseKeys.cs" />
+    <Compile Include="Functions\HR_TimeLogs.cs" />
+    <Compile Include="Functions\Sales_ShoppingCarts.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="ForeignKeys\CMS_Pages.sql" />
+    <Content Include="ForeignKeys\Communication_EmailAccounts.sql" />
+    <Content Include="ForeignKeys\Data_AuditTrails.sql" />
+    <Content Include="ForeignKeys\Logistics_Organizations.sql" />
+    <Content Include="ForeignKeys\System_URLs.sql" />
+    <Content Include="PostDeployScript.sql" />
+    <Content Include="PrePreDeployScript.sql" />
+    <Content Include="SchemaUpdates\Update1.sql" />
+    <Content Include="Staging\Backup.sql" />
+    <Content Include="Staging\ForeignKeysCreate.sql" />
+    <Content Include="Staging\ForeignKeysDrop.sql" />
+    <Content Include="Staging\Restore.sql" />
+    <Content Include="Staging\ForeignKeysList.sql" />
+    <Content Include="Stored Procedures\SearchAllTables.sql" />
+    <Content Include="Test Scripts\OldNotes.sql" />
+    <Content Include="Views\Accounting_AccountBalances.sql" />
+    <Content Include="Views\ShowAllTriggers.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Jobs\ofx-sync.sql" />
+    <Content Include="Test Scripts\Test.sql">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="PreDeployScript.sql">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WeavverDAL.snk" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>rem "C:\Program Files\Microsoft SQL Server\90\Tools\Binn\sqlcmd.exe" -i "$(ProjectDir)\PrePreDeployScript.sql"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!--<Target Name="BeforeBuild">
+    <PropertyGroup>
+      <PreDeployEvent>sqlcmd.exe -i PrePreDeployScript.sql</PreDeployEvent>
+    </PropertyGroup>
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>-->
+</Project>

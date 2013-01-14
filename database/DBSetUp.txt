@@ -1,0 +1,117 @@
+﻿--// Authors: Norm Mowrer & Mitchel Constantin
+--//-------------------------------------------------------------------------------------------
+-- The following SQL generates an INSERT Trigger for each table.
+
+select 'SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TRIGGER ' + name +'_Insert
+ON ' + name + '
+AFTER INSERT
+AS
+BEGIN
+
+SET NOCOUNT ON;
+
+insert into system_datarowlookups (RowId, TableName)
+select id, ''' + name + '''
+from inserted
+
+
+END
+GO', *
+from sys.objects
+where type = 'U'
+and name not in ('system_datarowlookups',
+'aspnet_Applications',
+'aspnet_Membership',
+'aspnet_Paths',
+'aspnet_PersonalizationAllUsers',
+'aspnet_PersonalizationPerUser',
+'aspnet_Profile',
+'aspnet_Roles',
+'aspnet_SchemaVersions',
+'aspnet_Users',
+'aspnet_UsersInRoles',
+'aspnet_WebEvent_Events')
+
+--//-------------------------------------------------------------------------------------------
+-- The following SQL generates a DELETE Trigger for each table.
+
+select  '
+
+CREATE TRIGGER ' + name + '_Delete
+  ON  ' + name + '
+  AFTER DELETE
+AS 
+BEGIN
+       
+       SET NOCOUNT ON;
+       
+       delete system_datarowlookups 
+       where RowId in (
+       select id
+       from deleted)
+       
+
+END
+
+'
+from sys.objects
+where type = 'U'
+and name not in ('system_datarowlookups',
+'aspnet_Applications',
+'aspnet_Membership',
+'aspnet_Paths',
+'aspnet_PersonalizationAllUsers',
+'aspnet_PersonalizationPerUser',
+'aspnet_Profile',
+'aspnet_Roles',
+'aspnet_SchemaVersions',
+'aspnet_Users',
+'aspnet_UsersInRoles',
+'aspnet_WebEvent_Events')
+
+--//-------------------------------------------------------------------------------------------
+-- The following SQL generates a script for each table.
+
+
+declare @rowId uniqueidentifier
+select  '
+
+set rowcount 0
+select null as mykey, * into #mytemp from ' + name + '
+
+set rowcount 1
+update #mytemp set mykey = 1
+
+while @@rowcount > 0
+begin
+    set rowcount 0
+    select @rowId = Id from #mytemp where mykey = 1
+	insert into System_DataRowLookUps (RowId, TableName) Values (@rowId, ''' + name + ''')
+    delete #mytemp where mykey = 1
+    set rowcount 1
+    update #mytemp set mykey = 1
+end
+set rowcount 0
+drop table #mytemp
+'
+from sys.objects
+where type = 'U'
+and name not in ('system_datarowlookups',
+'aspnet_Applications',
+'aspnet_Membership',
+'aspnet_Paths',
+'aspnet_PersonalizationAllUsers',
+'aspnet_PersonalizationPerUser',
+'aspnet_Profile',
+'aspnet_Roles',
+'aspnet_SchemaVersions',
+'aspnet_Users',
+'aspnet_UsersInRoles',
+'aspnet_WebEvent_Events')
+
+GO
