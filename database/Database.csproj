@@ -55,7 +55,11 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DeployAssembly.sql" />
+    <Compile Include="Units\Database.cs" />
+    <Compile Include="Units\DeployTriggers.cs" />
+    <Content Include="DeployAssembly.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ForeignKeys\Accounting_Checks.sql" />
     <Content Include="ForeignKeys\Accounting_LedgerItems.sql" />
     <Content Include="ForeignKeys\Accounting_Reconcilliations.sql" />
@@ -97,15 +101,14 @@
     <Content Include="Staging\Restore.sql" />
     <Content Include="Staging\ForeignKeysList.sql" />
     <Content Include="Stored Procedures\SearchAllTables.sql" />
-    <Content Include="Test Scripts\OldNotes.sql" />
+    <Content Include="Units\DBSetUp.txt" />
+    <Content Include="Units\Notes.sql" />
+    <Content Include="Units\Test.sql" />
     <Content Include="Views\Accounting_AccountBalances.sql" />
     <Content Include="Views\ShowAllTriggers.sql" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Jobs\ofx-sync.sql" />
-    <Content Include="Test Scripts\Test.sql">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="PreDeployScript.sql">
       <SubType>Content</SubType>
     </Content>
@@ -113,6 +116,7 @@
   <ItemGroup>
     <None Include="WeavverDAL.snk" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <PostBuildEvent>rem "C:\Program Files\Microsoft SQL Server\90\Tools\Binn\sqlcmd.exe" -i "$(ProjectDir)\PrePreDeployScript.sql"</PostBuildEvent>
   </PropertyGroup>

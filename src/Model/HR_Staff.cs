@@ -60,48 +60,56 @@ namespace Weavver.Data
                [UIHint("Password")]
                public object PassCode;
 
+               [Display(Name = "Extension", Order = 80)]
+               public object Extension;
+
+               [ColumnGroup("Logistics")]
                [HideColumnIn(PageTemplate.List)]
                //[UIHint("Text")]
                [Display(Name = "Personal Days", Order = 40)]
                public object PersonalDays;
 
+               [ColumnGroup("Logistics")]
                [HideColumnIn(PageTemplate.List)]
                //[UIHint("Text")]
                [Display(Name = "Sick Days", Order = 45)]
                public object SickDays;
 
+               [ColumnGroup("Logistics")]
                [Display(Name = "Position", Order = 50)]
                [HideColumnIn(PageTemplate.List)]
                //[UIHint("Position")]
                public object Position;
 
-               [Display(Name = "Location", Order = 55)]
-               [HideColumnIn(PageTemplate.List)]
-               //[UIHint("Location")]
-               public object Location;
-
+               [ColumnGroup("Logistics")]
                [Display(Name = "Is Salaried", Order = 60)]
                [HideColumnIn(PageTemplate.List)]
                //[UIHint("IsSalaried")]
                public object IsSalaried;
 
+               [ColumnGroup("Logistics")]
                [HideColumnIn(PageTemplate.List)]
                //[UIHint("HourlyWage")]
                [Display(Name = "Hourly Wage", Order = 65)]
                [DisplayFormat(DataFormatString = "{0:C}")]
                public object HourlyWage;
 
+               [ColumnGroup("Logistics")]
                [Display(Name = "Monthly Budget", Order = 70)]
                [DisplayFormat(DataFormatString = "{0:C}")]
                public object MonthlyBudget;
 
+               [ColumnGroup("Bio")]
+               [Display(Name = "Location", Order = 55)]
+               [HideColumnIn(PageTemplate.List)]
+               //[UIHint("Location")]
+               public object Location;
+
+               [ColumnGroup("Bio")]
                [Display(Name = "Bio", Order = 75)]
                [HideColumnIn(PageTemplate.List)]
                [UIHint("Code")]
                public object Bio;
-
-               [Display(Name = "Extension", Order = 80)]
-               public object Extension;
 
                [FilterUIHint("DateTime")]
                [Display(Name = "Created At")]
@@ -118,6 +126,9 @@ namespace Weavver.Data
 
                [ScaffoldColumn(false)]
                public object Sales_Resellers;
+
+               [HideColumnIn(PageTemplate.List)]
+               public object HR_Tasks;
           }
 
           public override string ToString()
