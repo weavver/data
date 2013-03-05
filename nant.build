@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="Weavver Data" default="rebuild">
      <property name="nant.settings.currentframework" value="net-4.0" />
-	<property name="build.dir" value="C:\Weavver\github\data\build" />
+	<property name="build.dir" value="C:\Weavver\github\data\build" unless="${property::exists('build.dir')}" />
      <property name="debug" value="true"/>
      <target name="clean" description="remove all generated files">
 		<delete dir="${build.dir}" />
@@ -13,18 +13,18 @@
      <target name="weavver.net">
           <nant target="${target::get-current-target()}" buildfile="vendors/weavver/net/nant.build">
                <properties>
-                    <property name="build.dir" value="C:\Weavver\github\data\build\" overwrite="false" readonly="true" />
+                    <property name="build.dir" value="${build.dir}" overwrite="false" readonly="true" />
                </properties>
           </nant>
      </target>
      <target name="weavver.vendors">
           <nant target="${target::get-current-target()}" buildfile="vendors/weavver/vendors/nant.build">
                <properties>
-                    <property name="build.dir" value="C:\Weavver\github\data\build\" overwrite="false" readonly="true" />
+                    <property name="build.dir" value="${build.dir}" overwrite="false" readonly="true" />
                </properties>
           </nant>
      </target>
-     <target name="build" depends="weavver.net, weavver.vendors">
+     <target name="weavver.data" depends="weavver.net, weavver.vendors">
 		<mkdir dir="${build.dir}" />
           <csc target="library" output="${build.dir}/Weavver.Data.dll" debug="${debug}">
                <references>
@@ -62,6 +62,7 @@
                </sources>
           </csc>
 	</target>
+     <target name="build" depennds="weavver.data" />
     <target name="rebuild" depends="clean, build" />
     <target name="run" depends="build">
         <!--<exec program="${build.dir}/Weavver.Data.dll" />-->
