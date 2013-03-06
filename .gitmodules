@@ -1,6 +1,0 @@
-[submodule "vendors/weavver/net"]
-	path = vendors/weavver/net
-	url = https://github.com/weavver/net.git
-[submodule "vendors/weavver/vendors"]
-	path = vendors/weavver/vendors
-	url = https://github.com/weavver/vendors.git

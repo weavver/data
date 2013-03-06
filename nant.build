@@ -11,14 +11,14 @@
           <delete dir="database\bin" />
      </target>
      <target name="weavver.net">
-          <nant target="${target::get-current-target()}" buildfile="vendors/weavver/net/nant.build">
+          <nant target="${target::get-current-target()}" buildfile="../net/nant.build">
                <properties>
                     <property name="build.dir" value="${build.dir}" overwrite="false" readonly="true" />
                </properties>
           </nant>
      </target>
      <target name="weavver.vendors">
-          <nant target="${target::get-current-target()}" buildfile="vendors/weavver/vendors/nant.build">
+          <nant target="${target::get-current-target()}" buildfile="../vendors/nant.build">
                <properties>
                     <property name="build.dir" value="${build.dir}" overwrite="false" readonly="true" />
                </properties>
@@ -30,6 +30,7 @@
                <references>
                     <lib>
                          <include name="vendors/nsoftware/nsoftware.InEBank.dll" />
+                         <include name="C:\Weavver\github\moksha\build\Weavver.Moksha.dll" />
                     </lib>
                     <include name="System.dll" />
                     <include name="System.Drawing.dll" />
@@ -51,9 +52,11 @@
                     <include name="vendors/zxing/zxing.dll" />
                     <include name="${build.dir}/Weavver.Net.dll" />
                     <include name="${build.dir}/Weavver.Vendors.dll" />
+                    <include name="C:\Weavver\github\moksha\build\Weavver.Moksha.dll" />
                </references>
                <sources>
                     <include name="src/**.cs" />
+                    <include name="units/**.cs" />
                </sources>
           </csc>
           <csc target="library" output="${build.dir}/Weavver.DAL.dll" debug="${debug}">
@@ -62,9 +65,15 @@
                </sources>
           </csc>
 	</target>
-     <target name="build" depennds="weavver.data" />
-    <target name="rebuild" depends="clean, build" />
-    <target name="run" depends="build">
-        <!--<exec program="${build.dir}/Weavver.Data.dll" />-->
-    </target>
+     <target name="build" depends="weavver.data" />
+     <target name="rebuild" depends="clean, build" />
+     <target name="run" depends="build">
+          <!--<exec program="${build.dir}/Weavver.Data.dll" />-->
+     </target>
+     <target name="test">
+          <nant target="build" buildfile="../moksha/nant.build"></nant>
+          <exec program="../moksha/build/moksha.exe">
+               <arg line="/test ${build.dir}/Weavver.Data.dll" />
+          </exec>
+     </target>
 </project>

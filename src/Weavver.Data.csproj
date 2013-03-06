@@ -175,6 +175,7 @@
     <Compile Include="Model\Accounting_OFXLedgerItem.cs" />
     <Compile Include="Model\System_Tests.cs" />
     <Compile Include="Model\Sales_LicenseKeyActivations.cs" />
+    <Compile Include="Units\Accounting_OFXSettings.cs" />
     <Compile Include="Utilities\CommandLineArguments.cs" />
     <Compile Include="Data\Attributes\HideIfFiltered.cs" />
     <Compile Include="Data\Attributes\InsertTitleAttribute.cs" />
@@ -405,11 +406,15 @@
     </XamlAppDef>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\vendors\weavver\net\src\Weavver.Net.csproj">
+    <ProjectReference Include="..\..\moksha\src\Weavver Moksha Interface.csproj">
+      <Project>{8E71554E-8184-40C7-8CBC-8955C7627A04}</Project>
+      <Name>Weavver Moksha Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\net\src\Weavver.Net.csproj">
       <Project>{0D3C5390-5651-4B71-B165-E5C72A55281C}</Project>
       <Name>Weavver.Net</Name>
     </ProjectReference>
-    <ProjectReference Include="..\vendors\weavver\vendors\src\Weavver.Vendors.csproj">
+    <ProjectReference Include="..\..\vendors\src\Weavver.Vendors.csproj">
       <Project>{01490A61-F803-41A3-89D4-D6CAC7A97DA6}</Project>
       <Name>Weavver.Vendors</Name>
     </ProjectReference>
