@@ -1,79 +1,28 @@
 <?xml version="1.0"?>
 <project name="Weavver Data" default="rebuild">
      <property name="nant.settings.currentframework" value="net-4.0" />
-	<property name="build.dir" value="C:\Weavver\github\data\build" unless="${property::exists('build.dir')}" />
+	<property name="build.dir" value="${directory::get-current-directory()}/build" unless="${property::exists('build.dir')}" />
      <property name="debug" value="true"/>
      <target name="clean" description="remove all generated files">
 		<delete dir="${build.dir}" />
-          <delete dir="src\bin" />
-          <delete dir="src\obj" />
-          <delete dir="database\obj" />
-          <delete dir="database\bin" />
+          <delete dir="${directory::get-current-directory()}/src\bin" />
+          <delete dir="${directory::get-current-directory()}/src\obj" />
+          <delete dir="${directory::get-current-directory()}/database\obj" />
+          <delete dir="${directory::get-current-directory()}/database\bin" />
      </target>
-     <target name="weavver.net">
-          <nant target="${target::get-current-target()}" buildfile="../net/nant.build">
-               <properties>
-                    <property name="build.dir" value="${build.dir}" overwrite="false" readonly="true" />
-               </properties>
-          </nant>
+     <target name="build">
+          <mkdir dir="${build.dir}" />
+          <exec program="C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe" commandline="&quot;${directory::get-current-directory()}\Weavver Data.sln&quot; /Build Release" />
      </target>
-     <target name="weavver.vendors">
-          <nant target="${target::get-current-target()}" buildfile="../vendors/nant.build">
-               <properties>
-                    <property name="build.dir" value="${build.dir}" overwrite="false" readonly="true" />
-               </properties>
-          </nant>
-     </target>
-     <target name="weavver.data" depends="weavver.net, weavver.vendors">
-		<mkdir dir="${build.dir}" />
-          <csc target="library" output="${build.dir}/Weavver.Data.dll" debug="${debug}">
-               <references>
-                    <lib>
-                         <include name="vendors/nsoftware/nsoftware.InEBank.dll" />
-                         <include name="C:\Weavver\github\moksha\build\Weavver.Moksha.dll" />
-                    </lib>
-                    <include name="System.dll" />
-                    <include name="System.Drawing.dll" />
-                    <include name="System.Windows.Forms.dll" />
-                    <include name="System.Activities.dll" />
-                    <include name="System.ComponentModel.DataAnnotations.dll" />
-                    <include name="System.Data.Entity.dll" />
-                    <include name="System.Data.Linq.dll" />
-                    <include name="System.Web.ApplicationServices.dll" />
-                    <include name="System.Web.Entity.dll" />
-                    <include name="System.Web.DynamicData.dll" />
-                    <include name="System.Web.DynamicData.Design.dll" />
-                    <include name="Microsoft.ReportViewer.Common.dll" />
-                    <include name="vendors/microsoft/Microsoft.ReportViewer.WebForms.dll" />
-                    <include name="vendors/authorize.net/AuthorizeNet.dll" />
-                    <include name="vendors/nsoftware/nsoftware.InEBank.dll" />
-                    <include name="vendors/openpop/OpenPop.dll" />
-                    <include name="vendors/pdfjet/PDFjet.dll" />
-                    <include name="vendors/zxing/zxing.dll" />
-                    <include name="${build.dir}/Weavver.Net.dll" />
-                    <include name="${build.dir}/Weavver.Vendors.dll" />
-                    <include name="C:\Weavver\github\moksha\build\Weavver.Moksha.dll" />
-               </references>
-               <sources>
-                    <include name="src/**.cs" />
-                    <include name="units/**.cs" />
-               </sources>
-          </csc>
-          <csc target="library" output="${build.dir}/Weavver.DAL.dll" debug="${debug}">
-               <sources>
-				<include name="${build.dir}/database/**.cs" />
-               </sources>
-          </csc>
-	</target>
-     <target name="build" depends="weavver.data" />
      <target name="rebuild" depends="clean, build" />
-     <target name="run" depends="build">
-          <!--<exec program="${build.dir}/Weavver.Data.dll" />-->
-     </target>
      <target name="test">
-          <nant target="build" buildfile="../moksha/nant.build"></nant>
+          <!--<nant target="build" buildfile="../moksha/nant.build"></nant>-->
           <exec program="../moksha/build/moksha.exe">
-               <arg line="/test ${build.dir}/Weavver.Data.dll" />
+               <arg line="/testlib=${build.dir}/Weavver.Data.dll" />
+               <arg line="/runtests" />
           </exec>
+     </target>
+     <target name="publish" depends="test">
+           blah blah
      </target>
 </project>
