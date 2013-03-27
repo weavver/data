@@ -170,6 +170,8 @@
     <Compile Include="Model\System_Tests.cs" />
     <Compile Include="Model\Sales_LicenseKeyActivations.cs" />
     <Compile Include="Units\Accounting_OFXSettings.cs" />
+    <Compile Include="Units\Database.cs" />
+    <Compile Include="Units\DeployTriggers.cs" />
     <Compile Include="Utilities\CommandLineArguments.cs" />
     <Compile Include="Data\Attributes\HideIfFiltered.cs" />
     <Compile Include="Data\Attributes\InsertTitleAttribute.cs" />
@@ -413,6 +415,11 @@
       <Project>{01490A61-F803-41A3-89D4-D6CAC7A97DA6}</Project>
       <Name>Weavver.Vendors</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Units\DBSetUp.txt" />
+    <Content Include="Units\Notes.sql" />
+    <Content Include="Units\Test.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

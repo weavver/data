@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using OpenQA.Selenium;
 using System.Configuration;
 using OpenPop.Pop3;
 using OpenPop.Mime;
