@@ -23,5 +23,5 @@ ADD CONSTRAINT Accounting_LedgerItems_UpdatedBy
      -- Specifically so tables like Accounting_RecurringBillables can insert records
      -- And use the CreatedBy/UpdatedBy fields to track changes
 
-ALTER TABLE Accounting_LedgerItems NOCHECK CONSTRAINT Accounting_LedgerItems_CreatedBy
-ALTER TABLE Accounting_LedgerItems NOCHECK CONSTRAINT Accounting_LedgerItems_UpdatedBy
+--ALTER TABLE Accounting_LedgerItems NOCHECK CONSTRAINT Accounting_LedgerItems_CreatedBy
+--ALTER TABLE Accounting_LedgerItems NOCHECK CONSTRAINT Accounting_LedgerItems_UpdatedBy

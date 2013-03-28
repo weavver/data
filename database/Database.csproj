@@ -55,6 +55,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="aspnet_regsql.sql" />
     <Content Include="Database.sql" />
     <Content Include="ForeignKeys\Accounting_Checks.sql" />
     <Content Include="ForeignKeys\Accounting_LedgerItems.sql" />
@@ -100,9 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Jobs\ofx-sync.sql" />
-    <Content Include="PreDeployScript.sql">
-      <SubType>Content</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="WeavverDAL.snk" />

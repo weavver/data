@@ -92,48 +92,45 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           private static void ObjectContext_SavingChanges(object sender, EventArgs e)
           {
-               if (ConfigurationManager.AppSettings["install_mode"] == "false")
+               var objects = ((ObjectContext)sender).ObjectStateManager;
+
+               IEnumerable<ObjectStateEntry> addedObjects = objects.GetObjectStateEntries(EntityState.Added);
+               IEnumerable<ObjectStateEntry> modifiedObjects = objects.GetObjectStateEntries(EntityState.Modified);
+               IEnumerable<ObjectStateEntry> deletedObjects = objects.GetObjectStateEntries(EntityState.Deleted);
+
+               AuditUtility.ProcessAuditFields(addedObjects);
+               AuditUtility.ProcessAuditFields(modifiedObjects, InsertMode: false);
+
+               using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
-                    var objects = ((ObjectContext)sender).ObjectStateManager;
+                    Communication_MessageTemplates template = (from x in data.Communication_MessageTemplates
+                                                            where x.Name == "Data_ChangeLog"
+                                                            select x).FirstOrDefault();
 
-                    IEnumerable<ObjectStateEntry> addedObjects = objects.GetObjectStateEntries(EntityState.Added);
-                    IEnumerable<ObjectStateEntry> modifiedObjects = objects.GetObjectStateEntries(EntityState.Modified);
-                    IEnumerable<ObjectStateEntry> deletedObjects = objects.GetObjectStateEntries(EntityState.Deleted);
-
-                    AuditUtility.ProcessAuditFields(addedObjects);
-                    AuditUtility.ProcessAuditFields(modifiedObjects, InsertMode: false);
-
-                    using (WeavverEntityContainer data = new WeavverEntityContainer())
+                    if (template != null)
                     {
-                         Communication_MessageTemplates template = (from x in data.Communication_MessageTemplates
-                                                             where x.Name == "Data_ChangeLog"
-                                                             select x).FirstOrDefault();
+                         string changeLogSubject = template.Subject;
+                         string changeLogBody = template.Body.Replace("[addedobjects]", GetLogItems(addedObjects))
+                                                                 .Replace("[modifiedobjects]", GetLogItems(modifiedObjects))
+                                                                 .Replace("[deletedobjects]", GetLogItems(deletedObjects));
 
-                         if (template != null)
+                         MailMessage message = new MailMessage("Weavver <therobots@weavver.com>", ConfigurationManager.AppSettings["audit_address"]);
+
+                         var context = System.Web.HttpContext.Current;
+                         if (context != null)
                          {
-                              string changeLogSubject = template.Subject;
-                              string changeLogBody = template.Body.Replace("[addedobjects]", GetLogItems(addedObjects))
-                                                                  .Replace("[modifiedobjects]", GetLogItems(modifiedObjects))
-                                                                  .Replace("[deletedobjects]", GetLogItems(deletedObjects));
-
-                              MailMessage message = new MailMessage("Weavver <therobots@weavver.com>", ConfigurationManager.AppSettings["audit_address"]);
-
-                              var context = System.Web.HttpContext.Current;
-                              if (context != null)
-                              {
-                                   var user = Membership.GetUser(context.User.Identity.Name);
-                                   string username = (user != null) ? user.UserName : "anonymous";
-                                   message.Subject = changeLogSubject.Replace("[user]", username);
-                              }
-                              else
-                              {
-                                   message.Subject = changeLogSubject.Replace("[user]", "Session_End");
-                              }
-                              message.Body = changeLogBody;
-                              message.IsBodyHtml = true;
-                              SmtpClient smtpClient = new SmtpClient(ConfigurationManager.AppSettings["smtp_address"]);
-                              smtpClient.Send(message);
+                              var user = Membership.GetUser(context.User.Identity.Name);
+                              string username = (user != null) ? user.UserName : "anonymous";
+                              message.Subject = changeLogSubject.Replace("[user]", username);
                          }
+                         else
+                         {
+                              message.Subject = changeLogSubject.Replace("[user]", "Session_End");
+                         }
+                         message.Body = changeLogBody;
+                         message.IsBodyHtml = true;
+                         SmtpClient smtpClient = new SmtpClient(ConfigurationManager.AppSettings["smtp_address"]);
+                         smtpClient.Send(message);
                     }
                }
           }

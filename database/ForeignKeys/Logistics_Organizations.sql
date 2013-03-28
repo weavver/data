@@ -27,6 +27,8 @@ ADD
     FOREIGN KEY (UpdatedBy)
     REFERENCES System_Users(Id)
 
-    
+
+
+ALTER TABLE Logistics_Organizations NOCHECK CONSTRAINT FK_System_Organizations_System_Organizations
 ALTER TABLE Logistics_Organizations NOCHECK CONSTRAINT Logistics_Organizations_CreatedBy
 ALTER TABLE Logistics_Organizations NOCHECK CONSTRAINT Logistics_Organizations_UpdatedBy

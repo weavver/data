@@ -114,3 +114,4 @@ from Accounting_LedgerItems li
 Group By OrganizationId,
 year(dbo.LocalizeDT(PostAt)),
 month(dbo.LocalizeDT(PostAt))
+GO
