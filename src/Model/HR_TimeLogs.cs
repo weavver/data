@@ -9,11 +9,11 @@ namespace Weavver.Data
 {
      [MetadataType(typeof(HR_TimeLogs.Metadata))]
      [DisplayName("Time Logs")]
-     [SecureTable(TableActions.List, "Administrators", "Employee")]
-     [SecureTable(TableActions.Edit, "Administrators", "Employee")]
-     [SecureTable(TableActions.Details, "Administrators", "Employee")]
-     [SecureTable(TableActions.Delete, "Administrators", "Employee")]
-     [SecureTable(TableActions.Insert, "Administrators", "Employee")]
+     [DataAccess(TableView.List, "Administrators", "Employee")]
+     [DataAccess(RowView.Edit, "Administrators", "Employee")]
+     [DataAccess(RowView.Details, "Administrators", "Employee")]
+     [DataAccess(RowAction.Delete, "Administrators", "Employee")]
+     [DataAccess(RowAction.Insert, "Administrators", "Employee")]
      partial class HR_TimeLogs : IAuditable, IValidator
      {
           public class Metadata

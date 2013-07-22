@@ -139,6 +139,11 @@ namespace Weavver.Utilities
                          timestring += tSpan.Minutes + " minute(s)";
                     }
                }
+
+               if (tSpan.TotalDays > 0)
+               {
+                    timestring = Convert.ToInt32(tSpan.TotalDays) + " day(s) ago";
+               }
                return timestring;
           }
           

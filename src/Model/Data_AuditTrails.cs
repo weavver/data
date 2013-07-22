@@ -10,8 +10,8 @@ namespace Weavver.Data
      [MetadataType(typeof(Data_AuditTrails.Metadata))]
      [DisplayColumn("CreatedAt", "CreatedAt", false)]
      [DisplayName("Audit Trails")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators")]
+     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators")]
      partial class Data_AuditTrails
      {
           public class Metadata

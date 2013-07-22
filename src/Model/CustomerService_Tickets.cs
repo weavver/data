@@ -16,11 +16,11 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
      [MetadataType(typeof(CustomerService_Tickets.Metadata))]
      [DisplayName("Tickets")]
-     [SecureTable(TableActions.List, "Administrators", "Customer Service Reps")]
-     [SecureTable(TableActions.Edit, "Administrators", "Customer Service Reps")]
-     [SecureTable(TableActions.Details, "Administrators", "Customer Service Reps", "Guest")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators", "Customer Service Reps", "Guest")]
+     [DataAccess(TableView.List, "Administrators", "Customer Service Reps")]
+     [DataAccess(RowView.Edit, "Administrators", "Customer Service Reps")]
+     [DataAccess(RowView.Details, "Administrators", "Customer Service Reps", "Guest")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators", "Customer Service Reps", "Guest")]
      partial class CustomerService_Tickets : IAuditable
      {
           public class Metadata

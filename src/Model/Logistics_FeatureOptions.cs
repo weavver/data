@@ -9,11 +9,12 @@ namespace Weavver.Data
 {
      [MetadataType(typeof(Logistics_FeatureOptions.Metadata))]
      [DisplayName("Feature Options")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
+     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
+     [ScaffoldTable(false)]
      partial class Logistics_FeatureOptions : IAuditable
      {
           public class Metadata

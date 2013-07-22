@@ -39,7 +39,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\build\</OutputPath>
+    <OutputPath>Bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -89,10 +89,6 @@
     </Reference>
     <Reference Include="CookComputing.XmlRpcV2">
       <HintPath>..\vendors\cookcomputing\CookComputing.XmlRpcV2.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\3rd Party\log4net.dll</HintPath>
     </Reference>
     <Reference Include="LumenWorks.Framework.IO, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -160,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Attributes\ColumnGroup.cs" />
+    <Compile Include="Data\Attributes\CSSAttribute.cs" />
     <Compile Include="Data\Interfaces\IOrderEvents.cs" />
     <Compile Include="Data\Interfaces\ISales_OrderForm.cs" />
     <Compile Include="Data\Interfaces\IValidatorException.cs" />

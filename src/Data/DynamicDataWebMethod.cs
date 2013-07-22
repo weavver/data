@@ -17,6 +17,7 @@ namespace Weavver.Data
           public DynamicMethodScope Scope;
           public string MethodName { get; set; }
           public String[] Roles { get; set; }
+          public bool RequiresPostback { get; set; }
 
           public DynamicDataWebMethod(string methodname, params String[] roles)
           {
@@ -39,10 +40,19 @@ namespace Weavver.Data
           public string Message { get; set; }
           public string Status { get; set; }
           public bool RedirectRequest { get; set; }
-          public string RedirectURL { get; set; }
-
+          public int RedirectWidth;
+          public int RedirectHeight;
+          public string RedirectURL;
           public string FileName { get; set; }
           public string FileMimeType { get; set; }
           public string FilePath { get; set; }
+          public bool RefreshData { get; set; }
+
+          public DynamicDataWebMethodReturnType()
+          {
+               RedirectWidth = 800;
+               RedirectHeight = 500;
+               RefreshData = false;
+          }
      }
 }

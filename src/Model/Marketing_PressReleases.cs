@@ -9,12 +9,12 @@ namespace Weavver.Data
 {
      [MetadataType(typeof(Marketing_PressReleases.Metadata))]
      [DisplayName("Press Releases")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators", "Guest")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
-     [SecureTable(TableActions.PressRoll, "Administrators", "Guest")]
+     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(TableView.PressRoll, "Administrators", "Guest")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators", "Guest")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
      partial class Marketing_PressReleases : IAuditable
      {
           public class Metadata

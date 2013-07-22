@@ -12,12 +12,13 @@ namespace Weavver.Data
      [MetadataType(typeof(System_User.Metadata))]
      [DisplayColumn("Username", "Username", false)]
      [DisplayName("Users")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
-     [SecureTable(TableActions.CSV, "Administrators")]
+     [ScaffoldTable(true)]
+     [DataAccess(TableView.List, "Administrators")]
+     //[DataAccess(TableView.CSV, "Administrators")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
      partial class System_User : IAuditable //, IValidator
      {
           public class Metadata

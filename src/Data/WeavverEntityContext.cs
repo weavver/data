@@ -104,15 +104,15 @@ namespace Weavver.Data
                using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
                     Communication_MessageTemplates template = (from x in data.Communication_MessageTemplates
-                                                            where x.Name == "Data_ChangeLog"
-                                                            select x).FirstOrDefault();
+                                                        where x.Name == "Data_ChangeLog"
+                                                        select x).FirstOrDefault();
 
                     if (template != null)
                     {
                          string changeLogSubject = template.Subject;
                          string changeLogBody = template.Body.Replace("[addedobjects]", GetLogItems(addedObjects))
-                                                                 .Replace("[modifiedobjects]", GetLogItems(modifiedObjects))
-                                                                 .Replace("[deletedobjects]", GetLogItems(deletedObjects));
+                                                             .Replace("[modifiedobjects]", GetLogItems(modifiedObjects))
+                                                             .Replace("[deletedobjects]", GetLogItems(deletedObjects));
 
                          MailMessage message = new MailMessage("Weavver <therobots@weavver.com>", ConfigurationManager.AppSettings["audit_address"]);
 

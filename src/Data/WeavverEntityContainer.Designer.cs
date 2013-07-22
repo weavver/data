@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -622,18 +623,18 @@ namespace Weavver.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<KnowledgeBase> KnowledgeBases
+        public ObjectSet<KnowledgeBase> KnowledgeBase
         {
             get
             {
-                if ((_KnowledgeBases == null))
+                if ((_KnowledgeBase == null))
                 {
-                    _KnowledgeBases = base.CreateObjectSet<KnowledgeBase>("KnowledgeBases");
+                    _KnowledgeBase = base.CreateObjectSet<KnowledgeBase>("KnowledgeBase");
                 }
-                return _KnowledgeBases;
+                return _KnowledgeBase;
             }
         }
-        private ObjectSet<KnowledgeBase> _KnowledgeBases;
+        private ObjectSet<KnowledgeBase> _KnowledgeBase;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -924,6 +925,7 @@ namespace Weavver.Data
         private ObjectSet<Sales_Order> _Sales_Order;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -1159,11 +1161,11 @@ namespace Weavver.Data
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the KnowledgeBases EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the KnowledgeBase EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToKnowledgeBases(KnowledgeBase knowledgeBase)
+        public void AddToKnowledgeBase(KnowledgeBase knowledgeBase)
         {
-            base.AddObject("KnowledgeBases", knowledgeBase);
+            base.AddObject("KnowledgeBase", knowledgeBase);
         }
     
         /// <summary>
@@ -1311,6 +1313,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Function Imports
     
         /// <summary>
@@ -1333,11 +1336,11 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -1368,6 +1371,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1500,6 +1504,7 @@ namespace Weavver.Data
         partial void OnBalanceChanged();
 
         #endregion
+
     
     }
     
@@ -1539,6 +1544,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1809,6 +1815,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2015,6 +2022,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2061,6 +2069,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2403,6 +2412,7 @@ namespace Weavver.Data
         partial void OnExternalIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2521,6 +2531,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2563,6 +2574,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3073,6 +3085,7 @@ namespace Weavver.Data
         partial void OnCreatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -3115,6 +3128,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3151,6 +3165,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3541,6 +3556,7 @@ namespace Weavver.Data
         partial void OnTransactionIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -3659,6 +3675,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3699,6 +3716,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4137,6 +4155,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -4255,6 +4274,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4299,6 +4319,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4617,6 +4638,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -4697,6 +4719,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4747,6 +4770,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -5209,6 +5233,7 @@ namespace Weavver.Data
         partial void OnUnbilledAmountChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -5403,6 +5428,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -5441,6 +5467,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -5663,6 +5690,7 @@ namespace Weavver.Data
         partial void OnMasterPageChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -5743,6 +5771,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -5787,6 +5816,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -6105,6 +6135,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -6185,6 +6216,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -6227,6 +6259,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -6497,6 +6530,7 @@ namespace Weavver.Data
         partial void OnToChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -6577,6 +6611,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -6615,6 +6650,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -6837,6 +6873,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
     }
     
@@ -6878,6 +6915,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -7100,6 +7138,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -7142,6 +7181,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -7178,6 +7218,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -7520,6 +7561,7 @@ namespace Weavver.Data
         partial void OnAssignedToChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -7676,6 +7718,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -7706,6 +7749,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -7928,6 +7972,7 @@ namespace Weavver.Data
         partial void OnOrganizationIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -7970,6 +8015,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -8012,6 +8058,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -8258,6 +8305,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -8338,6 +8386,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -8384,6 +8433,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -8678,6 +8728,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -8720,6 +8771,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -8764,6 +8816,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -9082,6 +9135,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -9124,6 +9178,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -9158,6 +9213,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -9716,6 +9772,7 @@ namespace Weavver.Data
         partial void OnExtensionChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -9802,6 +9859,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -9850,6 +9908,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -10264,6 +10323,7 @@ namespace Weavver.Data
         partial void OnParentTaskChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -10480,6 +10540,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -10518,6 +10579,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -10860,6 +10922,7 @@ namespace Weavver.Data
         partial void OnDurationChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -10902,6 +10965,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -10936,6 +11000,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -11086,6 +11151,7 @@ namespace Weavver.Data
         partial void OnDownloadedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -11166,6 +11232,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -11204,6 +11271,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -11402,6 +11470,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
     }
     
@@ -11439,6 +11508,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -11613,6 +11683,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
     }
     
@@ -11658,6 +11729,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -11928,6 +12000,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
     }
     
@@ -11969,6 +12042,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -12287,6 +12361,7 @@ namespace Weavver.Data
         partial void OnMACChanged();
 
         #endregion
+
     
     }
     
@@ -12324,6 +12399,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -12570,6 +12646,7 @@ namespace Weavver.Data
         partial void OnPositionChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -12710,6 +12787,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -12744,6 +12822,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -12942,6 +13021,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
     }
     
@@ -12987,6 +13067,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -13281,6 +13362,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -13351,6 +13433,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -13393,6 +13476,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -13639,6 +13723,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -13757,6 +13842,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -13795,6 +13881,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -13993,6 +14080,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -14095,6 +14183,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -14129,6 +14218,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -14735,6 +14825,7 @@ namespace Weavver.Data
         partial void OnFreeSwitch_ServerChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -15639,6 +15730,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -15693,6 +15785,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -16203,6 +16296,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -16381,6 +16475,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -16421,6 +16516,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -16667,6 +16763,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
     }
     
@@ -16702,6 +16799,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -16972,6 +17070,7 @@ namespace Weavver.Data
         partial void OnPersonIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -17014,6 +17113,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -17048,6 +17148,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -17318,6 +17419,7 @@ namespace Weavver.Data
         partial void OnPersonIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -17360,6 +17462,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -17408,6 +17511,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -17726,6 +17830,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -17806,6 +17911,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -17840,6 +17946,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -18278,6 +18385,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -18358,6 +18466,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -18398,6 +18507,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -18620,6 +18730,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -18776,6 +18887,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -18816,6 +18928,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -19254,6 +19367,7 @@ namespace Weavver.Data
         partial void OnConcurrentUsersChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -19432,6 +19546,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -19468,6 +19583,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -20098,6 +20214,7 @@ namespace Weavver.Data
         partial void OnTotalChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -20292,6 +20409,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -20330,6 +20448,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -20528,6 +20647,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -20668,6 +20788,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -20718,6 +20839,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -21228,6 +21350,7 @@ namespace Weavver.Data
         partial void OnOrderIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -21308,6 +21431,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -21348,6 +21472,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -21570,6 +21695,7 @@ namespace Weavver.Data
         partial void OnOrganizationIdChanged();
 
         #endregion
+
     
     }
     
@@ -21617,6 +21743,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -21911,6 +22038,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
     }
     
@@ -21954,6 +22082,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -22200,6 +22329,7 @@ namespace Weavver.Data
         partial void OnPageTemplateChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -22280,6 +22410,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -22318,6 +22449,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -22828,6 +22960,7 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -23624,6 +23757,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -23656,6 +23790,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -24430,10 +24565,12 @@ namespace Weavver.Data
         partial void OnUpdatedByChanged();
 
         #endregion
+
     
     }
 
     #endregion
+
     #region ComplexTypes
     
     /// <summary>
@@ -24462,6 +24599,7 @@ namespace Weavver.Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -24537,8 +24675,10 @@ namespace Weavver.Data
         partial void OnTableNameChanged();
 
         #endregion
+
     }
 
     #endregion
+
     
 }

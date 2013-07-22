@@ -2191,22 +2191,22 @@
             <End Role="Logistics_Organizations" EntitySet="Logistics_Organizations" />
             <End Role="Accounting_Accounts" EntitySet="Accounting_Accounts" />
           </AssociationSet>
-          <EntitySet Name="KnowledgeBases" EntityType="Weavver.Data.KnowledgeBase" />
+          <EntitySet Name="KnowledgeBase" EntityType="Weavver.Data.KnowledgeBase" />
           <AssociationSet Name="KnowledgeBase_CreatedBy" Association="Weavver.Data.KnowledgeBase_CreatedBy">
             <End Role="System_User" EntitySet="System_Users" />
-            <End Role="KnowledgeBase" EntitySet="KnowledgeBases" />
+            <End Role="KnowledgeBase" EntitySet="KnowledgeBase" />
           </AssociationSet>
           <AssociationSet Name="KnowledgeBase_UpdatedBy" Association="Weavver.Data.KnowledgeBase_UpdatedBy">
             <End Role="System_User" EntitySet="System_Users" />
-            <End Role="KnowledgeBase" EntitySet="KnowledgeBases" />
+            <End Role="KnowledgeBase" EntitySet="KnowledgeBase" />
           </AssociationSet>
           <AssociationSet Name="Accounting_Reconciliations_Account" Association="Weavver.Data.Accounting_Reconciliations_Account">
             <End Role="Accounting_Accounts" EntitySet="Accounting_Accounts" />
             <End Role="Accounting_Reconciliations" EntitySet="Accounting_Reconciliations" />
           </AssociationSet>
           <AssociationSet Name="KnowledgeBase_ParentId" Association="Weavver.Data.KnowledgeBase_ParentId">
-            <End Role="KnowledgeBase" EntitySet="KnowledgeBases" />
-            <End Role="KnowledgeBase1" EntitySet="KnowledgeBases" />
+            <End Role="KnowledgeBase" EntitySet="KnowledgeBase" />
+            <End Role="KnowledgeBase1" EntitySet="KnowledgeBase" />
           </AssociationSet>
           <EntitySet Name="Accounting_LedgerItems" EntityType="Weavver.Data.Accounting_LedgerItems" />
           <AssociationSet Name="FK_Accounting_LedgerItems_System_Organizations" Association="Weavver.Data.FK_Accounting_LedgerItems_System_Organizations">
@@ -5122,7 +5122,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="KnowledgeBases">
+          <EntitySetMapping Name="KnowledgeBase">
             <EntityTypeMapping TypeName="Weavver.Data.KnowledgeBase">
               <MappingFragment StoreEntitySet="KnowledgeBase">
                 <ScalarProperty Name="Position" ColumnName="Position" />

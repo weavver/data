@@ -9,11 +9,11 @@ namespace Weavver.Data
 {
      [MetadataType(typeof(Legal_Agreements.Metadata))]
      [DisplayName("Agreements")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators", "Guest")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
+     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators", "Guest")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
      partial class Legal_Agreements : IAuditable
      {
           public class Metadata

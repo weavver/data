@@ -85,9 +85,9 @@ namespace Weavver.Data
             return temp;
         }
 
-        public static Boolean HasAnyRole(this SecureTableAttribute tablePermission, String[] roles)
+        public static Boolean HasAnyRole(this DataAccess tablePermission, String[] roles)
         {
-            var tpsRoles = tablePermission.Roles.AllToLower();
+            var tpsRoles = tablePermission.AllowedRoles.AllToLower();
             // the bug is that tpsRoles is a string array of two values in the first index
              // tpsroles needs to be a split array
 

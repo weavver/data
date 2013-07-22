@@ -41,13 +41,12 @@ namespace Weavver.Data
      }
 //-------------------------------------------------------------------------------------------
      [MetadataType(typeof(Accounting_LedgerItems.Metadata))]
-     [DisplayName("Ledger Items")]
-     [SecureTable(TableActions.List, "Administrators", "Accountants")]
-     [SecureTable(TableActions.ListDetails, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Details, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Delete, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Insert, "Administrators", "Accountants")]
+     [DisplayName("General Ledger")]
+     [DataAccess(TableView.List, "Administrators", "Accountants", Width=1192, Height=492)]
+     [DataAccess(RowView.Edit, "Administrators", "Accountants", Width = 450, Height = 500)]
+     [DataAccess(RowView.Details, "Administrators", "Accountants", Width = 450, Height = 500)]
+     [DataAccess(RowAction.Delete, "Administrators", "Accountants", Width = 450, Height = 500)]
+     //[DataAccess(RowAction.Insert, "Administrators", "Accountants", Width = 450, Height = 500)]
      [DisplayColumn("Memo", "PostAt", true)]
      public partial class Accounting_LedgerItems : IAuditable, IRowStyle, INavigationActions, IValidator
      {
@@ -113,14 +112,17 @@ namespace Weavver.Data
                [HideColumnIn(PageTemplate.List)]
                //[DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
                [ReadOnly(true)]
+               [HideColumnIn(PageTemplate.Insert)]
                public object CreatedAt;
 
                [Display(Name = "Entered By")]
                [ReadOnly(true)]
                [HideColumnIn(PageTemplate.List)]
+               [HideColumnIn(PageTemplate.Insert)]
                public object System_Users;
 
                [HideColumnIn(PageTemplate.List)]
+               [HideColumnIn(PageTemplate.Insert)]
                public object CreatedBy;
 
                [FilterUIHint("DateTime")]
@@ -128,7 +130,7 @@ namespace Weavver.Data
                [Display(Name = "Updated At")]
                //[DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
                [ReadOnly(true)]
-               //[HideColumnIn(PageTemplate.List)]
+               [HideColumnIn(PageTemplate.Insert)]
                public object UpdatedAt;
 
                [ScaffoldColumn(false)]
@@ -136,7 +138,7 @@ namespace Weavver.Data
 
                [Display(Name = "Updated By")]
                [ReadOnly(true)]
-               //[HideColumnIn(PageTemplate.List)]
+               [HideColumnIn(PageTemplate.Insert)]
                public object System_Users1;
 
                // add filter:
@@ -268,6 +270,16 @@ namespace Weavver.Data
                     default:
                          break;
                }
+          }
+//-------------------------------------------------------------------------------------------
+          public static List<Web.WeavverMenuItem> GetTableMenu()
+          {
+               return null;
+          }
+//-------------------------------------------------------------------------------------------
+          public List<Web.WeavverMenuItem> GetItemMenu()
+          {
+               return null;
           }
 //-------------------------------------------------------------------------------------------
      }

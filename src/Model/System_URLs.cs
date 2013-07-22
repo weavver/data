@@ -10,11 +10,11 @@ namespace Weavver.Data
      [MetadataType(typeof(System_URLs.Metadata))]
      [DisplayColumn("Path", "Path", false)]
      [DisplayName("URLs")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
+     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
      partial class System_URLs : IAuditable
      {
           public class Metadata
@@ -69,7 +69,10 @@ namespace Weavver.Data
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
                ret.RedirectRequest = true;
                // real url = String.Format("~/{0}/{1}.aspx?Id={2}", TableName, PageTemplate, ObjectId.ToString());
+
                ret.RedirectURL = Path;
+               ret.RedirectWidth = 800;
+               ret.RedirectHeight = 500;
                return ret;
           }
 //-------------------------------------------------------------------------------------------

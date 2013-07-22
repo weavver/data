@@ -14,6 +14,15 @@ namespace Weavver.Testing.Staging
      public partial class Database
      {
 //-------------------------------------------------------------------------------------------
+          private static string RepoPath
+          {
+               get
+               {
+                    string callingAssemblyFolderPath = Path.GetDirectoryName(System.Reflection.Assembly.GetCallingAssembly().Location);
+                    return Directory.GetParent(callingAssemblyFolderPath).Parent.Parent.FullName;
+               }
+          }
+//-------------------------------------------------------------------------------------------
           [ManualTest]
           public void BackupProductionDatabase()
           {
@@ -21,7 +30,7 @@ namespace Weavver.Testing.Staging
                if (File.Exists(remoteBackupFile))
                     File.Delete(remoteBackupFile);
 
-               string productionBackupScript = @"C:\Weavver\Main\Projects\Database Components\Staging\Backup.sql";
+               string productionBackupScript = Path.Combine(RepoPath,  @"src\Units\Backup.sql");
                string sql = File.ReadAllText(productionBackupScript);
                using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["production"].ConnectionString))
                {
@@ -34,14 +43,13 @@ namespace Weavver.Testing.Staging
           [ManualTest]
           public void DeployBackupDatabaseToDevMachine()
           {
-               string localBackupFile = @"C:\Data\Backups\Weavver-ProductionDB.bak";
-
+               string localBackupFile = Helper.GetAppSetting("localBackupFile");
                if (File.Exists(localBackupFile))
                     File.Delete(localBackupFile);
 
                File.Copy(Helper.GetAppSetting("remoteBackupFile"), localBackupFile);
 
-               string stagingRestoreScript = @"C:\Weavver\Main\Projects\Database Components\Staging\Restore.sql";
+               string stagingRestoreScript = Path.Combine(RepoPath, @"src\Units\Restore.sql");
                string sql = File.ReadAllText(stagingRestoreScript);
                using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dev_no_catalog"].ConnectionString))
                {

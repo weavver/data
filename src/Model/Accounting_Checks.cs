@@ -9,11 +9,11 @@ namespace Weavver.Data
 {
      [MetadataType(typeof(Accounting_Checks.Metadata))]
      [DisplayName("Checks")]
-     [SecureTable(TableActions.List, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Edit, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Details, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Delete, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Insert, "Administrators", "Accountants")]
+     [DataAccess(TableView.List, "Administrators", "Accountants", Height=588, Width=987)]
+     [DataAccess(RowView.Edit, "Administrators", "Accountants", Height = 588, Width = 987)]
+     [DataAccess(RowView.Details, "Administrators", "Accountants", Width = 836, Height = 415)]
+     [DataAccess(RowAction.Insert, "Administrators", "Accountants", Height = 588, Width = 987)]
+     [DataAccess(RowAction.Delete, "Administrators", "Accountants")]
      [DisplayColumn("Memo", "PostAt", true)]
      partial class Accounting_Checks : IAuditable
      {
@@ -54,10 +54,12 @@ namespace Weavver.Data
                [Display(Order = 25)]
                public object Amount;
 
+               [Display(Name = "Created At")]
                [FilterUIHint("DateTime")]
                [ScaffoldColumn(false)]
                public object CreatedAt;
 
+               [Display(Name = "Updated At")]
                [FilterUIHint("DateTime")]
                [ScaffoldColumn(false)]
                public object UpdatedAt;
@@ -124,7 +126,7 @@ namespace Weavver.Data
                }
           }
 //-------------------------------------------------------------------------------------------
-          [DynamicDataWebMethod("Download Printable PDF", "Administrators", "Accountants")]
+          [DynamicDataWebMethod("Download Printable PDF", "Administrators", "Accountants", RequiresPostback=true)]
           public DynamicDataWebMethodReturnType DownloadPrintablePDF()
           {
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();

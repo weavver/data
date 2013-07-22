@@ -10,11 +10,11 @@ namespace Weavver.Data
      [MetadataType(typeof(HR_Staff.Metadata))]
      //[DisplayColumn("DisplayName", "username", false)]
      [DisplayName("Staff")]
-     [SecureTable(TableActions.List, "Administrators", "Human Resources")]
-     [SecureTable(TableActions.Edit, "Administrators", "Human Resources")]
-     [SecureTable(TableActions.Details, "Administrators", "Human Resources")]
-     [SecureTable(TableActions.Delete, "Administrators", "Human Resources")]
-     [SecureTable(TableActions.Insert, "Administrators", "Human Resources")]
+     [DataAccess(TableView.List, "Administrators", "Human Resources")]
+     [DataAccess(RowView.Edit, "Administrators", "Human Resources")]
+     [DataAccess(RowView.Details, "Administrators", "Human Resources")]
+     [DataAccess(RowAction.Delete, "Administrators", "Human Resources")]
+     [DataAccess(RowAction.Insert, "Administrators", "Human Resources")]
      partial class HR_Staff : IAuditable
      {
           public class Metadata
@@ -167,8 +167,17 @@ namespace Weavver.Data
                }
           }
 //-------------------------------------------------------------------------------------------
-          public void ReceivableBalance()
+          [DynamicDataWebMethod("Receivable Balance", "Administrators")]
+          public DynamicDataWebMethodReturnType ReceivableBalance()
           {
+               // do the power up
+
+               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
+               ret.Status = "Not implemented";
+               ret.Message = "not implemented";
+               ret.Exception = false;
+               return ret;
+
                //string arbalance = Accounting.Balance_ForLedger(LedgerType.Receivable, SelectedOrganization.Id, item.Id, null, null).ToString("C");
                //Master.AddAttachmentLink("Receivable Ledger " + arbalance, "~/company/accounting/ledger?ledgertype=Receivable&id=" + item.Id.ToString(), "");
           }

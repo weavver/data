@@ -8,13 +8,13 @@ using System.ComponentModel.DataAnnotations;
 namespace Weavver.Data
 {
      [MetadataType(typeof(CMS_Pages.Metadata))]
-     [DisplayName("CMS Pages")]
+     [DisplayName("Page Content")]
      [DisplayColumn("Title", "Title")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators", "Guest")]
-     [SecureTable(TableActions.Page, "Administrators", "Guest")]
-     [SecureTable(TableActions.Insert, "Administrators")]
+     [DataAccess(TableView.List, "Administrators", Height=575, Width=775, DisplayName="Page Content")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators", "Guest")]
+     [DataAccess(RowView.Page, "Administrators", "Guest")]
+     [DataAccess(RowAction.Insert, "Administrators")]
      partial class CMS_Pages : IAuditable
      {
           public class Metadata
@@ -37,19 +37,23 @@ namespace Weavver.Data
                [HideColumnIn(PageTemplate.List)]
                [FilterUIHint("DateTime")]
                [ReadOnly(true)]
+               [Display(Name = "Created At")]
                public object CreatedAt;
 
                [ReadOnly(true)]
                [Display(Name = "Created By")]
+               [HideColumnIn(PageTemplate.List)]
                public object System_Users;
 
                [FilterUIHint("DateTime")]
                [ReadOnly(true)]
                [Display(Name = "Updated At")]
+               [HideColumnIn(PageTemplate.List)]
                public object UpdatedAt;
 
                [ReadOnly(true)]
-               [Display(Name="Updated By")]
+               [Display(Name = "Updated By")]
+               [HideColumnIn(PageTemplate.List)]
                public object System_Users1;
           }
 

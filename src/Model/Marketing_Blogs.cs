@@ -1,4 +1,4 @@
-﻿using System;
+﻿     using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,11 +10,11 @@ namespace Weavver.Data
      [MetadataType(typeof(Marketing_Blogs.Metadata))]
      [DisplayName("Blogs")]
      [DisplayColumn("PublishAt", "PublishAt", true)]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators", "Guest")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
+     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators", "Guest")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
      partial class Marketing_Blogs : IAuditable
      {
           public class Metadata

@@ -15,11 +15,11 @@ namespace Weavver.Data
 
      [MetadataType(typeof(Communication_EmailAccounts.Metadata))]
      [DisplayName("Email Accounts")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
+     [DataAccess(TableView.List, "Administrators", Width=1277, Height=560)]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
      partial class Communication_EmailAccounts : IAuditable
      {
 //-------------------------------------------------------------------------------------------
@@ -54,13 +54,16 @@ namespace Weavver.Data
 
                [ReadOnly(true)]
                [Display(Name = "Updated At")]
+               [HideColumnIn(PageTemplate.List)]
                public object UpdatedAt;
 
                [ReadOnly(true)]
+               [HideColumnIn(PageTemplate.List)]
                [Display(Name="Created By")]
                public object System_Users;
 
                [ReadOnly(true)]
+               [HideColumnIn(PageTemplate.List)]
                [Display(Name = "Updated By")]
                public object System_Users1;
           }

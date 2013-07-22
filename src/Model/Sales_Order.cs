@@ -18,11 +18,11 @@ namespace Weavver.Data
      [DisplayColumn("PrimaryContactEmail", "CreatedAt", true)]
      partial class Sales_Order : IAuditable, IValidator
      {
-          [SecureTable(TableActions.List, "Administrators", "Employee")]
-          [SecureTable(TableActions.Edit, "Administrators", "Employee")]
-          [SecureTable(TableActions.Details, "Administrators", "Employee")]
-          [SecureTable(TableActions.Delete, "Administrators", "Employee")]
-          [SecureTable(TableActions.Insert, "Administrators", "Employee")]
+          [DataAccess(TableView.List, "Administrators", "Employee")]
+          [DataAccess(RowView.Edit, "Administrators", "Employee")]
+          [DataAccess(RowView.Details, "Administrators", "Employee")]
+          [DataAccess(RowAction.Delete, "Administrators", "Employee")]
+          [DataAccess(RowAction.Insert, "Administrators", "Employee")]
           public class Metadata
           {
                [ScaffoldColumn(false)]

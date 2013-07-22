@@ -29,11 +29,11 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
      [MetadataType(typeof(Accounting_RecurringBillables.Metadata))]
      [DisplayName("Recurring Billables")]
-     [SecureTable(TableActions.List, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Edit, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Details, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Delete, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Insert, "Administrators", "Accountants")]
+     [DataAccess(TableView.List, "Administrators", "Accountants", Width = 1254, Height = 850)]
+     [DataAccess(RowView.Details, "Administrators", "Accountants", Width = 845, Height = 850)]
+     [DataAccess(RowView.Edit, "Administrators", "Accountants", Width = 845, Height = 850)]
+     [DataAccess(RowAction.Insert, "Administrators", "Accountants", Width = 845, Height = 850)]
+     [DataAccess(RowAction.Delete, "Administrators", "Accountants", Width = 845, Height = 850)]
      partial class Accounting_RecurringBillables : IAuditable, IValidator, IRowStyle
      {
           public class Metadata
@@ -103,14 +103,17 @@ namespace Weavver.Data
                //[FilterUIHint("DateTime")]
                [Display(Name = "Updated At", Order = 20)]
                [ReadOnly(true)]
+               [HideColumnIn(PageTemplate.List)]
                public object UpdatedAt;
 
                [ReadOnly(true)]
-               [Display(Name="Created By")]
+               [Display(Name = "Created By")]
+               [HideColumnIn(PageTemplate.List)]
                public object System_Users;
 
                [Display(Name = "Updated By")]
                [ReadOnly(true)]
+               [HideColumnIn(PageTemplate.List)]
                public object System_Users1;
 //-------------------------------------------------------------------------------------------
           }

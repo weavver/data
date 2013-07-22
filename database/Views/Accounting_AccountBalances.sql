@@ -18,3 +18,5 @@ Select OrganizationId, AccountId, LedgerType, dbo.GetName(AccountId) as 'Account
        as Balance
 From Accounting_LedgerItems li
 Group By OrganizationId, LedgerType, AccountId
+
+GO

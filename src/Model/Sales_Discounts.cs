@@ -8,12 +8,12 @@ using System.ComponentModel;
 namespace Weavver.Data
 {
      [MetadataType(typeof(Sales_Discounts.Metadata))]
-     [DisplayName("Discounts")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
+     [DisplayName("Special Offers")]
+     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
      partial class Sales_Discounts : IAuditable
      {
           public class Metadata
@@ -23,6 +23,16 @@ namespace Weavver.Data
 
                [Display(Name="Reseller", Order=1)]
                public object Sales_Resellers;
+
+               public object Scope;
+
+               public object Code;
+               public object AmountOffRetail;
+               public object PercentOffRetail;
+               public object ExpiresAt;
+               public object CreatedAt;
+               public object UpdatedAt;
+
           }
 //-------------------------------------------------------------------------------------------
           /// <summary>

@@ -4,17 +4,20 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Weavver.Web;
+using System.Web.Security;
+using System.Web;
 
 namespace Weavver.Data
 {
      [MetadataType(typeof(HR_Jobs.Metadata))]
      [DisplayName("Jobs")]
      [DisplayColumn("Title")]
-     [SecureTable(TableActions.List, "Administrators", "Guest")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators", "Guest")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
+     [DataAccess(TableView.List, "Administrators", "Guest")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators", "Guest")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
      partial class HR_Jobs : IAuditable
      {
           public class Metadata
@@ -58,8 +61,24 @@ namespace Weavver.Data
           {
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
                ret.RedirectRequest = true;
-               ret.RedirectURL = "~/HR_Applications/Insert.aspx";
+               ret.RedirectWidth = 800;
+               ret.RedirectHeight = 500;
+               ret.RedirectURL = "~/HR_Applications/Details.aspx";
                return ret;
+          }
+//-------------------------------------------------------------------------------------------
+          public static List<WeavverMenuItem> GetTableMenu()
+          {
+               List<WeavverMenuItem> items = new List<WeavverMenuItem>();
+
+               //if (HttpContext.Current.User.IsInRole("Administrators"))
+               {
+                    WeavverMenuItem item = new WeavverMenuItem();
+                    item.Name = "Apply";
+                    item.Link = "~/HR_Applications/Details.aspx";
+                    items.Add(item);
+               }
+               return items;
           }
 //-------------------------------------------------------------------------------------------
           // we put this to HR_Description in Settings["OrganizationId"]

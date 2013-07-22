@@ -10,13 +10,13 @@ namespace Weavver.Data
      [MetadataType(typeof(Logistics_Projects.Metadata))]
      [DisplayColumn("Name", "Name", false)]
      [DisplayName("Projects")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Showcase, "Administrators", "Guest")]
-     [SecureTable(TableActions.StoreItem, "Administrators", "Guest")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
+     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(TableView.Showcase, "Administrators", "Guest")]
+     [DataAccess(RowView.StoreItem, "Administrators", "Guest")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
+     [DataAccess(RowAction.Delete, "Administrators")]
      partial class Logistics_Projects : IAuditable
      {
           public class Metadata

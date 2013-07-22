@@ -10,11 +10,11 @@ namespace Weavver.Data
      [MetadataType(typeof(HR_Applications.Metadata))]
      [DisplayName("Applications")]
      [DisplayColumn("Title")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators", "Guest")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators", "Guest")]
+     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators", "Guest")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators", "Guest")]
      partial class HR_Applications : IAuditable
      {
           public class Metadata

@@ -10,9 +10,9 @@ namespace Weavver.Data
      [MetadataType(typeof(Accounting_AccountBalances.Metadata))]
      [DisplayName("Account Balances")]
      [DisplayColumn("AccountName", "AccountName", false)]
-     //[SecureTable(TableActions.List, "Administrators", "Accountants")]
-     //[SecureTable(TableActions.Edit, "Administrators", "Accountants")]
-     //[SecureTable(TableActions.Details, "Administrators", "Accountants")]
+     //[SecureTable(TableView.List, "Administrators", "Accountants")]
+     //[SecureTable(RowView.Edit, "Administrators", "Accountants")]
+     //[SecureTable(RowView.Details, "Administrators", "Accountants")]
      partial class Accounting_AccountBalances : INavigationActions
      {
           public class Metadata
@@ -63,6 +63,16 @@ namespace Weavver.Data
           public string CancelURL
           {
                get { throw new NotImplementedException(); }
+          }
+//-------------------------------------------------------------------------------------------
+          public List<Web.WeavverMenuItem> GetTableMenu()
+          {
+               return null;
+          }
+//-------------------------------------------------------------------------------------------
+          public List<Web.WeavverMenuItem> GetItemMenu()
+          {
+               return null;
           }
 //-------------------------------------------------------------------------------------------
      }

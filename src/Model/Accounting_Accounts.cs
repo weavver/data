@@ -4,20 +4,24 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using Weavver.Web;
+using Weavver.Data.Interfaces;
+using Weavver.Security;
 
 namespace Weavver.Data
 {
      [MetadataType(typeof(Accounting_Accounts.Metadata))]
      [DisplayName("Financial Accounts")]
      [DisplayColumn("Name", "Name", false)]
-     [SecureTable(TableActions.List, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Edit, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Details, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Delete, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Insert, "Administrators", "Accountants")]
+     [DataAccess(TableView.List, "Administrators", "Accountants", Width=875, Height=600)]
+     [DataAccess(RowView.Edit, "Administrators", "Accountants", Width = 750, Height = 560)]
+     [DataAccess(RowView.Details, "Administrators", "Accountants", Width = 750, Height = 560)]
+     [DataAccess(RowAction.Delete, "Administrators", "Accountants")]
+     [DataAccess(RowAction.Insert, "Administrators", "Accountants", Width = 750, Height = 560)]
      //"An overview of your bank, reserve, and credit card accounts."
      //"Use an account to track your checking and savings accounts."
-     partial class Accounting_Accounts : IAuditable
+     [CSS("width: 475px; height: 872;")]
+     partial class Accounting_Accounts : IAuditable, INavigationActions
      {
           public class Metadata
           {
@@ -41,6 +45,7 @@ namespace Weavver.Data
 
                [Display(Order = 10)]
                [FilterUIHint("String")]
+               //[SecureColumnAttribute(ColumnActions.DenyWrite, "Administrators")]
                public object Name;
 
                [Display(Name="Account Number", Order = 15)]
@@ -106,7 +111,10 @@ namespace Weavver.Data
                     Accounting_OFXSettings settings = (from x in data.Accounting_OFXSettings
                                                        where x.AccountId == Id
                                                        select x).FirstOrDefault();
-                    data.Accounting_OFXSettings.Detach(settings);
+                    if (settings != null)
+                    {
+                         data.Accounting_OFXSettings.Detach(settings);
+                    }
                     return settings;
                }
           }
@@ -116,6 +124,8 @@ namespace Weavver.Data
           {
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
                ret.RedirectRequest = true;
+               ret.RedirectWidth = 1192;
+               ret.RedirectHeight = 492;
                ret.RedirectURL = "~/Accounting_LedgerItems/List.aspx?AccountId=" + Id.ToString() + "&LedgerType=" + LedgerType.ToString();
                return ret;
           }
@@ -127,14 +137,16 @@ namespace Weavver.Data
                {
                     DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
                     ret.RedirectRequest = true;
+                    ret.RedirectWidth = 800;
+                    ret.RedirectHeight = 500;
                     var settings = GetOFXSettings();
                     if (settings == null)
                     {
-                         ret.RedirectURL = "~/Accounting_OFXSettings/Insert.aspx?AccountId=" + Id.ToString();
+                         ret.RedirectURL = "~/Accounting_OFXSettings/Details.aspx?AccountId=" + Id.ToString();
                     }
                     else
                     {
-                         ret.RedirectURL = "~/Accounting_OFXSettings/Edit.aspx?Id=" + settings.Id.ToString();
+                         ret.RedirectURL = "~/Accounting_OFXSettings/Details.aspx?Id=" + settings.Id.ToString();
                     }
                     return ret;
                }
@@ -145,6 +157,8 @@ namespace Weavver.Data
           {
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
                ret.RedirectRequest = true;
+               ret.RedirectWidth = 800;
+               ret.RedirectHeight = 500;
                ret.RedirectURL = "~/Imports/Accounting_LedgerItems?AccountId=" + Id.ToString();
                return ret;
           }
@@ -156,6 +170,49 @@ namespace Weavver.Data
                ret.RedirectRequest = true;
                ret.RedirectURL = "~/Exports/Accounting_IIF?AccountId=" + Id.ToString();
                return ret;
+          }
+//-------------------------------------------------------------------------------------------
+          //public List<Web.WeavverMenuItem> GetItemMenu(WeavverMembershipUser securityUser)
+          //{
+          //     List<Web.WeavverMenuItem> items = new List<WeavverMenuItem>();
+               
+          //     WeavverMenuItem exportIIF = new WeavverMenuItem();
+          //     exportIIF.Name = "Export IIF";
+          //     exportIIF.Link = "#";
+
+          //     return items;
+          //}
+//-------------------------------------------------------------------------------------------
+          public static List<WeavverMenuItem> GetTableMenu()
+          {
+               List<WeavverMenuItem> items = new List<WeavverMenuItem>();
+
+               WeavverMenuItem item = new WeavverMenuItem();
+               item.Name = "Quick Transfer";
+               item.Link = "control://~/DynamicData/QuickAdd/Accounting_Accounts_QuickTransfer.ascx";
+               items.Add(item);
+
+               return items;
+          }
+//-------------------------------------------------------------------------------------------
+          public string DetailURL
+          {
+               get { return null; }
+          }
+//-------------------------------------------------------------------------------------------
+          public string ListURL
+          {
+               get { return null; }
+          }
+//-------------------------------------------------------------------------------------------
+          public string CancelURL
+          {
+               get { return null; }
+          }
+//-------------------------------------------------------------------------------------------
+          public List<WeavverMenuItem> GetItemMenu()
+          {
+               return null;
           }
 //-------------------------------------------------------------------------------------------
      }

@@ -11,11 +11,13 @@ namespace Weavver.Data
 {
      [MetadataType(typeof(IT_Servers.Metadata))]
      [DisplayName("Servers")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     
+     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     
      partial class IT_Servers : IAuditable
      {
 //-------------------------------------------------------------------------------------------

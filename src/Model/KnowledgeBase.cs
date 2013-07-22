@@ -9,11 +9,11 @@ namespace Weavver.Data
 {
      [MetadataType(typeof(KnowledgeBase.Metadata))]
      [DisplayName("Knowledge Base")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators", "Guest")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
+     [DataAccess(TableView.List, "Administrators", Width=1140, Height=600)]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators", "Guest")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
      [DisplayColumn("Title", "Title")]
      partial class KnowledgeBase : IAuditable
      {

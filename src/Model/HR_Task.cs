@@ -8,12 +8,12 @@ using System.ComponentModel;
 namespace Weavver.Data
 {
      [MetadataType(typeof(HR_Task.Metadata))]
-     [DisplayName("Task")]
-     [SecureTable(TableActions.List, "Administrators", "Employee")]
-     [SecureTable(TableActions.Edit, "Administrators", "Employee")]
-     [SecureTable(TableActions.Details, "Administrators", "Employee")]
-     [SecureTable(TableActions.Delete, "Administrators", "Employee")]
-     [SecureTable(TableActions.Insert, "Administrators", "Employee")]
+     [DisplayName("Tasks")]
+     [DataAccess(TableView.List, "Administrators", "Employee")]
+     [DataAccess(RowView.Edit, "Administrators", "Employee")]
+     [DataAccess(RowView.Details, "Administrators", "Employee")]
+     [DataAccess(RowAction.Delete, "Administrators", "Employee")]
+     [DataAccess(RowAction.Insert, "Administrators", "Employee")]
      partial class HR_Task : IAuditable
      {
           public class Metadata
@@ -24,6 +24,7 @@ namespace Weavver.Data
                [ScaffoldColumn(false)]
                public object HR_Tasks1;
 
+               [ScaffoldColumn(false)]
                [Display(Name = "Parent Task", Order = 1)]
                //[FilterUIHint("String")]
                [HideColumnIn(PageTemplate.List)]

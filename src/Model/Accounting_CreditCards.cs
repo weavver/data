@@ -10,12 +10,13 @@ using System.Configuration;
 namespace Weavver.Data
 {
      [MetadataType(typeof(Accounting_CreditCards.Metadata))]
+     [ScaffoldTable(false)]
      [DisplayName("Credit Cards")]
-     [SecureTable(TableActions.List, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Edit, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Details, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Delete, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Insert, "Administrators", "Accountants")]
+     [DataAccess(TableView.List, "Administrators", "Accountants")]
+     [DataAccess(RowAction.Insert, "Administrators", "Accountants")]
+     [DataAccess(RowView.Details, "Administrators", "Accountants", Width = 656, Height = 624)]
+     [DataAccess(RowView.Edit, "Administrators", "Accountants")]
+     [DataAccess(RowAction.Delete, "Administrators", "Accountants")]
      partial class Accounting_CreditCards : IAuditable
      {
           public class Metadata
@@ -27,18 +28,74 @@ namespace Weavver.Data
                public object OrganizationId;
 
                [UIHint("AccountNumber")]
+               [Display(Name = "Card Number", Order=10)]
                public object Number;
                
                //if (item.Number.Length > 4)
                //     PaymentMethod1.CardNumber.Text = "************" + item.Number.Substring(item.Number.Length - 4, 4);
                //PaymentStatus pstatus = BillingMethod1.BillingMethodData.Bill(LoggedInUser.Id, LoggedInUser.Id, 0, "none", Settings.AuthorizeNetTestMode);
 
-               [FilterUIHint("DateTime")]
+               [HideColumnIn(PageTemplate.List)]
+               public object Name;
+
+               [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "First Name")]
+               public object FirstName;
+
+               [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Last Name")]
+               public object LastName;
+
+               [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Email Address")]
+               public object EmailAddress;
+
+               [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Address Line 1")]
+               public object AddressLine1;
+
+               [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Address Line 2")]
+               public object AddressLine2;
+
+               [HideColumnIn(PageTemplate.List)]
+               public object State;
+
+               [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Zip Code")]
+               public object ZipCode;
+
+               [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Phone Number")]
+               public object PhoneNumber;
+
+               [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Phone Extension")]
+               public object PhoneExtension;
+
+               [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Expiration Month", Order = 15)]
+               public object ExpirationMonth;
+
+               [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Expiration Year", Order = 20)]
+               public object ExpirationYear;
+
+               [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Security Code", Order = 25)]
+               public object SecurityCode;
+
                [ScaffoldColumn(false)]
+               public object Logistics_Organizations;
+
+               [FilterUIHint("DateTime")]
+               [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Created At")]
                public object CreatedAt;
 
                [FilterUIHint("DateTime")]
-               [ScaffoldColumn(false)]
+               [Display(Name = "Updated At")]
+               [HideColumnIn(PageTemplate.List)]
                public object UpdatedAt;
           }
 //-------------------------------------------------------------------------------------------

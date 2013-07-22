@@ -21,11 +21,11 @@ namespace Weavver.Data
      [MetadataType(typeof(Logistics_Organizations.Metadata))]
      [DisplayColumn("Name", "Name", false)]
      [DisplayName("Organizations")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
+     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
      //[AutoLinkToView("OrganizationPayables"]
      //"Organizations are used to create profiles for your personal, work, family, and/or other data."
      partial class Logistics_Organizations : IAuditable
@@ -80,10 +80,12 @@ namespace Weavver.Data
                public object PayableBalance;
 
                [ColumnGroup("Merchant Account")]
+               [Display(Name = "Authorize.Net Login Id", Order = 90)]
                [HideColumnIn(PageTemplate.List)]
                public object AuthorizeNet_LoginId;
 
                [ColumnGroup("Merchant Account")]
+               [Display(Name = "Authorize.Net Transaction Key", Order = 91)]
                [HideColumnIn(PageTemplate.List)]
                [UIHint("Password")]
                public object AuthorizeNet_TransactionKey;
@@ -91,33 +93,40 @@ namespace Weavver.Data
                [ColumnGroup("Merchant Account")]
                [HideColumnIn(PageTemplate.List)]
                [UIHint("Password")]
+               [Display(Name = "Authorize.Net Hash", Order = 92)]
                public object AuthorizeNet_Hash;
 
                [ColumnGroup("System Settings")]
                [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Active Directory Domain", Order = 93)]
                public object ActiveDirectory_Domain;
 
                [ColumnGroup("System Settings")]
                [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Active Directory Server", Order = 94)]
                [ScaffoldColumn(true)]
                public object ActiveDirectory_Server;
 
                [ColumnGroup("System Settings")]
                [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Active Directory Password", Order = 95)]
                [UIHint("Password")]
                public object ActiveDirectory_Password;
 
                [ColumnGroup("System Settings")]
                [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Smtp Server", Order = 96)]
                public object SmtpServer;
 
                [ColumnGroup("System Settings")]
                [HideColumnIn(PageTemplate.List)]
+               [Display(Name = "Smtp Port", Order = 97)]
                public object SmtpPort;
 
                [ColumnGroup("System Settings")]
                [HideColumnIn(PageTemplate.List)]
                [UIHint("Password")]
+               [Display(Name = "FreeSwitch Server", Order = 98)]
                public object FreeSwitch_Server;
 
                [FilterUIHint("DateTime")]

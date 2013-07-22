@@ -8,12 +8,12 @@ using System.ComponentModel;
 namespace Weavver.Data
 {
      [MetadataType(typeof(Sales_Leads.Metadata))]
-     [DisplayName("Inquiry")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators", "Guest")]
+     [DisplayName("Inquiries")]
+     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators", "Guest")]
      partial class Sales_Leads : IAuditable
      {
           public class Metadata

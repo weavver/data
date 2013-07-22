@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-//using Infralution.Licensing;
+using Infralution.Licensing;
 using System.Configuration;
 
 namespace Weavver.Data
@@ -12,11 +12,11 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
      [MetadataType(typeof(Sales_LicenseKeys.Metadata))]
      [DisplayName("License Keys")]
-     [SecureTable(TableActions.List, "Administrators")]
-     [SecureTable(TableActions.Edit, "Administrators")]
-     [SecureTable(TableActions.Details, "Administrators")]
-     [SecureTable(TableActions.Delete, "Administrators")]
-     [SecureTable(TableActions.Insert, "Administrators")]
+     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators")]
+     [DataAccess(RowAction.Delete, "Administrators")]
+     [DataAccess(RowAction.Insert, "Administrators")]
      partial class Sales_LicenseKeys : IAuditable, IValidator
      {
           public class Metadata
@@ -94,15 +94,15 @@ namespace Weavver.Data
           [DynamicDataWebMethod("Generate Key", "Administrators")]
           public DynamicDataWebMethodReturnType GenerateKey()
           {
-               //ushort ushortserial = ushort.Parse("1"); //i.ToString()//key.Id.ToString());
-               ////changed sept 7
-               //string checksum = EncryptedLicense.Checksum(FullName + "|" + Organization);
-               ////DateTime future = DateTime.UtcNow.Add(TimeSpan.FromDays(365));
-               //DateTime future = DateTime.UtcNow.Add(TimeSpan.FromDays(545));
-               //EncryptedLicenseProvider licenseProvider = new EncryptedLicenseProvider();
+               ushort ushortserial = ushort.Parse("1"); //i.ToString()//key.Id.ToString());
+               //changed sept 7
+               string checksum = EncryptedLicense.Checksum(FullName + "|" + Organization);
+               //DateTime future = DateTime.UtcNow.Add(TimeSpan.FromDays(365));
+               DateTime future = DateTime.UtcNow.Add(TimeSpan.FromDays(545));
+               EncryptedLicenseProvider licenseProvider = new EncryptedLicenseProvider();
 
-               //string licensekey = licenseProvider.GenerateKey(ConfigurationManager.AppSettings["snap_productkey"], "C" + checksum + "$D" + future.Month.ToString() + "/" + future.Day.ToString() + "/" + future.Year.ToString(), ushortserial);
-               ////Key = licensekey;
+               string licensekey = licenseProvider.GenerateKey(ConfigurationManager.AppSettings["snap_productkey"], "C" + checksum + "$D" + future.Month.ToString() + "/" + future.Day.ToString() + "/" + future.Year.ToString(), ushortserial);
+               //Key = licensekey;
 
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
                ret.Status = "License Key";

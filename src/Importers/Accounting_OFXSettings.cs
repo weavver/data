@@ -5,6 +5,7 @@ using System.Text;
 
 using nsoftware.InEBank;
 using Weavver.Utilities;
+using Weavver.Web;
 
 namespace Weavver.Data
 {
@@ -159,7 +160,6 @@ namespace Weavver.Data
                PayeeDetail payee = (from x in RemotePayees
                                     where x.ListId == payeeId
                                     select x).FirstOrDefault();
-
                if (payee == null)
                {
                     return Guid.Empty;
@@ -169,7 +169,6 @@ namespace Weavver.Data
                     Guid accountId = new Guid(payee.Account);
                     return accountId;
                }
-
                return Guid.Empty;
           }
 //-------------------------------------------------------------------------------------------
@@ -198,9 +197,7 @@ namespace Weavver.Data
           public DynamicDataWebMethodReturnType ImportLedgerItems()
           {
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
-               ret.Status = "Ledger Items";
-               ret.Status = "Error";
-
+               ret.Status = "Import Status";
                using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
                     //data.Accounting_OFXSettings.Attach(this);
@@ -218,10 +215,22 @@ namespace Weavver.Data
                     }
                     LastSuccessfulConnection = DateTime.UtcNow;
                     int results = data.SaveChanges();
-                    ret.Message = "Items added/updated: " + results.ToString();
+                    ret.Message = "Ledger items added/updated: " + results.ToString();
                }
-
                return ret;
+          }
+//-------------------------------------------------------------------------------------------
+          public List<Web.WeavverMenuItem> GetTableMenu()
+          {
+               List<WeavverMenuItem> menuItems = new List<WeavverMenuItem>();
+
+               WeavverMenuItem item = new WeavverMenuItem();
+               item.Name = "test";
+               item.Link = "#";
+
+               menuItems.Add(item);
+
+               return menuItems;
           }
 //-------------------------------------------------------------------------------------------
      }

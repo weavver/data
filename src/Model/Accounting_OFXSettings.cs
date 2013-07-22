@@ -13,12 +13,13 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
      [MetadataType(typeof(Accounting_OFXSettings.Metadata))]
      [DisplayName("OFX Settings")]
-     [SecureTable(TableActions.List, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Edit, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Details, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Delete, "Administrators", "Accountants")]
-     [SecureTable(TableActions.Insert, "Administrators", "Accountants")]
+     [DataAccess(TableView.List, "Administrators", "Accountants", Width=912, Height=494)]
+     [DataAccess(RowView.Edit, "Administrators", "Accountants", Width = 912, Height = 494)]
+     [DataAccess(RowView.Details, "Administrators", "Accountants", Width = 912, Height = 494)]
+     [DataAccess(RowAction.Delete, "Administrators", "Accountants", Width = 912, Height = 494)]
+     [DataAccess(RowAction.Insert, "Administrators", "Accountants", Width = 912, Height = 494)]
      [DisplayColumn("AccountId", "AccountId", true)]
+     [ScaffoldTable(true)]
      partial class Accounting_OFXSettings : IAuditable
      {
 //-------------------------------------------------------------------------------------------
@@ -382,39 +383,39 @@ namespace Weavver.Data
                return BankstatementAccountTypes.atSavings;
           }
 //-------------------------------------------------------------------------------------------
-          [DynamicDataWebMethod("Create Payee", "Administrators", "Accountants")]
-          public DynamicDataWebMethodReturnType CreatePayee()
-          {
-               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
-               ret.Status = "Testing";
-               ret.Message = "ListId: ";
-               using (WeavverEntityContainer data = new WeavverEntityContainer())
-               {
-                    var org = (from x in data.Logistics_Organizations
-                               where x.OrganizationId == new Guid("0baae579-dbd8-488d-9e51-dd4dd6079e95")
-                               select x).FirstOrDefault();
+//          [DynamicDataWebMethod("Create Payee", "Administrators", "Accountants")]
+//          public DynamicDataWebMethodReturnType CreatePayee()
+//          {
+//               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
+//               ret.Status = "Testing";
+//               ret.Message = "ListId: ";
+//               using (WeavverEntityContainer data = new WeavverEntityContainer())
+//               {
+//                    var org = (from x in data.Logistics_Organizations
+//                               where x.OrganizationId == new Guid("0baae579-dbd8-488d-9e51-dd4dd6079e95")
+//                               select x).FirstOrDefault();
 
-                    if (org != null)
-                    {
-                         string listid = CreatePayeeData(org);
-                         ret.Message += listid.ToString();
-                    }
-               }
+//                    if (org != null)
+//                    {
+//                         string listid = CreatePayeeData(org);
+//                         ret.Message += listid.ToString();
+//                    }
+//               }
 
-               return ret;
-          }
-//-------------------------------------------------------------------------------------------
-          [DynamicDataWebMethod("Import Bill Payment Data", "Administrators", "Accountants")]
-          public DynamicDataWebMethodReturnType ImportBillPaymentData()
-          {
-               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
-               ret.Status = "Importing";
-               ret.Message = "Checks Imported/Updated: ";
+//               return ret;
+//          }
+////-------------------------------------------------------------------------------------------
+//          [DynamicDataWebMethod("Import Bill Payment Data", "Administrators", "Accountants")]
+//          public DynamicDataWebMethodReturnType ImportBillPaymentData()
+//          {
+//               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
+//               ret.Status = "Importing";
+//               ret.Message = "Checks Imported/Updated: ";
 
-               int addedItems = ImportScheduledPayments();
-               ret.Message += addedItems.ToString();
-               return ret;
-          }
+//               int addedItems = ImportScheduledPayments();
+//               ret.Message += addedItems.ToString();
+//               return ret;
+//          }
 //-------------------------------------------------------------------------------------------
           [DynamicDataWebMethod("Test Connection", "Administrators", "Accountants")]
           public DynamicDataWebMethodReturnType TestConnection()
@@ -479,8 +480,7 @@ namespace Weavver.Data
                          if (changes > 0)
                          {
                               ret.Message = "Balances updated.";
-                              ret.RedirectRequest = true;
-                              ret.RedirectURL = "/Accounting_OFXSettings/Details.aspx?id=" + Id.ToString();
+                              ret.RefreshData = true;
                               return ret;
                          }
                     }
