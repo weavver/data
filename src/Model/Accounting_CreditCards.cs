@@ -99,7 +99,7 @@ namespace Weavver.Data
                public object UpdatedAt;
           }
 //-------------------------------------------------------------------------------------------
-          public IGatewayResponse Bill(WeavverEntityContainer data, Sales_Order order, Logistics_Addresses primaryAddress, Logistics_Addresses billingAddress)
+          public IGatewayResponse Bill(WeavverEntityContainer data, Sales_Orders order, Logistics_Addresses primaryAddress, Logistics_Addresses billingAddress)
           {
                string memo = "WEB PURCHASE";
                // Add the credit to the ledger.

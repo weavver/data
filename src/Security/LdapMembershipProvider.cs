@@ -79,7 +79,7 @@ namespace Weavver.Security
 //-------------------------------------------------------------------------------------------
           public override MembershipUser GetUser(string username, bool userIsOnline)
           {
-               System_User u = new System_User();
+               System_Users u = new System_Users();
                u.Id = Guid.NewGuid();
                u.Username = username;
                u.Activated = true;
@@ -101,7 +101,7 @@ namespace Weavver.Security
                //}
           }
 //-------------------------------------------------------------------------------------------
-          public Weavver.Data.System_User GetUser(string username)
+          public Weavver.Data.System_Users GetUser(string username)
           {
                //Weavver.Sys.User item = new Sys.User();
                //return item;

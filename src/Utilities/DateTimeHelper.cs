@@ -121,7 +121,7 @@ namespace Weavver.Utilities
                     if (shortstring)
                          return tSpan.Seconds.ToString() + "s";
                     else
-                         return tSpan.Seconds.ToString() + " second(s)";
+                         return Pluralize(tSpan.Seconds, "second", "seconds");
                }
                else if (tSpan.Hours < 1 && tSpan.Minutes > 0)
                {
@@ -129,24 +129,47 @@ namespace Weavver.Utilities
                     if (shortstring)
                          timestring = tSpan.Minutes.ToString() + "m:" + tSpan.Seconds.ToString() + "s";
                     else
-                         timestring = tSpan.Minutes.ToString() + " minute(s)";
+                         timestring = Pluralize(tSpan.Minutes, " minute", "minutes");
                }
                else if (tSpan.Hours > 0)
                {
-                    timestring = tSpan.Hours + " hour(s) ";
+                    timestring = Pluralize(tSpan.Hours, "hour", "hours");
                     if (tSpan.Minutes > 0)
                     {
-                         timestring += tSpan.Minutes + " minute(s)";
+                         timestring += Pluralize(tSpan.Minutes, "minute", "minutes");
                     }
                }
 
-               if (tSpan.TotalDays > 0)
+               if (tSpan.TotalDays > 0 && tSpan.TotalDays <= 356)
                {
-                    timestring = Convert.ToInt32(tSpan.TotalDays) + " day(s) ago";
+                    timestring = Pluralize(Convert.ToInt32(tSpan.TotalDays), "day", "days") + " ago";
+               }
+
+               timestring = Pluralize(GetYears(tSpan.TotalDays), "year", "years") + " ago";
+               if (GetYears(tSpan.TotalDays) >= 1)
+               {
                }
                return timestring;
           }
-          
+//-------------------------------------------------------------------------------------------
+          public static int GetYears(double days)
+          {
+               return (int)((double)days / 365.2425);
+          }
+//-------------------------------------------------------------------------------------------
+          public static int GetMonths(double days)
+          {
+               return (int)((double)days / 30.436875);
+          }
+//-------------------------------------------------------------------------------------------
+          public static string Pluralize(int count, string singular, string pluralName)
+          {
+               if (count == 1)
+               {
+                    return count + " " + singular;
+               }
+               return count + " " + pluralName;               
+          }
 //-------------------------------------------------------------------------------------------
           /// <summary>
           /// Converts an Olson time zone ID to a Windows time zone ID.

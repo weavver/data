@@ -8,7 +8,7 @@ namespace Weavver.Data
      public interface IOrderEvents
      {
 //-------------------------------------------------------------------------------------------
-          void Provision(Sales_Order order, Sales_ShoppingCartItems item);
+          void Provision(Sales_Orders order, Sales_ShoppingCartItems item);
 //-------------------------------------------------------------------------------------------
      }
 }

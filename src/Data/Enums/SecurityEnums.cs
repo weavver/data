@@ -96,7 +96,8 @@ namespace Weavver.Data
           /// <summary>
           /// Delete operations
           /// </summary>
-          Delete = 0x10
+          Delete = 0x10,
+          Update = 0x20
     }
 //-------------------------------------------------------------------------------------------
 }

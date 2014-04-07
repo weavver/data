@@ -12,6 +12,7 @@ namespace Weavver.Data
      [DisplayColumn("Title", "Title")]
      [DataAccess(TableView.List, "Administrators", Height=575, Width=775, DisplayName="Page Content")]
      [DataAccess(RowView.Edit, "Administrators")]
+     [DataAccess(RowAction.Delete, "Administrators", "Marketing")]
      [DataAccess(RowView.Details, "Administrators", "Guest")]
      [DataAccess(RowView.Page, "Administrators", "Guest")]
      [DataAccess(RowAction.Insert, "Administrators")]

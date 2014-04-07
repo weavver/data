@@ -164,8 +164,11 @@
     <Compile Include="Hooks\Communication_Messages.cs" />
     <Compile Include="Importers\Accounting_RecurringBillables.cs" />
     <Compile Include="Model\Accounting_OFXLedgerItem.cs" />
+    <Compile Include="Model\Sales_Orders.cs" />
     <Compile Include="Model\System_Tests.cs" />
     <Compile Include="Model\Sales_LicenseKeyActivations.cs" />
+    <Compile Include="Model\System_Users.cs" />
+    <Compile Include="Security\ArrayList.cs" />
     <Compile Include="Units\Accounting_OFXSettings.cs" />
     <Compile Include="Units\Database.cs" />
     <Compile Include="Units\DeployTriggers.cs" />
@@ -248,13 +251,12 @@
     <Compile Include="Model\Logistics_FeatureOptions.cs" />
     <Compile Include="Model\Logistics_Products.cs" />
     <Compile Include="Model\Legal_Agreements.cs" />
-    <Compile Include="Model\Sales_Order.cs" />
     <Compile Include="Model\System_Settings.cs" />
     <Compile Include="Model\HR_Task.cs" />
     <Compile Include="Model\HR_Staff.cs" />
     <Compile Include="Data\AttributeExtensionMethods.cs" />
     <Compile Include="Data\Attributes\SecureColumnAttribute.cs" />
-    <Compile Include="Data\Attributes\SecureTableAttribute.cs" />
+    <Compile Include="Data\Attributes\DataAccess.cs" />
     <Compile Include="Data\Controls\SecureFieldTemplateFactory.cs" />
     <Compile Include="Data\Controls\SecureLinkButton.cs" />
     <Compile Include="Data\DynamicReadonlyField.cs" />
@@ -275,10 +277,9 @@
     <Compile Include="Data\SecureMetaModel\SecureMetaModel.cs" />
     <Compile Include="Data\SecureMetaModel\SecureMetaTable.cs" />
     <Compile Include="Exports\RssTemplate.cs" />
-    <Compile Include="Model\System_User.cs" />
     <Compile Include="Model\Logistics_Addresses.cs" />
     <Compile Include="Model\Sales_ShoppingCart.cs" />
-    <Compile Include="Model\Logistics_Organization.cs" />
+    <Compile Include="Model\Logistics_Organizations.cs" />
     <Compile Include="Hooks\HTTP.cs" />
     <Compile Include="Data\WeavverEntityContext.cs" />
     <Compile Include="Data\WeavverEntityContainer.Designer.cs">
@@ -336,6 +337,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>WorkflowData.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Weavver.Data.WeavverEntityContainer.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

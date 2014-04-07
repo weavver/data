@@ -14,8 +14,11 @@ namespace Weavver.Data
           Receivable = 1,
           Checking = 2,
           Savings = 3,
+          [Description("Credit Card")]
           CreditCard = 4,
+          [Description("Credit Line")]
           CreditLine = 5,
+          [Description("Money Market")] 
           MoneyMarket = 6,
           Holding = 7
      }

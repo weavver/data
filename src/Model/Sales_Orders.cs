@@ -13,16 +13,17 @@ using System.Data.Objects.DataClasses;
 
 namespace Weavver.Data
 {
-     [MetadataType(typeof(Sales_Order.Metadata))]
+     [MetadataType(typeof(Sales_Orders.Metadata))]
      [DisplayName("Orders")]
      [DisplayColumn("PrimaryContactEmail", "CreatedAt", true)]
-     partial class Sales_Order : IAuditable, IValidator
+     [ScaffoldTable(true)]
+     [DataAccess(TableView.List, "Administrators", "Employee")]
+     [DataAccess(RowView.Edit, "Administrators", "Employee")]
+     [DataAccess(RowView.Details, "Administrators", "Employee")]
+     [DataAccess(RowAction.Delete, "Administrators", "Employee")]
+     [DataAccess(RowAction.Insert, "Administrators", "Employee")]
+     partial class Sales_Orders : IAuditable, IValidator
      {
-          [DataAccess(TableView.List, "Administrators", "Employee")]
-          [DataAccess(RowView.Edit, "Administrators", "Employee")]
-          [DataAccess(RowView.Details, "Administrators", "Employee")]
-          [DataAccess(RowAction.Delete, "Administrators", "Employee")]
-          [DataAccess(RowAction.Insert, "Administrators", "Employee")]
           public class Metadata
           {
                [ScaffoldColumn(false)]
@@ -226,17 +227,17 @@ namespace Weavver.Data
                return byteArray;
           }
 //-------------------------------------------------------------------------------------------
-          [DynamicDataWebMethod("Download Invoice", "Administrators", "Accountants")]
-          public DynamicDataWebMethodReturnType DownloadInvoice()
-          {
-               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
-               ret.FilePath = GeneratePDF();
-               ret.FileMimeType = "application/octet-stream";
-               ret.FileName = "Invoice X.pdf";
-               //ret.RedirectRequest = true;
-               //ret.RedirectURL = "~/Accounting_LedgerItems/List.aspx?AccountId=" + AccountId.ToString() + "&LedgerType=" + LedgerType.ToString();
-               return ret;
-          }
+          //[DynamicDataWebMethod("Download Invoice", "Administrators", "Accountants")]
+          //public DynamicDataWebMethodReturnType DownloadInvoice()
+          //{
+          //     DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
+          //     ret.FilePath = GeneratePDF();
+          //     ret.FileMimeType = "application/octet-stream";
+          //     ret.FileName = "Invoice X.pdf";
+          //     //ret.RedirectRequest = true;
+          //     //ret.RedirectURL = "~/Accounting_LedgerItems/List.aspx?AccountId=" + AccountId.ToString() + "&LedgerType=" + LedgerType.ToString();
+          //     return ret;
+          //}
 //-------------------------------------------------------------------------------------------
           [DynamicDataWebMethod("View Line Items", "Administrators", "Accountants")]
           public DynamicDataWebMethodReturnType ViewLineItems()

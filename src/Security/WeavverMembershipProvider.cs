@@ -104,7 +104,7 @@ namespace Weavver.Security
                
                using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
-                    System_User user = new System_User();
+                    System_Users user = new System_Users();
                     user.EmailAddress = email;
                     user.Username = username;
                     user.Password = password;
@@ -234,7 +234,7 @@ namespace Weavver.Security
           /// </summary>
           /// <param name="username"></param>
           /// <returns></returns>
-          public System_User GetUser(string username)
+          public System_Users GetUser(string username)
           {
                using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
@@ -331,7 +331,7 @@ namespace Weavver.Security
           {
                using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
-                    System_User item = (from x in data.System_Users
+                    System_Users item = (from x in data.System_Users
                                         where x.Username == username
                                         select x).First();
 

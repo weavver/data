@@ -80,7 +80,7 @@
                 </sap:WorkflowViewStateService.ViewState>
                 <InvokeMethod DisplayName="Purge User" sap:VirtualizedContainerService.HintSize="218,130" MethodName="Purge">
                   <InvokeMethod.TargetObject>
-                    <InArgument x:TypeArguments="local1:System_User">[New Weavver.Data.System_User()]</InArgument>
+                    <InArgument x:TypeArguments="local1:System_Users">[New Weavver.Data.System_Users()]</InArgument>
                   </InvokeMethod.TargetObject>
                 </InvokeMethod>
               </Sequence>

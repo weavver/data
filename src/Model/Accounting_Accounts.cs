@@ -159,19 +159,19 @@ namespace Weavver.Data
                ret.RedirectRequest = true;
                ret.RedirectWidth = 800;
                ret.RedirectHeight = 500;
-               ret.RedirectURL = "~/Imports/Accounting_LedgerItems?AccountId=" + Id.ToString();
+               ret.RedirectURL = "~/Imports/Accounting_LedgerItems.aspx?AccountId=" + Id.ToString();
                return ret;
           }
 //-------------------------------------------------------------------------------------------
-          [DynamicDataWebMethod("Export Data to IIF", "Administrators", "Accountants")]
-          public DynamicDataWebMethodReturnType ExportIIF()
-          {
-               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
-               ret.RedirectRequest = true;
-               ret.RedirectURL = "~/Exports/Accounting_IIF?AccountId=" + Id.ToString();
-               return ret;
-          }
-//-------------------------------------------------------------------------------------------
+//          [DynamicDataWebMethod("Export Data to IIF", "Administrators", "Accountants")]
+//          public DynamicDataWebMethodReturnType ExportIIF()
+//          {
+//               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
+//               ret.RedirectRequest = true;
+//               ret.RedirectURL = "~/Exports/Accounting_IIF?AccountId=" + Id.ToString();
+//               return ret;
+//          }
+////-------------------------------------------------------------------------------------------
           //public List<Web.WeavverMenuItem> GetItemMenu(WeavverMembershipUser securityUser)
           //{
           //     List<Web.WeavverMenuItem> items = new List<WeavverMenuItem>();

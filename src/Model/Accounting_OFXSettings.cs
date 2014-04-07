@@ -138,7 +138,7 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           public List<Accounting_OFXLedgerItem> GetRemoteLedgerItems(DateTime startDate, DateTime endDate)
           {
-               Accounting_Accounts account = GetAccount();
+               Accounting_Accounts account = GetParentAccount();
                if (((LedgerType)Enum.Parse(typeof(LedgerType), account.LedgerType)) == LedgerType.CreditCard)
                {
                     return LoadCreditCardStatement(startDate, endDate);
@@ -151,7 +151,7 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           private List<Accounting_OFXLedgerItem> LoadCreditCardStatement(DateTime startAt, DateTime endAt)
           {
-               Accounting_Accounts account = GetAccount();
+               Accounting_Accounts account = GetParentAccount();
                List<Accounting_OFXLedgerItem> items = new List<Accounting_OFXLedgerItem>();
                nsoftware.InEBank.Ccstatement statement = GetCreditCardStatement(account, startAt, endAt);
                for (int i = 0; i < statement.Transactions.Count; i++)
@@ -185,6 +185,7 @@ namespace Weavver.Data
           public Bankstatement GetBankStatement(Accounting_Accounts acct, DateTime startDate, DateTime endDate)
           {
                Bankstatement item = new Bankstatement();
+               // item.Config(@"OFXLOG=C:\Weavver\github\weavver\www\Uploads\ofx.log");
                item.Firewall.AutoDetect = false;
                item.Firewall.FirewallType = FirewallTypes.fwNone;
                item.OFXAppId = "QWIN";
@@ -205,7 +206,7 @@ namespace Weavver.Data
                return item;
           }
 //-------------------------------------------------------------------------------------------
-          private Accounting_Accounts GetAccount()
+          private Accounting_Accounts GetParentAccount()
           {
                using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
@@ -220,7 +221,7 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           private List<Accounting_OFXLedgerItem> LoadBankStatement(DateTime startDate, DateTime endDate)
           {
-               Accounting_Accounts account = GetAccount();
+               Accounting_Accounts account = GetParentAccount();
                nsoftware.InEBank.Bankstatement statement = GetBankStatement(account, startDate, endDate);
 
                List<Accounting_OFXLedgerItem> items = new List<Accounting_OFXLedgerItem>();
@@ -423,9 +424,10 @@ namespace Weavver.Data
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
                ret.Status = "OFX Check";
 
-               var financialAccount = GetAccount();
+               var financialAccount = GetParentAccount();
 
-               if (financialAccount.LedgerType != LedgerType.CreditCard.ToString())
+               if (financialAccount.LedgerType == LedgerType.Checking.ToString() ||
+                   financialAccount.LedgerType == LedgerType.Savings.ToString())
                {
                     nsoftware.InEBank.Account account = new nsoftware.InEBank.Account();
                     account.Firewall.AutoDetect = false;
@@ -448,9 +450,31 @@ namespace Weavver.Data
                          ret.Message = "The OFX connection failed: " + ex.Message;
                     }
                }
-               else
+
+               if (financialAccount.LedgerType == LedgerType.CreditCard.ToString())
                {
-                    ret.Message = "We can't test credit card connections yet.";
+                    Accounting_Accounts ccAccount = GetParentAccount();
+
+                    nsoftware.InEBank.Ccstatement ccStatement = new nsoftware.InEBank.Ccstatement();
+                    ccStatement.OFXAppId = "QWIN";
+                    ccStatement.OFXAppVersion = "1800";
+                    ccStatement.FIUrl = Url;
+                    ccStatement.FIId = FinancialInstitutionId.ToString();
+                    ccStatement.FIOrganization = FinancialInstitutionName;
+                    ccStatement.CardNumber = ccAccount.AccountNumber;
+                    ccStatement.OFXUser = Username;
+                    ccStatement.OFXPassword = Password;
+                    ccStatement.StartDate = DateTime.Now.Subtract(TimeSpan.FromDays(40)).ToString("MM/dd/yyyy hh:mm:ss");
+                    try
+                    {
+                         ccStatement.GetStatement();
+
+                         ret.Message = "The connection succeeded.";
+                    }
+                    catch (Exception ex)
+                    {
+                         ret.Message = "The test connection failed: " + ex.Message;
+                    }
                }
                return ret;
           }
@@ -464,7 +488,7 @@ namespace Weavver.Data
                ret.Status = "Balance Update";
                decimal remoteAvailableBalance = 0.0m;
                decimal remoteLedgerBalance = 0.0m;
-               bool retrieved = GetBalances(GetAccount(), out remoteAvailableBalance, out remoteLedgerBalance);
+               bool retrieved = GetBalances(GetParentAccount(), out remoteAvailableBalance, out remoteLedgerBalance);
                if (retrieved)
                {
                     using (WeavverEntityContainer data = new WeavverEntityContainer())

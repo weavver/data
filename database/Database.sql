@@ -33,7 +33,11 @@ IF OBJECT_ID('[Account_AccountBalances_GetRelativeBalance]') IS NOT NULL DROP FU
 IF OBJECT_ID('[Accounting_RecurringBillables_UnbilledAmount]') IS NOT NULL DROP FUNCTION [dbo].[Accounting_RecurringBillables_UnbilledAmount];
 IF OBJECT_ID('[Accounting_RecurringBillables_UnbilledPeriods]') IS NOT NULL DROP FUNCTION [dbo].[Accounting_RecurringBillables_UnbilledPeriods];
 IF OBJECT_ID('[GetName]') IS NOT NULL DROP FUNCTION [dbo].[GetName];
+IF OBJECT_ID('[LocalizeDT]') IS NOT NULL DROP FUNCTION [dbo].[LocalizeDT];
+IF OBJECT_ID('[HR_TimeLogs_TimeSpan]') IS NOT NULL DROP FUNCTION [dbo].[HR_TimeLogs_TimeSpan];
 IF OBJECT_ID('[Total_ForLedger]') IS NOT NULL DROP FUNCTION [dbo].[Total_ForLedger];
+IF OBJECT_ID('[Sales_LicenseKeys_Activations]') IS NOT NULL DROP FUNCTION [dbo].[Sales_LicenseKeys_Activations];
+
 
 IF EXISTS (SELECT * FROM sys.assemblies asms WHERE asms.name = N'Weavver.DAL')
      DROP ASSEMBLY [Weavver.DAL]

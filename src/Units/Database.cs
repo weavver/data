@@ -44,13 +44,21 @@ namespace Weavver.Testing.Staging
           public void DeployBackupDatabaseToDevMachine()
           {
                string localBackupFile = Helper.GetAppSetting("localBackupFile");
+               string localrestore_mdfpath = Helper.GetAppSetting("localrestore_mdfpath");
+               string localrestore_logpath = Helper.GetAppSetting("localrestore_logpath");
+
                if (File.Exists(localBackupFile))
                     File.Delete(localBackupFile);
 
                File.Copy(Helper.GetAppSetting("remoteBackupFile"), localBackupFile);
 
+               Assert.IsTrue(File.Exists(localBackupFile), "Please make sure you have a local back up of the database to restore. setting: localBackupFile");
+
                string stagingRestoreScript = Path.Combine(RepoPath, @"src\Units\Restore.sql");
                string sql = File.ReadAllText(stagingRestoreScript);
+               sql = sql.Replace("%localBackupFile%", localBackupFile);
+               sql = sql.Replace("%localrestore_mdfpath%", localrestore_mdfpath);
+               sql = sql.Replace("%localrestore_logpath%", localrestore_logpath);
                using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dev_no_catalog"].ConnectionString))
                {
                     connection.Open();

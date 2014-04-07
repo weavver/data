@@ -47,6 +47,18 @@ namespace Weavver.Data
                this.AllowedRoles = roles;
           }
 //-------------------------------------------------------------------------------------------
+          public Boolean HasMatchingRole(string[] roles)
+          {
+               if (AllowedRoles == null)
+                    throw new Exception("Not authorized: There are no allowed roles for this object.");
+
+               foreach (string role in roles)
+               {
+                    if (AllowedRoles.Contains(role, StringComparer.OrdinalIgnoreCase))
+                         return true;
+               }
+               return false;
+          }
 //-------------------------------------------------------------------------------------------
           public Boolean HasRole(string role)
           {

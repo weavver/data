@@ -29,7 +29,7 @@ namespace Weavver.Data
 
                          // 1. Only import Bill Payment data for checking accounts
                          // We do this before ImportingLedgerItems so we can sync the check numbers
-                         var financialAccount = ofxSetting.GetAccount();
+                         var financialAccount = ofxSetting.GetParentAccount();
                          if (financialAccount.LedgerType == LedgerType.Checking.ToString())
                          {
                               ofxSetting.ImportScheduledPayments();
@@ -74,7 +74,7 @@ namespace Weavver.Data
           {
                using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
-                    Accounting_Accounts account = GetAccount();
+                    Accounting_Accounts account = GetParentAccount();
 
                     Billpayment billPaymentData = new Billpayment();
                     billPaymentData.OFXAppId = "QWIN";
@@ -99,7 +99,7 @@ namespace Weavver.Data
           /// <returns>Returns added check count</returns>
           private int ImportScheduledPayments()
           {
-               var financialAccount = GetAccount();
+               var financialAccount = GetParentAccount();
                if (financialAccount.LedgerType != LedgerType.Checking.ToString())
                     return -1;
 

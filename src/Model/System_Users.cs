@@ -9,7 +9,7 @@ using System.Web.Security;
 namespace Weavver.Data
 {
 //-------------------------------------------------------------------------------------------
-     [MetadataType(typeof(System_User.Metadata))]
+     [MetadataType(typeof(System_Users.Metadata))]
      [DisplayColumn("Username", "Username", false)]
      [DisplayName("Users")]
      [ScaffoldTable(true)]
@@ -19,7 +19,7 @@ namespace Weavver.Data
      [DataAccess(RowView.Details, "Administrators")]
      [DataAccess(RowAction.Delete, "Administrators")]
      [DataAccess(RowAction.Insert, "Administrators")]
-     partial class System_User : IAuditable //, IValidator
+     partial class System_Users : IAuditable //, IValidator
      {
           public class Metadata
           {

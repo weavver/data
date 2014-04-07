@@ -42,7 +42,7 @@ namespace Weavver.Testing.Accounting
           {
                var ofxSettings = GetOFXSampleObj();
                var ret = ofxSettings.ImportLedgerItems();
-               Assert.IsTrue(ret.Message.Contains("Items added/updated"), "The ledger items could not be retrieved.");
+               Assert.IsTrue(ret.Message.Contains("Ledger items added/updated"), "The ledger items could not be retrieved.");
           }
 //-------------------------------------------------------------------------------------------
      }

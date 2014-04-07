@@ -2066,7 +2066,7 @@
           <EntitySet Name="Logistics_Addresses" EntityType="Weavver.Data.Logistics_Addresses" />
           <EntitySet Name="Logistics_Organizations" EntityType="Weavver.Data.Logistics_Organizations" />
           <EntitySet Name="Communication_MessageTemplates" EntityType="Weavver.Data.Communication_MessageTemplates" />
-          <EntitySet Name="System_Users" EntityType="Weavver.Data.System_User" />
+          <EntitySet Name="System_Users" EntityType="Weavver.Data.System_Users" />
           <EntitySet Name="HR_Tasks" EntityType="Weavver.Data.HR_Task" />
           <AssociationSet Name="FK_Communication_MessageTemplates_Logistics_Organizations" Association="Weavver.Data.FK_Communication_MessageTemplates_Logistics_Organizations">
             <End Role="Logistics_Organizations" EntitySet="Logistics_Organizations" />
@@ -2437,26 +2437,26 @@
             <End Role="System_User" EntitySet="System_Users" />
             <End Role="CustomerService_Tickets" EntitySet="CustomerService_Tickets" />
           </AssociationSet>
-          <EntitySet Name="Sales_Order" EntityType="Weavver.Data.Sales_Order" />
+          <EntitySet Name="Sales_Orders" EntityType="Weavver.Data.Sales_Orders" />
           <AssociationSet Name="Sales_Orders_BillingContactAddress" Association="Weavver.Data.Sales_Orders_BillingContactAddress">
             <End Role="Logistics_Addresses" EntitySet="Logistics_Addresses" />
-            <End Role="Sales_Orders" EntitySet="Sales_Order" />
+            <End Role="Sales_Orders" EntitySet="Sales_Orders" />
           </AssociationSet>
           <AssociationSet Name="Sales_Orders_PrimaryContactAddress" Association="Weavver.Data.Sales_Orders_PrimaryContactAddress">
             <End Role="Logistics_Addresses" EntitySet="Logistics_Addresses" />
-            <End Role="Sales_Orders" EntitySet="Sales_Order" />
+            <End Role="Sales_Orders" EntitySet="Sales_Orders" />
           </AssociationSet>
           <AssociationSet Name="Sales_Orders_Orderee" Association="Weavver.Data.Sales_Orders_Orderee">
             <End Role="Logistics_Organizations" EntitySet="Logistics_Organizations" />
-            <End Role="Sales_Orders" EntitySet="Sales_Order" />
+            <End Role="Sales_Orders" EntitySet="Sales_Orders" />
           </AssociationSet>
           <AssociationSet Name="Sales_Orders_CreatedBy" Association="Weavver.Data.Sales_Orders_CreatedBy">
             <End Role="System_User" EntitySet="System_Users" />
-            <End Role="Sales_Order" EntitySet="Sales_Order" />
+            <End Role="Sales_Order" EntitySet="Sales_Orders" />
           </AssociationSet>
           <AssociationSet Name="Sales_Orders_UpdatedBy" Association="Weavver.Data.Sales_Orders_UpdatedBy">
             <End Role="System_User" EntitySet="System_Users" />
-            <End Role="Sales_Order" EntitySet="Sales_Order" />
+            <End Role="Sales_Order" EntitySet="Sales_Orders" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Logistics_Addresses">
@@ -2562,7 +2562,7 @@
           <Property Type="Guid" Name="UpdatedBy" Nullable="false" />
           <NavigationProperty Name="Logistics_Organizations" Relationship="Weavver.Data.FK_Communication_MessageTemplates_Logistics_Organizations" FromRole="Communication_MessageTemplates" ToRole="Logistics_Organizations" a:GetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
         </EntityType>
-        <EntityType Name="System_User">
+        <EntityType Name="System_Users">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -3088,7 +3088,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_IT_DownloadLogs_System_Users">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.IT_DownloadLogs" Role="IT_DownloadLogs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3425,7 +3425,7 @@
           <Property Type="Int32" Name="Position" />
         </EntityType>
         <Association Name="KnowledgeBase_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.KnowledgeBase" Role="KnowledgeBase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3437,7 +3437,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="KnowledgeBase_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.KnowledgeBase" Role="KnowledgeBase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3509,7 +3509,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Accounting_LedgerItems_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Accounting_LedgerItems" Role="Accounting_LedgerItems" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3521,7 +3521,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Accounting_LedgerItems_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Accounting_LedgerItems" Role="Accounting_LedgerItems" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3607,7 +3607,7 @@
           <Property Type="String" Name="MasterPage" MaxLength="128" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="CMS_Pages_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.CMS_Pages" Role="CMS_Pages" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3619,7 +3619,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="CMS_Pages_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.CMS_Pages" Role="CMS_Pages" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3662,7 +3662,7 @@
           <Property Type="String" Name="PageTemplate" Nullable="false" MaxLength="125" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="System_URLs_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.System_URLs" Role="System_URLs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3674,7 +3674,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="System_URLs_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.System_URLs" Role="System_URLs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3701,7 +3701,7 @@
           <Property Type="Guid" Name="OrganizationId" Nullable="false" />
         </EntityType>
         <Association Name="Data_AuditTrails_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Data_AuditTrails" Role="Data_AuditTrails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3733,7 +3733,7 @@
           <NavigationProperty Name="System_Users1" Relationship="Weavver.Data.Communication_EmailAccounts_UpdatedBy" FromRole="Communication_EmailAccounts" ToRole="System_User" />
         </EntityType>
         <Association Name="Communication_EmailAccounts_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Communication_EmailAccounts" Role="Communication_EmailAccounts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3745,7 +3745,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Communication_EmailAccounts_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Communication_EmailAccounts" Role="Communication_EmailAccounts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3775,7 +3775,7 @@
           <Property Type="String" Name="To" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
         </EntityType>
         <Association Name="Communication_Emails_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Communication_Emails" Role="Communication_Emails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3787,7 +3787,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Communication_Emails_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Communication_Emails" Role="Communication_Emails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3816,7 +3816,7 @@
           <NavigationProperty Name="System_Users1" Relationship="Weavver.Data.Data_Links_UpdatedBy" FromRole="Data_Links" ToRole="System_User" />
         </EntityType>
         <Association Name="Data_Links_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Data_Links" Role="Data_Links" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3828,7 +3828,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Data_Links_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Data_Links" Role="Data_Links" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3868,7 +3868,7 @@
           <Property Type="Guid" Name="OrderId" />
         </EntityType>
         <Association Name="Sales_ShoppingCartItems_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Sales_ShoppingCartItems" Role="Sales_ShoppingCartItems" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3880,7 +3880,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Sales_ShoppingCartItems_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Sales_ShoppingCartItems" Role="Sales_ShoppingCartItems" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3947,7 +3947,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Logistics_Products_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Logistics_Products" Role="Logistics_Products" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -3959,7 +3959,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Logistics_Products_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Logistics_Products" Role="Logistics_Products" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4110,7 +4110,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Accounting_RecurringBillables_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Accounting_RecurringBillables" Role="Accounting_RecurringBillables" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4122,7 +4122,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Accounting_RecurringBillables_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Accounting_RecurringBillables" Role="Accounting_RecurringBillables" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4146,7 +4146,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Logistics_Organizations_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Logistics_Organizations" Role="Logistics_Organizations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4158,7 +4158,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Logistics_Organizations_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Logistics_Organizations" Role="Logistics_Organizations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4222,7 +4222,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Sales_LicenseKeys_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Sales_LicenseKeys" Role="Sales_LicenseKeys" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4234,7 +4234,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Sales_LicenseKeys_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Sales_LicenseKeys" Role="Sales_LicenseKeys" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4284,7 +4284,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Accounting_OFXSettings_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Accounting_OFXSettings" Role="Accounting_OFXSettings" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4296,7 +4296,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Accounting_OFXSettings_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Accounting_OFXSettings" Role="Accounting_OFXSettings" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4338,7 +4338,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Sales_LicenseKeyActivations_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Sales_LicenseKeyActivations" Role="Sales_LicenseKeyActivations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4362,7 +4362,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Sales_LicenseKeyActivations_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.Sales_LicenseKeyActivations" Role="Sales_LicenseKeyActivations" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4403,7 +4403,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="HR_Tasks_CreatedBy1">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.HR_Task" Role="HR_Task" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4427,7 +4427,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="HR_Tasks_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.HR_Task" Role="HR_Task" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4439,7 +4439,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="CustomerService_Tickets_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.CustomerService_Tickets" Role="CustomerService_Tickets" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4451,7 +4451,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="CustomerService_Tickets_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
           <End Type="Weavver.Data.CustomerService_Tickets" Role="CustomerService_Tickets" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
@@ -4462,7 +4462,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Sales_Order">
+        <EntityType Name="Sales_Orders">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -4500,7 +4500,7 @@
         </EntityType>
         <Association Name="Sales_Orders_BillingContactAddress">
           <End Type="Weavver.Data.Logistics_Addresses" Role="Logistics_Addresses" Multiplicity="0..1" />
-          <End Type="Weavver.Data.Sales_Order" Role="Sales_Orders" Multiplicity="*" />
+          <End Type="Weavver.Data.Sales_Orders" Role="Sales_Orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Logistics_Addresses">
               <PropertyRef Name="Id" />
@@ -4512,7 +4512,7 @@
         </Association>
         <Association Name="Sales_Orders_PrimaryContactAddress">
           <End Type="Weavver.Data.Logistics_Addresses" Role="Logistics_Addresses" Multiplicity="0..1" />
-          <End Type="Weavver.Data.Sales_Order" Role="Sales_Orders" Multiplicity="*" />
+          <End Type="Weavver.Data.Sales_Orders" Role="Sales_Orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Logistics_Addresses">
               <PropertyRef Name="Id" />
@@ -4524,7 +4524,7 @@
         </Association>
         <Association Name="Sales_Orders_Orderee">
           <End Type="Weavver.Data.Logistics_Organizations" Role="Logistics_Organizations" Multiplicity="0..1" />
-          <End Type="Weavver.Data.Sales_Order" Role="Sales_Orders" Multiplicity="*" />
+          <End Type="Weavver.Data.Sales_Orders" Role="Sales_Orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Logistics_Organizations">
               <PropertyRef Name="Id" />
@@ -4535,8 +4535,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Sales_Orders_CreatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
-          <End Type="Weavver.Data.Sales_Order" Role="Sales_Order" Multiplicity="*" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.Sales_Orders" Role="Sales_Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
               <PropertyRef Name="Id" />
@@ -4547,8 +4547,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Sales_Orders_UpdatedBy">
-          <End Type="Weavver.Data.System_User" Role="System_User" Multiplicity="1" />
-          <End Type="Weavver.Data.Sales_Order" Role="Sales_Order" Multiplicity="*" />
+          <End Type="Weavver.Data.System_Users" Role="System_User" Multiplicity="1" />
+          <End Type="Weavver.Data.Sales_Orders" Role="Sales_Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="System_User">
               <PropertyRef Name="Id" />
@@ -4629,7 +4629,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="System_Users">
-            <EntityTypeMapping TypeName="Weavver.Data.System_User">
+            <EntityTypeMapping TypeName="Weavver.Data.System_Users">
               <MappingFragment StoreEntitySet="System_Users">
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
@@ -5468,8 +5468,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Sales_Order">
-            <EntityTypeMapping TypeName="Weavver.Data.Sales_Order">
+          <EntitySetMapping Name="Sales_Orders">
+            <EntityTypeMapping TypeName="Weavver.Data.Sales_Orders">
               <MappingFragment StoreEntitySet="Sales_Orders">
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="Orderee" ColumnName="Orderee" />
@@ -5524,7 +5524,7 @@
         <EntityTypeShape EntityType="Weavver.Data.Logistics_Addresses" Width="2.375" PointX="46.25" PointY="19.875" Height="3.3263964843749818" />
         <EntityTypeShape EntityType="Weavver.Data.Logistics_Organizations" Width="2.75" PointX="33.625" PointY="18.5" Height="7.5570279947916656" />
         <EntityTypeShape EntityType="Weavver.Data.Communication_MessageTemplates" Width="1.5" PointX="55" PointY="44.5" Height="2.9417936197916656" />
-        <EntityTypeShape EntityType="Weavver.Data.System_User" Width="1.5" PointX="52.375" PointY="43.875" Height="3.3263964843750031" />
+        <EntityTypeShape EntityType="Weavver.Data.System_Users" Width="1.5" PointX="52.375" PointY="43.875" Height="3.3263964843750031" />
         <EntityTypeShape EntityType="Weavver.Data.HR_Task" Width="1.5" PointX="40.375" PointY="2" Height="4.480205078125" />
         <AssociationConnector Association="Weavver.Data.FK_Communication_MessageTemplates_Logistics_Organizations">
           <ConnectorPoint PointX="36.375" PointY="19.204423646590293" />
@@ -6441,7 +6441,7 @@
           <ConnectorPoint PointX="5.7512223828125" PointY="50.300819720701881" />
           <ConnectorPoint PointX="5.7512223828125" PointY="25.230205078125003" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Weavver.Data.Sales_Order" Width="1.5" PointX="49.375" PointY="21.75" Height="6.5955208333333246" />
+        <EntityTypeShape EntityType="Weavver.Data.Sales_Orders" Width="1.5" PointX="49.375" PointY="21.75" Height="6.5955208333333246" />
         <AssociationConnector Association="Weavver.Data.Sales_Orders_BillingContactAddress" >
           <ConnectorPoint PointX="48.625" PointY="23.120134887695315" />
           <ConnectorPoint PointX="48.916666666666664" PointY="23.120134887695315" />

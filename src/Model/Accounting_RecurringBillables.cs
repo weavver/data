@@ -228,8 +228,9 @@ namespace Weavver.Data
                ret.Status = "Account Billed";
                ret.Message = "Total periods billed: " + periodsBilled.ToString();
 
-               ret.RedirectRequest = true;
-               ret.RedirectURL = "~/Accounting_RecurringBillables/Details.aspx?Id=" + Id.ToString();
+               ret.RefreshData = true;
+               //ret.RedirectRequest = true;
+               //ret.RedirectURL = "~/Accounting_RecurringBillables/Details.aspx?Id=" + Id.ToString();
                return ret;
           }
 //-------------------------------------------------------------------------------------------

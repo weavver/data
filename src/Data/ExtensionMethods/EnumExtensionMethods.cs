@@ -7,6 +7,8 @@ using System.Web.DynamicData;
 using System.Web.UI.WebControls;
 using System.Collections;
 using System.Web.UI;
+using System.Reflection;
+using System.ComponentModel;
 
 namespace Weavver.Data
 {
@@ -51,6 +53,18 @@ namespace Weavver.Data
                   }
              }
              return null;
+        }
+//-------------------------------------------------------------------------------------------
+        public static string DescriptionAttr<T>(this T source)
+        {
+             FieldInfo fi = source.GetType().GetField(source.ToString());
+
+             DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+             if (attributes != null && attributes.Length > 0)
+                  return attributes[0].Description;
+             else
+                  return source.ToString();
         }
 //-------------------------------------------------------------------------------------------
     }

@@ -8,26 +8,26 @@ using System.Configuration;
 
 namespace Weavver.Data
 {
-     //[MetadataType(typeof(System_Settings.Metadata))]
-     //[DisplayName("Settings")]
-     //[SecureTable(CombinedActions.Full, "Administrators")]
-     //partial class System_Settings : IAuditable
-     //{
-     //     public class Metadata
-     //     {
-     //          [ScaffoldColumn(false)]
-     //          public object Id;
+//     [MetadataType(typeof(System_Settings.Metadata))]
+//     [DisplayName("Settings")]
+//     [DataAccess(TableView.Full, "Administrators")]
+//     partial class System_Settings : IAuditable
+//     {
+//          public class Metadata
+//          {
+//               [ScaffoldColumn(false)]
+//               public object Id;
 
-     //          [HideColumnIn(PageTemplate.List)]
-     //          public object CreatedAt;
+//               [HideColumnIn(PageTemplate.List)]
+//               public object CreatedAt;
 
-     //          [HideColumnIn(PageTemplate.List)]
-     //          public object CreatedBy;
+//               [HideColumnIn(PageTemplate.List)]
+//               public object CreatedBy;
 
-     //          [HideColumnIn(PageTemplate.List)]
-     //          public object UpdatedAt;
-     //     }
-     //}
+//               [HideColumnIn(PageTemplate.List)]
+//               public object UpdatedAt;
+//          }
+//     }
 
      
      public class GlobalSettings

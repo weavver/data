@@ -43,6 +43,6 @@ namespace Weavver.Security
                
           }
 
-          public Weavver.Data.System_User WeavverSysUser;
+          public Weavver.Data.System_Users WeavverSysUser;
      }
 }

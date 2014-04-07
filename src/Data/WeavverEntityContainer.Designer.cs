@@ -33,7 +33,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_Marketing_PressReleases_Logistics_Organizations", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "Marketing_PressReleases", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Marketing_PressReleases), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_HR_Applications_Logistics_Organizations", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "HR_Applications", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.HR_Applications), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_IT_DownloadLogs_Logistics_Organizations", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "IT_DownloadLogs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.IT_DownloadLogs), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "FK_IT_DownloadLogs_System_Users", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "IT_DownloadLogs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.IT_DownloadLogs), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "FK_IT_DownloadLogs_System_Users", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "IT_DownloadLogs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.IT_DownloadLogs), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_Sales_Leads_Logistics_Organizations", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.Logistics_Organizations), "Sales_Leads", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_Leads), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_Sales_Leads_Logistics_Organizations1", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "Sales_Leads", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_Leads), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_HR_Jobs_System_Organizations", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "HR_Jobs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.HR_Jobs), true)]
@@ -43,33 +43,33 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_System_Organizations_System_Organizations", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "Logistics_Organizations1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Logistics_Organizations), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_Accounting_PaymentMethods_System_Organizations", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "Accounting_CreditCards", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_CreditCards), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_Accounting_Accounts_System_Organizations", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "Accounting_Accounts", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_Accounts), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "KnowledgeBase_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "KnowledgeBase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.KnowledgeBase), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "KnowledgeBase_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "KnowledgeBase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.KnowledgeBase), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "KnowledgeBase_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "KnowledgeBase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.KnowledgeBase), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "KnowledgeBase_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "KnowledgeBase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.KnowledgeBase), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_Reconciliations_Account", "Accounting_Accounts", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Accounting_Accounts), "Accounting_Reconciliations", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_Reconciliations), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "KnowledgeBase_ParentId", "KnowledgeBase", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.KnowledgeBase), "KnowledgeBase1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.KnowledgeBase), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_Accounting_LedgerItems_System_Organizations", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "Accounting_LedgerItems", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_LedgerItems), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_LedgerItems_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Accounting_LedgerItems", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_LedgerItems), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_LedgerItems_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Accounting_LedgerItems", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_LedgerItems), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_LedgerItems_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Accounting_LedgerItems", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_LedgerItems), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_LedgerItems_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Accounting_LedgerItems", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_LedgerItems), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_Checks_AccountId", "Accounting_Accounts", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Accounting_Accounts), "Accounting_Checks", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_Checks), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_Checks_Payee", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "Accounting_Checks", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_Checks), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_Accounting_Checks_System_Organizations", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "Accounting_Checks", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_Checks), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "CMS_Pages_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "CMS_Pages", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.CMS_Pages), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "CMS_Pages_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "CMS_Pages", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.CMS_Pages), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "System_URLs_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "System_URLs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.System_URLs), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "System_URLs_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "System_URLs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.System_URLs), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Data_AuditTrails_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Data_AuditTrails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Data_AuditTrails), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Communication_EmailAccounts_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Communication_EmailAccounts", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Communication_EmailAccounts), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Communication_EmailAccounts_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Communication_EmailAccounts", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Communication_EmailAccounts), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Communication_Emails_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Communication_Emails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Communication_Emails), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Communication_Emails_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Communication_Emails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Communication_Emails), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Data_Links_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Data_Links", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Data_Links), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Data_Links_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Data_Links", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Data_Links), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_ShoppingCartItems_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Sales_ShoppingCartItems", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_ShoppingCartItems), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_ShoppingCartItems_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Sales_ShoppingCartItems", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_ShoppingCartItems), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "CMS_Pages_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "CMS_Pages", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.CMS_Pages), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "CMS_Pages_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "CMS_Pages", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.CMS_Pages), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "System_URLs_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "System_URLs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.System_URLs), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "System_URLs_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "System_URLs", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.System_URLs), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Data_AuditTrails_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Data_AuditTrails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Data_AuditTrails), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Communication_EmailAccounts_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Communication_EmailAccounts", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Communication_EmailAccounts), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Communication_EmailAccounts_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Communication_EmailAccounts", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Communication_EmailAccounts), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Communication_Emails_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Communication_Emails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Communication_Emails), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Communication_Emails_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Communication_Emails", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Communication_Emails), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Data_Links_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Data_Links", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Data_Links), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Data_Links_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Data_Links", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Data_Links), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_ShoppingCartItems_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Sales_ShoppingCartItems", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_ShoppingCartItems), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_ShoppingCartItems_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Sales_ShoppingCartItems", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_ShoppingCartItems), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Logistics_Features_Product", "Logistics_Products", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Products), "Logistics_Features", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Logistics_Features), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_Logistics_Services_System_Organizations", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "Logistics_Products", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Logistics_Products), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Logistics_Products_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Logistics_Products", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Logistics_Products), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Logistics_Products_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Logistics_Products", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Logistics_Products), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Logistics_Products_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Logistics_Products", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Logistics_Products), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Logistics_Products_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Logistics_Products", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Logistics_Products), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_HR_Staff_System_Organizations", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "HR_Staff", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.HR_Staff), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "FK_Sales_Resellers_HR_Staff", "HR_Staff", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.HR_Staff), "Sales_Resellers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_Resellers), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Logistics_Organizations_Address", "Logistics_Addresses", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.Logistics_Addresses), "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Logistics_Organizations), true)]
@@ -78,33 +78,33 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_RecurringBillables_OrganizationId", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "Accounting_RecurringBillables", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_RecurringBillables), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_Accounts_CreatedBy", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "Accounting_Accounts", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_Accounts), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_Accounts_UpdatedBy", "Accounting_Accounts", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Accounting_Accounts), "Accounting_Accounts1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_Accounts), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_RecurringBillables_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Accounting_RecurringBillables", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_RecurringBillables), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_RecurringBillables_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Accounting_RecurringBillables", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_RecurringBillables), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_RecurringBillables_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Accounting_RecurringBillables", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_RecurringBillables), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_RecurringBillables_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Accounting_RecurringBillables", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_RecurringBillables), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Logistics_FeatureOptions_Product", "Logistics_Products", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Products), "Logistics_FeatureOptions", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.Logistics_FeatureOptions), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Logistics_Organizations_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Logistics_Organizations), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Logistics_Organizations_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Logistics_Organizations), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Logistics_Organizations_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Logistics_Organizations), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Logistics_Organizations_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Logistics_Organizations), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_LicenseKeys_AssignedTo", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.Logistics_Organizations), "Sales_LicenseKeys", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_LicenseKeys), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_LicenseKeys_OrganizationId", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "Sales_LicenseKeys", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_LicenseKeys), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_LicenseKeys_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Sales_LicenseKeys", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_LicenseKeys), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_LicenseKeys_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Sales_LicenseKeys", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_LicenseKeys), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_LicenseKeys_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Sales_LicenseKeys", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_LicenseKeys), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_LicenseKeys_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Sales_LicenseKeys", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_LicenseKeys), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_OFXSettings_AccountId", "Accounting_Accounts", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.Accounting_Accounts), "Accounting_OFXSettings", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_OFXSettings), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_OFXSettings_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Accounting_OFXSettings", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_OFXSettings), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_OFXSettings_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Accounting_OFXSettings", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_OFXSettings), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_OFXSettings_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Accounting_OFXSettings", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_OFXSettings), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Accounting_OFXSettings_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Accounting_OFXSettings", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Accounting_OFXSettings), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_LicenseKeyActivations_OrganizationId", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Logistics_Organizations), "Sales_LicenseKeyActivations", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_LicenseKeyActivations), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_LicenseKeyActivations_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Sales_LicenseKeyActivations", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_LicenseKeyActivations), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_LicenseKeyActivations_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Sales_LicenseKeyActivations", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_LicenseKeyActivations), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_LicenseKeyActivations_LicenseKeyId", "Sales_LicenseKeys", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.Sales_LicenseKeys), "Sales_LicenseKeyActivations", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_LicenseKeyActivations), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_LicenseKeyActivations_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Sales_LicenseKeyActivations", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_LicenseKeyActivations), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_LicenseKeyActivations_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Sales_LicenseKeyActivations", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_LicenseKeyActivations), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "HR_Tasks_CreatedBy", "HR_Staff", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.HR_Staff), "HR_Task", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.HR_Task), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "HR_Tasks_CreatedBy1", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "HR_Task", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.HR_Task), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "HR_Tasks_CreatedBy1", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "HR_Task", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.HR_Task), true)]
 [assembly: EdmRelationshipAttribute("Weavver.Data", "HR_Tasks_ParentTask", "HR_Task", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.HR_Task), "HR_Task1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.HR_Task), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "HR_Tasks_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "HR_Task", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.HR_Task), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "CustomerService_Tickets_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "CustomerService_Tickets", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.CustomerService_Tickets), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "CustomerService_Tickets_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "CustomerService_Tickets", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.CustomerService_Tickets), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_Orders_BillingContactAddress", "Logistics_Addresses", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.Logistics_Addresses), "Sales_Orders", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_Order), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_Orders_PrimaryContactAddress", "Logistics_Addresses", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.Logistics_Addresses), "Sales_Orders", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_Order), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_Orders_Orderee", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.Logistics_Organizations), "Sales_Orders", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_Order), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_Orders_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Sales_Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_Order), true)]
-[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_Orders_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_User), "Sales_Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_Order), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "HR_Tasks_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "HR_Task", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.HR_Task), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "CustomerService_Tickets_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "CustomerService_Tickets", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.CustomerService_Tickets), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "CustomerService_Tickets_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "CustomerService_Tickets", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.CustomerService_Tickets), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_Orders_BillingContactAddress", "Logistics_Addresses", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.Logistics_Addresses), "Sales_Orders", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_Orders), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_Orders_PrimaryContactAddress", "Logistics_Addresses", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.Logistics_Addresses), "Sales_Orders", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_Orders), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_Orders_Orderee", "Logistics_Organizations", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Weavver.Data.Logistics_Organizations), "Sales_Orders", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_Orders), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_Orders_CreatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Sales_Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_Orders), true)]
+[assembly: EdmRelationshipAttribute("Weavver.Data", "Sales_Orders_UpdatedBy", "System_User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Weavver.Data.System_Users), "Sales_Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Weavver.Data.Sales_Orders), true)]
 
 #endregion
 
@@ -207,18 +207,18 @@ namespace Weavver.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<System_User> System_Users
+        public ObjectSet<System_Users> System_Users
         {
             get
             {
                 if ((_System_Users == null))
                 {
-                    _System_Users = base.CreateObjectSet<System_User>("System_Users");
+                    _System_Users = base.CreateObjectSet<System_Users>("System_Users");
                 }
                 return _System_Users;
             }
         }
-        private ObjectSet<System_User> _System_Users;
+        private ObjectSet<System_Users> _System_Users;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -911,18 +911,18 @@ namespace Weavver.Data
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Sales_Order> Sales_Order
+        public ObjectSet<Sales_Orders> Sales_Orders
         {
             get
             {
-                if ((_Sales_Order == null))
+                if ((_Sales_Orders == null))
                 {
-                    _Sales_Order = base.CreateObjectSet<Sales_Order>("Sales_Order");
+                    _Sales_Orders = base.CreateObjectSet<Sales_Orders>("Sales_Orders");
                 }
-                return _Sales_Order;
+                return _Sales_Orders;
             }
         }
-        private ObjectSet<Sales_Order> _Sales_Order;
+        private ObjectSet<Sales_Orders> _Sales_Orders;
 
         #endregion
 
@@ -955,9 +955,9 @@ namespace Weavver.Data
         /// <summary>
         /// Deprecated Method for adding a new object to the System_Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToSystem_Users(System_User system_User)
+        public void AddToSystem_Users(System_Users system_Users)
         {
-            base.AddObject("System_Users", system_User);
+            base.AddObject("System_Users", system_Users);
         }
     
         /// <summary>
@@ -1305,11 +1305,11 @@ namespace Weavver.Data
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Sales_Order EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Sales_Orders EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToSales_Order(Sales_Order sales_Order)
+        public void AddToSales_Orders(Sales_Orders sales_Orders)
         {
-            base.AddObject("Sales_Order", sales_Order);
+            base.AddObject("Sales_Orders", sales_Orders);
         }
 
         #endregion
@@ -3605,15 +3605,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Accounting_LedgerItems_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_LedgerItems_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_LedgerItems_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_LedgerItems_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_LedgerItems_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -3621,17 +3621,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_LedgerItems_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_LedgerItems_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Accounting_LedgerItems_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Accounting_LedgerItems_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -3643,15 +3643,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Accounting_LedgerItems_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_LedgerItems_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_LedgerItems_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_LedgerItems_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_LedgerItems_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -3659,17 +3659,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_LedgerItems_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_LedgerItems_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Accounting_LedgerItems_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Accounting_LedgerItems_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -4204,15 +4204,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Accounting_OFXSettings_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_OFXSettings_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_OFXSettings_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_OFXSettings_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_OFXSettings_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -4220,17 +4220,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_OFXSettings_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_OFXSettings_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Accounting_OFXSettings_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Accounting_OFXSettings_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -4242,15 +4242,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Accounting_OFXSettings_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_OFXSettings_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_OFXSettings_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_OFXSettings_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_OFXSettings_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -4258,17 +4258,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_OFXSettings_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_OFXSettings_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Accounting_OFXSettings_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Accounting_OFXSettings_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -5358,15 +5358,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Accounting_RecurringBillables_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_RecurringBillables_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_RecurringBillables_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_RecurringBillables_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_RecurringBillables_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -5374,17 +5374,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_RecurringBillables_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_RecurringBillables_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Accounting_RecurringBillables_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Accounting_RecurringBillables_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -5396,15 +5396,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Accounting_RecurringBillables_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_RecurringBillables_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_RecurringBillables_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_RecurringBillables_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_RecurringBillables_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -5412,17 +5412,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Accounting_RecurringBillables_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Accounting_RecurringBillables_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Accounting_RecurringBillables_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Accounting_RecurringBillables_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -5701,15 +5701,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "CMS_Pages_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.CMS_Pages_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.CMS_Pages_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.CMS_Pages_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.CMS_Pages_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -5717,17 +5717,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.CMS_Pages_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.CMS_Pages_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.CMS_Pages_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.CMS_Pages_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -5739,15 +5739,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "CMS_Pages_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.CMS_Pages_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.CMS_Pages_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.CMS_Pages_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.CMS_Pages_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -5755,17 +5755,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.CMS_Pages_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.CMS_Pages_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.CMS_Pages_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.CMS_Pages_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -6146,15 +6146,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Communication_EmailAccounts_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Communication_EmailAccounts_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Communication_EmailAccounts_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Communication_EmailAccounts_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Communication_EmailAccounts_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -6162,17 +6162,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Communication_EmailAccounts_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Communication_EmailAccounts_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Communication_EmailAccounts_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Communication_EmailAccounts_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -6184,15 +6184,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Communication_EmailAccounts_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Communication_EmailAccounts_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Communication_EmailAccounts_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Communication_EmailAccounts_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Communication_EmailAccounts_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -6200,17 +6200,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Communication_EmailAccounts_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Communication_EmailAccounts_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Communication_EmailAccounts_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Communication_EmailAccounts_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -6541,15 +6541,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Communication_Emails_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Communication_Emails_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Communication_Emails_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Communication_Emails_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Communication_Emails_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -6557,17 +6557,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Communication_Emails_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Communication_Emails_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Communication_Emails_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Communication_Emails_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -6579,15 +6579,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Communication_Emails_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Communication_Emails_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Communication_Emails_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Communication_Emails_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Communication_Emails_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -6595,17 +6595,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Communication_Emails_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Communication_Emails_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Communication_Emails_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Communication_Emails_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -7648,15 +7648,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "CustomerService_Tickets_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.CustomerService_Tickets_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.CustomerService_Tickets_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.CustomerService_Tickets_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.CustomerService_Tickets_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -7664,17 +7664,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.CustomerService_Tickets_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.CustomerService_Tickets_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.CustomerService_Tickets_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.CustomerService_Tickets_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -7686,15 +7686,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "CustomerService_Tickets_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.CustomerService_Tickets_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.CustomerService_Tickets_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.CustomerService_Tickets_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.CustomerService_Tickets_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -7702,17 +7702,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.CustomerService_Tickets_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.CustomerService_Tickets_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.CustomerService_Tickets_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.CustomerService_Tickets_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -7983,15 +7983,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Data_AuditTrails_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Data_AuditTrails_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Data_AuditTrails_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Data_AuditTrails_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Data_AuditTrails_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -7999,17 +7999,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Data_AuditTrails_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Data_AuditTrails_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Data_AuditTrails_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Data_AuditTrails_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -8316,15 +8316,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Data_Links_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Data_Links_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Data_Links_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Data_Links_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Data_Links_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -8332,17 +8332,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Data_Links_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Data_Links_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Data_Links_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Data_Links_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -8354,15 +8354,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Data_Links_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Data_Links_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Data_Links_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Data_Links_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Data_Links_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -8370,17 +8370,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Data_Links_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Data_Links_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Data_Links_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Data_Links_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -10410,15 +10410,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "HR_Tasks_CreatedBy1", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.HR_Tasks_CreatedBy1", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.HR_Tasks_CreatedBy1", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.HR_Tasks_CreatedBy1", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.HR_Tasks_CreatedBy1", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -10426,17 +10426,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.HR_Tasks_CreatedBy1", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.HR_Tasks_CreatedBy1", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.HR_Tasks_CreatedBy1", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.HR_Tasks_CreatedBy1", "System_User", value);
                 }
             }
         }
@@ -10508,15 +10508,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "HR_Tasks_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.HR_Tasks_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.HR_Tasks_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.HR_Tasks_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.HR_Tasks_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -10524,17 +10524,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.HR_Tasks_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.HR_Tasks_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.HR_Tasks_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.HR_Tasks_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -11200,15 +11200,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "FK_IT_DownloadLogs_System_Users", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.FK_IT_DownloadLogs_System_Users", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.FK_IT_DownloadLogs_System_Users", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.FK_IT_DownloadLogs_System_Users", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.FK_IT_DownloadLogs_System_Users", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -11216,17 +11216,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.FK_IT_DownloadLogs_System_Users", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.FK_IT_DownloadLogs_System_Users", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.FK_IT_DownloadLogs_System_Users", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.FK_IT_DownloadLogs_System_Users", "System_User", value);
                 }
             }
         }
@@ -12657,15 +12657,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "KnowledgeBase_CreatedBy", "System_User")]
-        public System_User System_Users_UpdatedBy
+        public System_Users System_Users_UpdatedBy
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.KnowledgeBase_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.KnowledgeBase_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.KnowledgeBase_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.KnowledgeBase_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -12673,17 +12673,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users_UpdatedByReference
+        public EntityReference<System_Users> System_Users_UpdatedByReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.KnowledgeBase_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.KnowledgeBase_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.KnowledgeBase_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.KnowledgeBase_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -12695,15 +12695,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "KnowledgeBase_UpdatedBy", "System_User")]
-        public System_User System_Users_CreatedBy
+        public System_Users System_Users_CreatedBy
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.KnowledgeBase_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.KnowledgeBase_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.KnowledgeBase_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.KnowledgeBase_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -12711,17 +12711,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users_CreatedByReference
+        public EntityReference<System_Users> System_Users_CreatedByReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.KnowledgeBase_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.KnowledgeBase_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.KnowledgeBase_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.KnowledgeBase_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -13395,17 +13395,17 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Sales_Orders_BillingContactAddress", "Sales_Orders")]
-        public EntityCollection<Sales_Order> Sales_Orders
+        public EntityCollection<Sales_Orders> Sales_Orders
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Sales_Order>("Weavver.Data.Sales_Orders_BillingContactAddress", "Sales_Orders");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Sales_Orders>("Weavver.Data.Sales_Orders_BillingContactAddress", "Sales_Orders");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sales_Order>("Weavver.Data.Sales_Orders_BillingContactAddress", "Sales_Orders", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sales_Orders>("Weavver.Data.Sales_Orders_BillingContactAddress", "Sales_Orders", value);
                 }
             }
         }
@@ -13417,17 +13417,17 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Sales_Orders_PrimaryContactAddress", "Sales_Orders")]
-        public EntityCollection<Sales_Order> Sales_Orders1
+        public EntityCollection<Sales_Orders> Sales_Orders1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Sales_Order>("Weavver.Data.Sales_Orders_PrimaryContactAddress", "Sales_Orders");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Sales_Orders>("Weavver.Data.Sales_Orders_PrimaryContactAddress", "Sales_Orders");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sales_Order>("Weavver.Data.Sales_Orders_PrimaryContactAddress", "Sales_Orders", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sales_Orders>("Weavver.Data.Sales_Orders_PrimaryContactAddress", "Sales_Orders", value);
                 }
             }
         }
@@ -15572,15 +15572,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Logistics_Organizations_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Logistics_Organizations_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Logistics_Organizations_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Logistics_Organizations_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Logistics_Organizations_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -15588,17 +15588,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Logistics_Organizations_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Logistics_Organizations_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Logistics_Organizations_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Logistics_Organizations_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -15610,15 +15610,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Logistics_Organizations_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Logistics_Organizations_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Logistics_Organizations_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Logistics_Organizations_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Logistics_Organizations_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -15626,17 +15626,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Logistics_Organizations_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Logistics_Organizations_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Logistics_Organizations_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Logistics_Organizations_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -15714,17 +15714,17 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Sales_Orders_Orderee", "Sales_Orders")]
-        public EntityCollection<Sales_Order> Sales_Orders
+        public EntityCollection<Sales_Orders> Sales_Orders
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Sales_Order>("Weavver.Data.Sales_Orders_Orderee", "Sales_Orders");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Sales_Orders>("Weavver.Data.Sales_Orders_Orderee", "Sales_Orders");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sales_Order>("Weavver.Data.Sales_Orders_Orderee", "Sales_Orders", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sales_Orders>("Weavver.Data.Sales_Orders_Orderee", "Sales_Orders", value);
                 }
             }
         }
@@ -16367,15 +16367,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Logistics_Products_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Logistics_Products_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Logistics_Products_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Logistics_Products_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Logistics_Products_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -16383,17 +16383,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Logistics_Products_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Logistics_Products_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Logistics_Products_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Logistics_Products_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -16405,15 +16405,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Logistics_Products_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Logistics_Products_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Logistics_Products_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Logistics_Products_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Logistics_Products_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -16421,17 +16421,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Logistics_Products_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Logistics_Products_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Logistics_Products_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Logistics_Products_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -18779,15 +18779,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Sales_LicenseKeyActivations_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeyActivations_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeyActivations_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeyActivations_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeyActivations_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -18795,17 +18795,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeyActivations_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeyActivations_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeyActivations_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeyActivations_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -18855,15 +18855,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Sales_LicenseKeyActivations_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeyActivations_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeyActivations_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeyActivations_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeyActivations_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -18871,17 +18871,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeyActivations_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeyActivations_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeyActivations_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeyActivations_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -19454,15 +19454,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Sales_LicenseKeys_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeys_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeys_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeys_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeys_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -19470,17 +19470,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeys_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeys_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeys_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeys_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -19492,15 +19492,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Sales_LicenseKeys_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeys_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeys_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeys_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeys_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -19508,17 +19508,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeys_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeys_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Sales_LicenseKeys_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Sales_LicenseKeys_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -19552,15 +19552,15 @@ namespace Weavver.Data
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Weavver.Data", Name="Sales_Order")]
+    [EdmEntityTypeAttribute(NamespaceName="Weavver.Data", Name="Sales_Orders")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Sales_Order : EntityObject
+    public partial class Sales_Orders : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new Sales_Order object.
+        /// Create a new Sales_Orders object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="organizationId">Initial value of the OrganizationId property.</param>
@@ -19569,17 +19569,17 @@ namespace Weavver.Data
         /// <param name="createdBy">Initial value of the CreatedBy property.</param>
         /// <param name="updatedAt">Initial value of the UpdatedAt property.</param>
         /// <param name="updatedBy">Initial value of the UpdatedBy property.</param>
-        public static Sales_Order CreateSales_Order(global::System.Guid id, global::System.Guid organizationId, global::System.String status, global::System.DateTime createdAt, global::System.Guid createdBy, global::System.DateTime updatedAt, global::System.Guid updatedBy)
+        public static Sales_Orders CreateSales_Orders(global::System.Guid id, global::System.Guid organizationId, global::System.String status, global::System.DateTime createdAt, global::System.Guid createdBy, global::System.DateTime updatedAt, global::System.Guid updatedBy)
         {
-            Sales_Order sales_Order = new Sales_Order();
-            sales_Order.Id = id;
-            sales_Order.OrganizationId = organizationId;
-            sales_Order.Status = status;
-            sales_Order.CreatedAt = createdAt;
-            sales_Order.CreatedBy = createdBy;
-            sales_Order.UpdatedAt = updatedAt;
-            sales_Order.UpdatedBy = updatedBy;
-            return sales_Order;
+            Sales_Orders sales_Orders = new Sales_Orders();
+            sales_Orders.Id = id;
+            sales_Orders.OrganizationId = organizationId;
+            sales_Orders.Status = status;
+            sales_Orders.CreatedAt = createdAt;
+            sales_Orders.CreatedBy = createdBy;
+            sales_Orders.UpdatedAt = updatedAt;
+            sales_Orders.UpdatedBy = updatedBy;
+            return sales_Orders;
         }
 
         #endregion
@@ -20339,15 +20339,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Sales_Orders_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_Orders_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_Orders_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_Orders_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_Orders_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -20355,17 +20355,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_Orders_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_Orders_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Sales_Orders_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Sales_Orders_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -20377,15 +20377,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Sales_Orders_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_Orders_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_Orders_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_Orders_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_Orders_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -20393,17 +20393,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_Orders_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_Orders_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Sales_Orders_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Sales_Orders_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -21361,15 +21361,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Sales_ShoppingCartItems_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_ShoppingCartItems_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_ShoppingCartItems_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_ShoppingCartItems_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_ShoppingCartItems_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -21377,17 +21377,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_ShoppingCartItems_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_ShoppingCartItems_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Sales_ShoppingCartItems_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Sales_ShoppingCartItems_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -21399,15 +21399,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Sales_ShoppingCartItems_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_ShoppingCartItems_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_ShoppingCartItems_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_ShoppingCartItems_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_ShoppingCartItems_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -21415,17 +21415,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.Sales_ShoppingCartItems_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.Sales_ShoppingCartItems_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.Sales_ShoppingCartItems_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.Sales_ShoppingCartItems_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -22340,15 +22340,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "System_URLs_CreatedBy", "System_User")]
-        public System_User System_Users
+        public System_Users System_Users
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.System_URLs_CreatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.System_URLs_CreatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.System_URLs_CreatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.System_URLs_CreatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -22356,17 +22356,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_UsersReference
+        public EntityReference<System_Users> System_UsersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.System_URLs_CreatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.System_URLs_CreatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.System_URLs_CreatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.System_URLs_CreatedBy", "System_User", value);
                 }
             }
         }
@@ -22378,15 +22378,15 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "System_URLs_UpdatedBy", "System_User")]
-        public System_User System_Users1
+        public System_Users System_Users1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.System_URLs_UpdatedBy", "System_User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.System_URLs_UpdatedBy", "System_User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.System_URLs_UpdatedBy", "System_User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.System_URLs_UpdatedBy", "System_User").Value = value;
             }
         }
         /// <summary>
@@ -22394,17 +22394,17 @@ namespace Weavver.Data
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<System_User> System_Users1Reference
+        public EntityReference<System_Users> System_Users1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_User>("Weavver.Data.System_URLs_UpdatedBy", "System_User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<System_Users>("Weavver.Data.System_URLs_UpdatedBy", "System_User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_User>("Weavver.Data.System_URLs_UpdatedBy", "System_User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<System_Users>("Weavver.Data.System_URLs_UpdatedBy", "System_User", value);
                 }
             }
         }
@@ -22416,15 +22416,15 @@ namespace Weavver.Data
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Weavver.Data", Name="System_User")]
+    [EdmEntityTypeAttribute(NamespaceName="Weavver.Data", Name="System_Users")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class System_User : EntityObject
+    public partial class System_Users : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new System_User object.
+        /// Create a new System_Users object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="organizationId">Initial value of the OrganizationId property.</param>
@@ -22434,18 +22434,18 @@ namespace Weavver.Data
         /// <param name="createdBy">Initial value of the CreatedBy property.</param>
         /// <param name="updatedAt">Initial value of the UpdatedAt property.</param>
         /// <param name="updatedBy">Initial value of the UpdatedBy property.</param>
-        public static System_User CreateSystem_User(global::System.Guid id, global::System.Guid organizationId, global::System.Boolean activated, global::System.Boolean locked, global::System.DateTime createdAt, global::System.Guid createdBy, global::System.DateTime updatedAt, global::System.Guid updatedBy)
+        public static System_Users CreateSystem_Users(global::System.Guid id, global::System.Guid organizationId, global::System.Boolean activated, global::System.Boolean locked, global::System.DateTime createdAt, global::System.Guid createdBy, global::System.DateTime updatedAt, global::System.Guid updatedBy)
         {
-            System_User system_User = new System_User();
-            system_User.Id = id;
-            system_User.OrganizationId = organizationId;
-            system_User.Activated = activated;
-            system_User.Locked = locked;
-            system_User.CreatedAt = createdAt;
-            system_User.CreatedBy = createdBy;
-            system_User.UpdatedAt = updatedAt;
-            system_User.UpdatedBy = updatedBy;
-            return system_User;
+            System_Users system_Users = new System_Users();
+            system_Users.Id = id;
+            system_Users.OrganizationId = organizationId;
+            system_Users.Activated = activated;
+            system_Users.Locked = locked;
+            system_Users.CreatedAt = createdAt;
+            system_Users.CreatedBy = createdBy;
+            system_Users.UpdatedAt = updatedAt;
+            system_Users.UpdatedBy = updatedBy;
+            return system_Users;
         }
 
         #endregion
@@ -23719,17 +23719,17 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Sales_Orders_CreatedBy", "Sales_Order")]
-        public EntityCollection<Sales_Order> Sales_Orders
+        public EntityCollection<Sales_Orders> Sales_Orders
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Sales_Order>("Weavver.Data.Sales_Orders_CreatedBy", "Sales_Order");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Sales_Orders>("Weavver.Data.Sales_Orders_CreatedBy", "Sales_Order");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sales_Order>("Weavver.Data.Sales_Orders_CreatedBy", "Sales_Order", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sales_Orders>("Weavver.Data.Sales_Orders_CreatedBy", "Sales_Order", value);
                 }
             }
         }
@@ -23741,17 +23741,17 @@ namespace Weavver.Data
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Weavver.Data", "Sales_Orders_UpdatedBy", "Sales_Order")]
-        public EntityCollection<Sales_Order> Sales_Orders1
+        public EntityCollection<Sales_Orders> Sales_Orders1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Sales_Order>("Weavver.Data.Sales_Orders_UpdatedBy", "Sales_Order");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Sales_Orders>("Weavver.Data.Sales_Orders_UpdatedBy", "Sales_Order");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sales_Order>("Weavver.Data.Sales_Orders_UpdatedBy", "Sales_Order", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sales_Orders>("Weavver.Data.Sales_Orders_UpdatedBy", "Sales_Order", value);
                 }
             }
         }

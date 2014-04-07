@@ -9,7 +9,7 @@ namespace Weavver.Data
 {
      [MetadataType(typeof(Marketing_PressReleases.Metadata))]
      [DisplayName("Press Releases")]
-     [DataAccess(TableView.List, "Administrators")]
+     [DataAccess(TableView.List, "Administrators", "Guest")]
      [DataAccess(TableView.PressRoll, "Administrators", "Guest")]
      [DataAccess(RowView.Edit, "Administrators")]
      [DataAccess(RowView.Details, "Administrators", "Guest")]

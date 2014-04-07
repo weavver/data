@@ -11,7 +11,7 @@ namespace Weavver.Data
      [DisplayName("Inquiries")]
      [DataAccess(TableView.List, "Administrators")]
      [DataAccess(RowView.Edit, "Administrators")]
-     [DataAccess(RowView.Details, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators", "Guest")]
      [DataAccess(RowAction.Delete, "Administrators")]
      [DataAccess(RowAction.Insert, "Administrators", "Guest")]
      partial class Sales_Leads : IAuditable
@@ -77,13 +77,13 @@ namespace Weavver.Data
                public object UpdatedBy;
           }
 //-------------------------------------------------------------------------------------------
-          [DynamicDataWebMethod("Call Lead", "Administrators")]
-          public DynamicDataWebMethodReturnType CallLead()
-          {
-               // initialize callback to lead's ph #
-               // implement code
-               return null;
-          }
+          //[DynamicDataWebMethod("Call Lead", "Administrators")]
+          //public DynamicDataWebMethodReturnType CallLead()
+          //{
+          //     // initialize callback to lead's ph #
+          //     // implement code
+          //     return null;
+          //}
 //-------------------------------------------------------------------------------------------
      }
 }

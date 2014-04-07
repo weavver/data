@@ -23,7 +23,7 @@ namespace Weavver.Data
      [DisplayName("Organizations")]
      [DataAccess(TableView.List, "Administrators")]
      [DataAccess(RowView.Edit, "Administrators")]
-     [DataAccess(RowView.Details, "Administrators")]
+     [DataAccess(RowView.Details, "Administrators", Width=400)]
      [DataAccess(RowAction.Delete, "Administrators")]
      [DataAccess(RowAction.Insert, "Administrators")]
      //[AutoLinkToView("OrganizationPayables"]

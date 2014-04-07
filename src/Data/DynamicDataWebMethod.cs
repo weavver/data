@@ -31,6 +31,21 @@ namespace Weavver.Data
                this.MethodName = methodname;
                this.Roles = roles;
           }
+
+          public Boolean HasAnyRole(String[] loggedInUserRoles)
+          {
+               // the bug is that tpsRoles is a string array of two values in the first index
+               // tpsroles needs to be a split array
+
+
+               // call extension method to convert array to lower case for compare
+               foreach (var role in loggedInUserRoles)
+               {
+                    if (Roles.Contains(role, StringComparer.OrdinalIgnoreCase))
+                         return true;
+               }
+               return false;
+          }
      }
 
      public class DynamicDataWebMethodReturnType

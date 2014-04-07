@@ -15,7 +15,7 @@ namespace Weavver.Data
      /// <summary>
      /// InvoiceReport
      /// </summary>
-     public partial class Sales_Order
+     public partial class Sales_Orders
      {
 //-------------------------------------------------------------------------------------------
           public Sales_OrderReportSettings ReportSettings
@@ -60,7 +60,7 @@ namespace Weavver.Data
                string encoding = string.Empty;
                string extension = string.Empty;
 
-               List<Sales_Order> orders = new List<Sales_Order>();
+               List<Sales_Orders> orders = new List<Sales_Orders>();
                orders.Add(this);
 
                // Setup the report viewer object and get the array of bytes

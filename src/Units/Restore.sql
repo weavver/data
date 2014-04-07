@@ -14,9 +14,13 @@ BEGIN
 
 END
 
-RESTORE DATABASE [weavverstaging] FROM
-DISK = N'C:\Data\Backups\Weavver-ProductionDB.bak'
-WITH  FILE = 1,
-MOVE N'weavverdb' TO N'C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\Data\weavverstaging.mdf',
-MOVE N'weavverdb_log' TO N'C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\Data\weavverstaging_log.ldf',
+-- C:\Weavver\Data\Backups\Weavver-ProductionDB.bak
+-- C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA\weavverstaging.mdf
+-- C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\DATA\weavverstaging_log.ldf
+
+RESTORE DATABASE [weavverstaging]
+FROM DISK = N'%localBackupFile%'
+WITH FILE = 1,
+MOVE N'weavverdb' TO N'%localrestore_mdfpath%',
+MOVE N'weavverdb_log' TO N'%localrestore_logpath%',
 NOUNLOAD
