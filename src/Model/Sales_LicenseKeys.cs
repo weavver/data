@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+#if WITHCOMMERCIALLIBS
 using Infralution.Licensing;
+#endif
 using System.Configuration;
 
 namespace Weavver.Data
@@ -91,6 +93,7 @@ namespace Weavver.Data
                public object Sales_LicenseKeyActivations;
           }
 //-------------------------------------------------------------------------------------------
+#if WITHCOMMERCIALLIBS
           [DynamicDataWebMethod("Generate Key", "Administrators")]
           public DynamicDataWebMethodReturnType GenerateKey()
           {
@@ -110,6 +113,7 @@ namespace Weavver.Data
                ret.Exception = false;
                return ret;
           }
+#endif
 //-------------------------------------------------------------------------------------------
           [DynamicDataWebMethod("View Activations", "Administrators")]
           public DynamicDataWebMethodReturnType ViewActivations()
