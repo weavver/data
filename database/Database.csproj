@@ -19,7 +19,7 @@
     <TargetFrameworkProfile />
     <PermissionLevel>1</PermissionLevel>
     <FileUpgradeFlags>40</FileUpgradeFlags>
-    <UpgradeBackupLocation>S:\weavver.git\Backup2\</UpgradeBackupLocation>
+    <UpgradeBackupLocation>S:\Data\Backup\database\</UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
