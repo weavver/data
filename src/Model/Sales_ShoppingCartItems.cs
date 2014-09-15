@@ -18,6 +18,7 @@ namespace Weavver.Data
      [DataAccess(RowView.Details, "Administrators")]
      [DataAccess(RowAction.Delete, "Administrators")]
      [DataAccess(RowAction.Insert, "Administrators")]
+     [Serializable()]
      partial class Sales_ShoppingCartItems : IAuditable
      {
           public class Metadata
