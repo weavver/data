@@ -25,8 +25,8 @@ namespace Weavver.Data
                [ScaffoldColumn(false)]
                public object OrganizationId;
 
-               [Display(Order=1)]
-               public object Logistics_Features;
+               //[Display(Order=1)]
+               //public object Logistics_Features;
 
                [DisplayFormat(DataFormatString = "{0:C}")]
                public object Cost;

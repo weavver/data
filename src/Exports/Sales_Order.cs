@@ -35,8 +35,10 @@ namespace Weavver.Data
                     settings.LineItems = LineItems;
                     string toName = BillingContactNameFirst + " " + BillingContactNameLast + "\r\n";
                     toName = toName + BillingContactOrganization + "\r\n";
-                    if (BillingContactAddressData != null)
-                         toName += BillingContactAddressData.ToString();
+                    //if (BillingContactAddressData != null)
+                    //     toName += BillingContactAddressData.ToString();
+                    if (BillingContactAddress != null)
+                         toName += BillingContactAddress.ToString();
                     settings.ClientContactInfo = toName;
 
                     settings.VendorContactInfo = PayableToInfo;

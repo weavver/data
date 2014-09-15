@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -18,7 +18,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>Weavver.Data.snk</AssemblyOriginatorKeyFile>
-    <TargetFrameworkVersion>v4.0.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -90,6 +90,12 @@
     <Reference Include="CookComputing.XmlRpcV2">
       <HintPath>..\vendors\cookcomputing\CookComputing.XmlRpcV2.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\weavver.git\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\weavver.git\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="LumenWorks.Framework.IO, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\vendors\lumenworks\LumenWorks.Framework.IO.dll</HintPath>
@@ -101,10 +107,10 @@
       <HintPath>..\vendors\mysql\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="nsoftware.InEBank">
-      <HintPath>..\vendors\nsoftware\nsoftware.InEBank.dll</HintPath>
+      <HintPath>C:\Program Files\nsoftware\E-Banking Integrator V4 .NET Edition\lib\nsoftware.InEBank.dll</HintPath>
     </Reference>
     <Reference Include="nsoftware.InEBank.System">
-      <HintPath>..\vendors\nsoftware\nsoftware.InEBank.System.dll</HintPath>
+      <HintPath>C:\Program Files\nsoftware\E-Banking Integrator V4 .NET Edition\lib\nsoftware.InEBank.System.dll</HintPath>
     </Reference>
     <Reference Include="OpenPop">
       <HintPath>..\vendors\openpop\OpenPop.dll</HintPath>
@@ -121,7 +127,6 @@
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
@@ -155,12 +160,93 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeFirst\Accounting_AccountBalances.cs" />
+    <Compile Include="CodeFirst\Accounting_Accounts.cs" />
+    <Compile Include="CodeFirst\Accounting_Checks.cs" />
+    <Compile Include="CodeFirst\Accounting_CreditCards.cs" />
+    <Compile Include="CodeFirst\Accounting_LedgerItems.cs" />
+    <Compile Include="CodeFirst\Accounting_LedgerItemTags.cs" />
+    <Compile Include="CodeFirst\Accounting_OFXSettings.cs" />
+    <Compile Include="CodeFirst\Accounting_Reconciliations.cs" />
+    <Compile Include="CodeFirst\Accounting_RecurringBillables.cs" />
+    <Compile Include="CodeFirst\aspnet_Applications.cs" />
+    <Compile Include="CodeFirst\aspnet_Membership.cs" />
+    <Compile Include="CodeFirst\aspnet_Paths.cs" />
+    <Compile Include="CodeFirst\aspnet_PersonalizationAllUsers.cs" />
+    <Compile Include="CodeFirst\aspnet_PersonalizationPerUser.cs" />
+    <Compile Include="CodeFirst\aspnet_Profile.cs" />
+    <Compile Include="CodeFirst\aspnet_Roles.cs" />
+    <Compile Include="CodeFirst\aspnet_SchemaVersions.cs" />
+    <Compile Include="CodeFirst\aspnet_Users.cs" />
+    <Compile Include="CodeFirst\aspnet_WebEvent_Events.cs" />
+    <Compile Include="CodeFirst\CMS_Pages.cs" />
+    <Compile Include="CodeFirst\CommEngines_Asterisk.cs" />
+    <Compile Include="CodeFirst\Communication_EmailAccounts.cs" />
+    <Compile Include="CodeFirst\Communication_Emails.cs" />
+    <Compile Include="CodeFirst\Communication_Messages.cs" />
+    <Compile Include="CodeFirst\Communication_MessageTemplates.cs" />
+    <Compile Include="CodeFirst\CustomerService_Tickets.cs" />
+    <Compile Include="CodeFirst\Data_AuditTrails.cs" />
+    <Compile Include="CodeFirst\Data_Links.cs" />
+    <Compile Include="CodeFirst\Data_RowLookups.cs" />
+    <Compile Include="CodeFirst\HR_Applications.cs" />
+    <Compile Include="CodeFirst\HR_Jobs.cs" />
+    <Compile Include="CodeFirst\HR_Staff.cs" />
+    <Compile Include="CodeFirst\HR_Tasks.cs" />
+    <Compile Include="CodeFirst\HR_TimeLogs.cs" />
+    <Compile Include="CodeFirst\IT_DownloadLogs.cs" />
+    <Compile Include="CodeFirst\IT_IPAddresses.cs" />
+    <Compile Include="CodeFirst\IT_NetworkAlerts.cs" />
+    <Compile Include="CodeFirst\IT_RemotePowerUnits.cs" />
+    <Compile Include="CodeFirst\IT_Servers.cs" />
+    <Compile Include="CodeFirst\IT_WebTraffic.cs" />
+    <Compile Include="CodeFirst\KnowledgeBase.cs" />
+    <Compile Include="CodeFirst\Legal_Agreements.cs" />
+    <Compile Include="CodeFirst\Logistics_Addresses.cs" />
+    <Compile Include="CodeFirst\Logistics_Board.cs" />
+    <Compile Include="CodeFirst\Logistics_DIDs.cs" />
+    <Compile Include="CodeFirst\Logistics_FeatureOptions.cs" />
+    <Compile Include="CodeFirst\Logistics_Features.cs" />
+    <Compile Include="CodeFirst\Logistics_Inventory.cs" />
+    <Compile Include="CodeFirst\Logistics_Organizations.cs" />
+    <Compile Include="CodeFirst\Logistics_Products.cs" />
+    <Compile Include="CodeFirst\Logistics_ProductsTemp.cs" />
+    <Compile Include="CodeFirst\Logistics_Projects.cs" />
+    <Compile Include="CodeFirst\Logistics_Stock.cs" />
+    <Compile Include="CodeFirst\Marketing_Blogs.cs" />
+    <Compile Include="CodeFirst\Marketing_PressReleases.cs" />
+    <Compile Include="CodeFirst\Sales_Discounts.cs" />
+    <Compile Include="CodeFirst\Sales_Leads.cs" />
+    <Compile Include="CodeFirst\Sales_LicenseKeyActivations.cs" />
+    <Compile Include="CodeFirst\Sales_LicenseKeys.cs" />
+    <Compile Include="CodeFirst\Sales_Orders.cs" />
+    <Compile Include="CodeFirst\Sales_Plans.cs" />
+    <Compile Include="CodeFirst\Sales_Resellers.cs" />
+    <Compile Include="CodeFirst\Sales_ShoppingCartItems.cs" />
+    <Compile Include="CodeFirst\ShowAllTrigger.cs" />
+    <Compile Include="CodeFirst\Source_Patches.cs" />
+    <Compile Include="CodeFirst\sysdiagram.cs" />
+    <Compile Include="CodeFirst\System_Tests.cs" />
+    <Compile Include="CodeFirst\System_URLs.cs" />
+    <Compile Include="CodeFirst\System_Users.cs" />
+    <Compile Include="CodeFirst\Vendors_PayPal_IPNs.cs" />
+    <Compile Include="CodeFirst\vw_aspnet_Applications.cs" />
+    <Compile Include="CodeFirst\vw_aspnet_MembershipUsers.cs" />
+    <Compile Include="CodeFirst\vw_aspnet_Profiles.cs" />
+    <Compile Include="CodeFirst\vw_aspnet_Roles.cs" />
+    <Compile Include="CodeFirst\vw_aspnet_Users.cs" />
+    <Compile Include="CodeFirst\vw_aspnet_UsersInRoles.cs" />
+    <Compile Include="CodeFirst\vw_aspnet_WebPartState_Paths.cs" />
+    <Compile Include="CodeFirst\vw_aspnet_WebPartState_Shared.cs" />
+    <Compile Include="CodeFirst\vw_aspnet_WebPartState_User.cs" />
     <Compile Include="Data\Attributes\ColumnGroup.cs" />
     <Compile Include="Data\Attributes\CSSAttribute.cs" />
+    <Compile Include="Data\ExtensionMethods\StringExtensions.cs" />
     <Compile Include="Data\Interfaces\IOrderEvents.cs" />
     <Compile Include="Data\Interfaces\ISales_OrderForm.cs" />
     <Compile Include="Data\Interfaces\IValidatorException.cs" />
     <Compile Include="Data\Interfaces\IWeavverEntityContainerExtender.cs" />
+    <Compile Include="Data\WeavverEntityContainerSeed.cs" />
     <Compile Include="Hooks\Communication_Messages.cs" />
     <Compile Include="Importers\Accounting_RecurringBillables.cs" />
     <Compile Include="Model\Accounting_OFXLedgerItem.cs" />
@@ -230,6 +316,7 @@
     <Compile Include="Utilities\DateTimeHelper.cs" />
     <Compile Include="Utilities\InstallerHelper.cs" />
     <Compile Include="Utilities\QRUtility.cs" />
+    <Compile Include="Data\WeavverEntityContainer.cs" />
     <Compile Include="Workflows\Extensions\GetFeed.cs" />
     <Compile Include="Workflows\Extensions\SendMail.cs" />
     <Compile Include="Workflows\Extensions\WebResponse.cs" />
@@ -251,7 +338,7 @@
     <Compile Include="Model\Logistics_Products.cs" />
     <Compile Include="Model\Legal_Agreements.cs" />
     <Compile Include="Model\System_Settings.cs" />
-    <Compile Include="Model\HR_Task.cs" />
+    <Compile Include="Model\HR_Tasks.cs" />
     <Compile Include="Model\HR_Staff.cs" />
     <Compile Include="Data\AttributeExtensionMethods.cs" />
     <Compile Include="Data\Attributes\SecureColumnAttribute.cs" />
@@ -281,11 +368,6 @@
     <Compile Include="Model\Logistics_Organizations.cs" />
     <Compile Include="Hooks\HTTP.cs" />
     <Compile Include="Data\WeavverEntityContext.cs" />
-    <Compile Include="Data\WeavverEntityContainer.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WeavverEntityContainer.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -301,9 +383,9 @@
     <Compile Include="Model\Communication_MessageTemplates.cs" />
     <Compile Include="Utilities\NumberConvertor.cs" />
     <Compile Include="Workflows\WorkflowData.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>WorkflowData.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -324,19 +406,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Data\WeavverEntityContainer.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WeavverEntityContainer.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="App-default.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="Weavver.Data.snk" />
-    <EntityDeploy Include="Workflows\WorkflowData.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WorkflowData.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Weavver.Data.WeavverEntityContainer.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -349,55 +423,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Exports\Sales_Order_Invoice.rdlc" />
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="Workflows\Accounting_PayBills.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="Workflows\Sales_Leads.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="Workflows\HR_HireConsultant.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
-    <XamlAppDef Include="Workflows\Accounting_ReimbursementRequest.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="Workflows\HR_FieldChangeRequested.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="Workflows\System_UserRegistration.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="Workflows\HR_Task.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="Workflows\Sales_Order.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
+    <EmbeddedResource Include="licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\moksha\interface\Weavver Moksha Interface.csproj">
@@ -419,6 +449,13 @@
     <Content Include="Units\Notes.sql" />
     <Content Include="Units\Test.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Workflows\WorkflowData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WorkflowData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

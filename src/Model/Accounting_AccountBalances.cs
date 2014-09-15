@@ -13,7 +13,7 @@ namespace Weavver.Data
      //[SecureTable(TableView.List, "Administrators", "Accountants")]
      //[SecureTable(RowView.Edit, "Administrators", "Accountants")]
      //[SecureTable(RowView.Details, "Administrators", "Accountants")]
-     partial class Accounting_AccountBalances : INavigationActions
+     partial class Accounting_AccountBalances// : INavigationActions
      {
           public class Metadata
           {
@@ -38,22 +38,22 @@ namespace Weavver.Data
                public object Balance;
           }
 //-------------------------------------------------------------------------------------------
-          [DynamicDataWebMethod("Ledger", "Accountants")]
-          public DynamicDataWebMethodReturnType Receivables()
-          {
-               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
-               ret.RedirectRequest = true;
-               ret.RedirectURL = "/Accounting_LedgerItems/List.aspx?AccountId=" + AccountId.ToString() + "&LedgerType=" + LedgerType.ToString();
-               return ret;
-          }
-//-------------------------------------------------------------------------------------------
-          public string DetailURL
-          {
-               get
-               {
-                    return "/Accounting_LedgerItems/List.aspx?AccountId=" + AccountId.ToString() + "&LedgerType=" + LedgerType.ToString();
-               }
-          }
+//          [DynamicDataWebMethod("Ledger", "Accountants")]
+//          public DynamicDataWebMethodReturnType Receivables()
+//          {
+//               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
+//               ret.RedirectRequest = true;
+//               ret.RedirectURL = "~/Accounting_LedgerItems/List.aspx?AccountId=" + AccountId.ToString() + "&LedgerType=" + LedgerType.ToString();
+//               return ret;
+//          }
+////-------------------------------------------------------------------------------------------
+//          public string DetailURL
+//          {
+//               get
+//               {
+//                    return "~/Accounting_LedgerItems/List.aspx?AccountId=" + AccountId.ToString() + "&LedgerType=" + LedgerType.ToString();
+//               }
+//          }
 //-------------------------------------------------------------------------------------------
           public string ListURL
           {

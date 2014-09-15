@@ -22,8 +22,8 @@ namespace Weavver.Data
                [ScaffoldColumn(false)]
                public object Id;
 
-               [ScaffoldColumn(false)]
-               public object Logistics_Organizations;
+               //[ScaffoldColumn(false)]
+               //public object Logistics_Organizations;
 
                [Display(Name = "File Name")]
                public object FileName;
@@ -34,8 +34,8 @@ namespace Weavver.Data
                [Display(Name = "Downloaded By IP")]
                public object DownloadedByIP;
 
-               [Display(Name="Downloaded By")]
-               public object System_Users;
+               //[Display(Name="Downloaded By")]
+               //public object System_Users;
           }
 //-------------------------------------------------------------------------------------------
           [DynamicDataWebMethod("Geo-locate the IP", "IT Staff")]

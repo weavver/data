@@ -15,7 +15,7 @@ namespace Weavver.Data
      [DataAccess(RowView.Details, "Administrators")]
      [DataAccess(RowAction.Delete, "Administrators")]
      [DataAccess(RowAction.Insert, "Administrators")]
-     partial class System_Tests : IAuditable, INotifyPropertyChanged
+     partial class System_Tests : IAuditable, INotifyPropertyChanged, INotifyPropertyChanging
      {
           public class Metadata
           {
@@ -54,10 +54,10 @@ namespace Weavver.Data
                }
                set
                {
-                    ReportPropertyChanging("LastRunDateTime");
+                    OnPropertyChanging("LastRunDateTime");
                     lastRunDateTime = value;
-                    ReportPropertyChanged("LastRunDateTime");
-                    ReportPropertyChanged("LastRun");
+                    OnPropertyChanged("LastRunDateTime");
+                    OnPropertyChanged("LastRun");
                }
           }
 //-------------------------------------------------------------------------------------------
@@ -69,10 +69,10 @@ namespace Weavver.Data
                }
                set
                {
-                    ReportPropertyChanging("StartDateTime");
+                    OnPropertyChanging("StartDateTime");
                     startDateTime = value;
-                    ReportPropertyChanged("StartDateTime");
-                    ReportPropertyChanged("LastRun");
+                    OnPropertyChanged("StartDateTime");
+                    OnPropertyChanged("LastRun");
                }
           }
 //-------------------------------------------------------------------------------------------
@@ -84,10 +84,10 @@ namespace Weavver.Data
                }
                set
                {
-                    ReportPropertyChanging("EndDateTime");
+                    OnPropertyChanging("EndDateTime");
                     endDateTime = value;
-                    ReportPropertyChanged("EndDateTime");
-                    ReportPropertyChanged("LastRun");
+                    OnPropertyChanged("EndDateTime");
+                    OnPropertyChanged("LastRun");
                }
           }
 //-------------------------------------------------------------------------------------------
@@ -138,5 +138,28 @@ namespace Weavver.Data
                Log += message;
           }
 //-------------------------------------------------------------------------------------------
+          public event PropertyChangedEventHandler PropertyChanged;
+
+          public event PropertyChangingEventHandler PropertyChanging;
+
+          // Create the OnPropertyChanged method to raise the event 
+          protected void OnPropertyChanged(string name)
+          {
+               PropertyChangedEventHandler handler = PropertyChanged;
+               if (handler != null)
+               {
+                    handler(this, new PropertyChangedEventArgs(name));
+               }
+          }
+
+          // Create the OnPropertyChanging method to raise the event 
+          protected void OnPropertyChanging(string name)
+          {
+               PropertyChangingEventHandler handler = PropertyChanging;
+               if (handler != null)
+               {
+                    handler(this, new PropertyChangingEventArgs(name));
+               }
+          }
      }
 }

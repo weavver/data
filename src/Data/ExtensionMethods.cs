@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.DynamicData;
 using System.Web.UI;
 using System.ComponentModel;
-using System.Data.Objects.DataClasses;
+using System.Data.Entity.Core.Objects.DataClasses;
 
 namespace Weavver.Data
 {
@@ -65,7 +65,7 @@ namespace Weavver.Data
                return defaultInsertPermissions;
           }
 //-------------------------------------------------------------------------------------------
-          public static DataAccess ReadPermissions(this EntityObject obj)
+          public static DataAccess ReadPermissions(this object obj)
           {
                DataAccess[] atts = (DataAccess[])obj.GetType().GetCustomAttributes(typeof(DataAccess), true);
                foreach (DataAccess da in atts)
@@ -78,7 +78,7 @@ namespace Weavver.Data
                return null;
           }
 //-------------------------------------------------------------------------------------------
-          public static DataAccess UpdatePermissions(this EntityObject obj)
+          public static DataAccess UpdatePermissions(this object obj)
           {
                DataAccess[] atts = (DataAccess[])obj.GetType().GetCustomAttributes(typeof(DataAccess), true);
                foreach (DataAccess da in atts)
@@ -93,7 +93,7 @@ namespace Weavver.Data
                return defaultUpdatePermissions;
           }
 //-------------------------------------------------------------------------------------------
-          public static DataAccess DeletePermissions(this EntityObject obj)
+          public static DataAccess DeletePermissions(this object obj)
           {
                DataAccess[] atts = (DataAccess[])obj.GetType().GetCustomAttributes(typeof(DataAccess), true);
                foreach (DataAccess da in atts)
@@ -125,6 +125,7 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
      public static class EntityDataSourceExtensions
      {
+//-------------------------------------------------------------------------------------------
           public static TEntity GetItemObject<TEntity>(object dataItem)
               where TEntity : class
           {
@@ -140,6 +141,17 @@ namespace Weavver.Data
                }
                return null;
           }
+//-------------------------------------------------------------------------------------------
+          public static object GetEntity(this object dataItem)
+          {
+               var td = dataItem as ICustomTypeDescriptor;
+
+               if (td != null)
+                    return td.GetPropertyOwner(null);
+
+               return null;
+          }
+//-------------------------------------------------------------------------------------------
      }
 //-------------------------------------------------------------------------------------------
 }

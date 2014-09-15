@@ -74,8 +74,12 @@ CREATE FUNCTION [dbo].[Sales_LicenseKeys_Activations] (@licenseKeyId UNIQUEIDENT
      RETURNS INT AS EXTERNAL NAME [Weavver.DAL].[UserDefinedFunctions].[Sales_LicenseKeys_Activations]
 GO
 
+DROP PROCEDURE QueueHttpPost
+GO
+
 ALTER TABLE Accounting_Accounts ADD Balance AS (dbo.Total_ForLedger(OrganizationId,Id,LedgerType,1,1,0,null,null))
 ALTER TABLE Accounting_Accounts ADD AvailableBalance AS (dbo.Total_ForLedger(OrganizationId,Id,LedgerType,1,1,1,null,null))
+ALTER TABLE Accounting_Checks ADD PayeeName AS (dbo.GetName(AccountId))
 ALTER TABLE Accounting_LedgerItems ADD AccountName AS (dbo.GetName(AccountId))
 --ALTER TABLE Accounting_RecurringBillables ADD AccountFromName AS (dbo.GetName(AccountFrom))
 --ALTER TABLE Accounting_RecurringBillables ADD AccountToName AS (dbo.GetName(AccountTo))
@@ -93,29 +97,55 @@ IF OBJECT_ID ('Accounting_OrganizationPnL_ByMonth', 'V') IS NOT NULL
 DROP VIEW Accounting_OrganizationPnL_ByMonth
 GO
 CREATE VIEW
-	Accounting_OrganizationPnL_ByMonth
+     Accounting_OrganizationPnL_ByMonth
 AS
 select OrganizationId,
 year(dbo.LocalizeDT(PostAt)) as 'Year',
 month(dbo.LocalizeDT(PostAt)) as 'M',
-	isnull((select sum(amount) from Accounting_LedgerItems li1
-		where
-		  li1.OrganizationId = li.OrganizationId and
+     isnull((select sum(amount) from Accounting_LedgerItems li1
+          where
+            li1.OrganizationId = li.OrganizationId and
           li1.LedgerType = 'Receivable' and
-		  li1.Code='Sale' and
+            li1.Code='Sale' and
           month(dbo.LocalizeDT(li1.PostAt)) = month(dbo.LocalizeDT(li.PostAt)) and
           year(dbo.LocalizeDT(li1.PostAt)) = year(dbo.LocalizeDT(li.PostAt))
           ), 0) - 
-	isnull((select sum(amount) from Accounting_LedgerItems li2
-			where
-			  li2.OrganizationId = li.OrganizationId and
-			  li2.LedgerType = 'Payable' and
-			  li2.Code='Purchase' and
-			  month(dbo.LocalizeDT(li2.PostAt)) = month(dbo.LocalizeDT(li.PostAt)) and
-			  year(dbo.LocalizeDT(li2.PostAt)) = year(dbo.LocalizeDT(li.PostAt))
-		  ), 0) as 'Balance'
+     isnull((select sum(amount) from Accounting_LedgerItems li2
+               where
+                 li2.OrganizationId = li.OrganizationId and
+                 li2.LedgerType = 'Payable' and
+                 li2.Code='Purchase' and
+                 month(dbo.LocalizeDT(li2.PostAt)) = month(dbo.LocalizeDT(li.PostAt)) and
+                 year(dbo.LocalizeDT(li2.PostAt)) = year(dbo.LocalizeDT(li.PostAt))
+            ), 0) as 'Balance'
 from Accounting_LedgerItems li
 Group By OrganizationId,
 year(dbo.LocalizeDT(PostAt)),
 month(dbo.LocalizeDT(PostAt))
+GO
+
+
+CREATE PROCEDURE QueueHttpPost
+     @messageBody NVARCHAR(MAX)
+AS
+     -- Begin Dialog using service on contract
+     DECLARE @SBDialog uniqueidentifier
+     BEGIN DIALOG CONVERSATION @SBDialog
+          FROM SERVICE SBSendService
+          TO SERVICE 'SBReceiveService'
+          ON CONTRACT SBContract
+          WITH ENCRYPTION = OFF;
+     SEND ON CONVERSATION @SBDialog
+          MESSAGE TYPE SBMessage (@messageBody)
+GO
+
+ALTER QUEUE SBReceiveQueue
+    WITH STATUS = ON,
+         ACTIVATION
+         (
+           STATUS = ON,
+           PROCEDURE_NAME = HttpPost,
+           MAX_QUEUE_READERS = 10,
+           EXECUTE AS SELF
+         );
 GO

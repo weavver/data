@@ -21,7 +21,7 @@ namespace Weavver.Testing.Accounting
                                         where x.Id == testObjectId
                                         select x).FirstOrDefault();
 
-                    data.Detach(ofxSettings);
+                    data.Entry(ofxSettings).State = System.Data.Entity.EntityState.Detached;
 
                     Assert.IsNotNull(ofxSettings, "could not get the ofx testing object");
 

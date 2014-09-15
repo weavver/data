@@ -7,6 +7,7 @@ using Weavver.Data;
 using nsoftware.InEBank;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Weavver.Data
 {
@@ -25,6 +26,7 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           private PayeeDetailList _RemotePayees = null;
 //-------------------------------------------------------------------------------------------
+          [NotMapped]
           public PayeeDetailList RemotePayees
           {
                get
@@ -214,7 +216,7 @@ namespace Weavver.Data
                                                 where x.Id == AccountId.Value
                                                 select x).FirstOrDefault();
 
-                    data.Accounting_Accounts.Detach(acct);
+                    data.Entry(acct).State = System.Data.Entity.EntityState.Detached;
                     return acct;
                }
           }
@@ -479,7 +481,7 @@ namespace Weavver.Data
                return ret;
           }
 //-------------------------------------------------------------------------------------------
-          [DynamicDataWebMethod("Update Cached Balances", "Administrators", "Accountants")]
+          [DynamicDataWebMethod("Run Import", "Administrators", "Accountants")]
           public DynamicDataWebMethodReturnType UpdateCachedBalances()
           {
                // call UpdateCachedBalances() instead ??

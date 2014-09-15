@@ -44,7 +44,7 @@ namespace Weavver.Data
                public object CheckNumber;
 
                [Display(Name="Payee", Order=11)]
-               public object PayeeAccount;
+               public object PayeeName;
 
                [Display(Order=20)]
                [DefaultValue("[no memo]")]
@@ -66,6 +66,9 @@ namespace Weavver.Data
 
                [ScaffoldColumn(false)]
                public object Logistics_Organizations;
+
+               [ScaffoldColumn(false)]
+               public object Logistics_Organizations1;
           }
 //-------------------------------------------------------------------------------------------
           public Logistics_Addresses BillingAddress
@@ -87,18 +90,6 @@ namespace Weavver.Data
                          return addressObject;
                     }
                     return null;
-               }
-          }
-//-------------------------------------------------------------------------------------------
-          public string PayeeName
-          {
-               get
-               {
-                    using (WeavverEntityContainer data = new WeavverEntityContainer())
-                    {
-                         return data.GetName(Payee).ToString();
-                    }
-                    return "unknown";
                }
           }
 //-------------------------------------------------------------------------------------------

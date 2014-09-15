@@ -43,9 +43,9 @@ namespace Weavver.Data
                [Display(Name = "Created At")]
                public object CreatedAt;
 
-               [Display(Name = "Created By")]
-               [ReadOnly(true)]
-               public object System_Users_CreatedBy;
+               //[Display(Name = "Created By")]
+               //[ReadOnly(true)]
+               //public object System_Users_CreatedBy;
 
                [ReadOnly(true)]
                //[ScaffoldColumn(true)]
@@ -57,9 +57,9 @@ namespace Weavver.Data
                [Display(Name = "Created By")]
                public object CreatedBy;
 
-               [Display(Name="Updated By")]
-               [ReadOnly(true)]
-               public object System_Users_UpdatedBy;
+               //[Display(Name="Updated By")]
+               //[ReadOnly(true)]
+               //public object System_Users_UpdatedBy;
 
                //[ReadOnly(true)]
                //[ScaffoldColumn(true)]

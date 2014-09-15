@@ -36,8 +36,8 @@ namespace Weavver.Data
                [UIHint("Code")]
                public object HTMLBody;
 
-               [ScaffoldColumn(false)]
-               public object Logistics_Organizations;
+               //[ScaffoldColumn(false)]
+               //public object Logistics_Organizations;
 
                [ReadOnly(true)]
                [Display(Name = "Created At")]

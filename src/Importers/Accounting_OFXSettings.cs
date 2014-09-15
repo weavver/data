@@ -25,7 +25,7 @@ namespace Weavver.Data
 
                     foreach (Accounting_OFXSettings ofxSetting in data.Accounting_OFXSettings)
                     {
-                         data.Accounting_OFXSettings.Detach(ofxSetting);
+                         data.Entry(ofxSetting).State = System.Data.Entity.EntityState.Detached;
 
                          // 1. Only import Bill Payment data for checking accounts
                          // We do this before ImportingLedgerItems so we can sync the check numbers
@@ -46,28 +46,21 @@ namespace Weavver.Data
           {
                AvailableBalance = 0.0m;
                LedgerBalance = 0.0m;
-               try
+               DateTime startDate = DateTime.Now.Subtract(TimeSpan.FromDays(5));
+               DateTime endDate = DateTime.Now;
+               if (account.LedgerType == LedgerType.CreditCard.ToString())
                {
-                    DateTime startDate = DateTime.Now.Subtract(TimeSpan.FromDays(5));
-                    DateTime endDate = DateTime.Now;
-                    if (account.LedgerType == LedgerType.CreditCard.ToString())
-                    {
-                         Ccstatement statement = GetCreditCardStatement(account, startDate, endDate);
-                         Decimal.TryParse(statement.AvailableBalance, out AvailableBalance);
-                         Decimal.TryParse(statement.LedgerBalance, out LedgerBalance);
-                    }
-                    else
-                    {
-                         Bankstatement statement = GetBankStatement(account, startDate, endDate);
-                         Decimal.TryParse(statement.AvailableBalance, out AvailableBalance);
-                         Decimal.TryParse(statement.LedgerBalance, out LedgerBalance);
-                    }
-                    return true;
+                    Ccstatement statement = GetCreditCardStatement(account, startDate, endDate);
+                    Decimal.TryParse(statement.AvailableBalance, out AvailableBalance);
+                    Decimal.TryParse(statement.LedgerBalance, out LedgerBalance);
                }
-               catch (Exception ex)
+               else
                {
-                    return false;
+                    Bankstatement statement = GetBankStatement(account, startDate, endDate);
+                    Decimal.TryParse(statement.AvailableBalance, out AvailableBalance);
+                    Decimal.TryParse(statement.LedgerBalance, out LedgerBalance);
                }
+               return true;
           }
 //-------------------------------------------------------------------------------------------
           private Billpayment GetOFXBillPaymentObject()
@@ -130,7 +123,7 @@ namespace Weavver.Data
                               check.Memo = remotePayment.Memo;
                               check.Amount = Decimal.Parse(remotePayment.Amount);
 
-                              data.Accounting_Checks.AddObject(check);
+                              data.Accounting_Checks.Add(check);
                          }
                          else
                          {
@@ -210,7 +203,7 @@ namespace Weavver.Data
                     {
                          if (!item.HasBeenImported)
                          {
-                              data.Accounting_LedgerItems.AddObject(item.LedgerItem);
+                              data.Accounting_LedgerItems.Add(item.LedgerItem);
                          }
                     }
                     LastSuccessfulConnection = DateTime.UtcNow;

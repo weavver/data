@@ -37,8 +37,8 @@ namespace Weavver.Data
                [ReadOnly(true)]
                public object CreatedAt;
 
-               [ReadOnly(true)]
-               public object System_Users;
+               //[ReadOnly(true)]
+               //public object System_Users;
           }
      }
 }

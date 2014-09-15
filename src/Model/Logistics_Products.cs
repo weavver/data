@@ -29,10 +29,10 @@ namespace Weavver.Data
                [FilterUIHint("String")]
                public object Name;
 
-               [Display(Name = "Features", Order = 2)]
-               [DisplayFormat(DataFormatString = "View")]
-               [HideColumnIn(PageTemplate.List)]
-               public object Logistics_Features;
+               //[Display(Name = "Features", Order = 2)]
+               //[DisplayFormat(DataFormatString = "View")]
+               //[HideColumnIn(PageTemplate.List)]
+               //public object Logistics_Features;
 
                [ColumnGroup("Marketing")]
                [Display(Order = 10)]

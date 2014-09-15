@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.Objects;
 using System.Web.Security;
 using System.Configuration;
+using System.Data.Entity.Infrastructure;
 
 namespace Weavver.Data
 {
@@ -42,9 +42,9 @@ namespace Weavver.Data
                return guid;
           }
 //-------------------------------------------------------------------------------------------
-          internal static void ProcessAuditFields(IEnumerable<Object> list, bool InsertMode = true)
+          internal static void ProcessAuditFields(IEnumerable<DbEntityEntry> list, bool InsertMode = true)
           {
-               foreach (ObjectStateEntry item in list)
+               foreach (DbEntityEntry item in list)
                {
                     var entity = item.Entity as IAuditable;
                     if (entity != null)
@@ -60,7 +60,10 @@ namespace Weavver.Data
                                         auditEntity.Id = Guid.NewGuid(); // alternative method: http://leedumond.com/blog/using-a-guid-as-an-entitykey-in-entity-framework-4/
                                    //  or [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // http://stackoverflow.com/questions/5270721/using-guid-as-pk-with-ef4-code-first
                                    // auditEntity.OrganizationId = Session["OrganizationId"] = HttpContext.Current.Session["SelectedOrganizationId"];
-                                   auditEntity.OrganizationId = GetOrganizationId(); // new Guid("0baae579-dbd8-488d-9e51-dd4dd6079e95");
+                                   
+                                   // we do this to enforce security so data can't be inserted into an organization that we are not associated with
+                                   // -- warning this is currently buggy and disabled it's changing system_user row's organizationid to organizations that they do not belong to
+                                   //auditEntity.OrganizationId = GetOrganizationId();
                                    auditEntity.CreatedAt = DateTime.Now.ToUniversalTime();
 
                                    if (auditEntity.CreatedBy == Guid.Empty)

@@ -57,9 +57,9 @@ namespace Weavver.Data
                [Display(Name = "Vanity URL", Order=60)]
                public object VanityURL;
 
-               [Display(Name = "Billing Address", Order = 70)]
-               [HideColumnIn(PageTemplate.List)]
-               public object BillingAddressFK;
+               //[Display(Name = "Billing Address", Order = 70)]
+               //[HideColumnIn(PageTemplate.List)]
+               //public object BillingAddressFK;
 
                [ColumnGroup("Financials")]
                [Display(Order = 35)]
@@ -168,11 +168,11 @@ namespace Weavver.Data
                [ScaffoldColumn(false)]
                public object Marketing_Blogs;
 
-               [ScaffoldColumn(false)]
-               public object Logistics_Organizations1;
+               //[ScaffoldColumn(false)]
+               //public object Logistics_Organizations1;
 
-               [ScaffoldColumn(false)]
-               public object Logistics_Organizations2;
+               //[ScaffoldColumn(false)]
+               //public object Logistics_Organizations2;
 
                [ScaffoldColumn(false)]
                public object Accounting_Checks;
@@ -198,8 +198,8 @@ namespace Weavver.Data
                [ScaffoldColumn(false)]
                public object Accounting_RecurringBillables2;
 
-               [ScaffoldColumn(false)]
-               public object Accounting_Accounts_1;
+               //[ScaffoldColumn(false)]
+               //public object Accounting_Accounts_1;
 
                [ReadOnly(true)]
                [Display(Name = "Created By")]

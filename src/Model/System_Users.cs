@@ -24,7 +24,7 @@ namespace Weavver.Data
           public class Metadata
           {
                [ScaffoldColumn(false)]
-               public object Id;
+               public Guid Id;
 
                [Display(Name="Email Address")]
                [FilterUIHint("String")]
@@ -105,20 +105,20 @@ namespace Weavver.Data
                [ReadOnly(true)]
                public object UpdatedBy;
 
-               [HideColumnIn(PageTemplate.List)]
-               public object IT_DownloadLogs;
+               //[HideColumnIn(PageTemplate.List)]
+               //public object IT_DownloadLogs;
 
-               [ScaffoldColumn(false)]
-               public object KnowledgeBases;
+               //[ScaffoldColumn(false)]
+               //public object KnowledgeBases;
 
-               [ScaffoldColumn(false)]
-               public object KnowledgeBases1;
+               //[ScaffoldColumn(false)]
+               //public object KnowledgeBases1;
 
-               [ScaffoldColumn(false)]
-               public object Accounting_LedgerItems;
+               //[ScaffoldColumn(false)]
+               //public object Accounting_LedgerItems;
 
-               [ScaffoldColumn(false)]
-               public object Accounting_LedgerItems1;
+               //[ScaffoldColumn(false)]
+               //public object Accounting_LedgerItems1;
 
                [ScaffoldColumn(false)]
                public object CMS_Pages;
@@ -135,8 +135,8 @@ namespace Weavver.Data
                [ScaffoldColumn(false)]
                public object System_URLs1;
                
-               [ScaffoldColumn(false)]
-               public object Data_AuditTrails;
+               //[ScaffoldColumn(false)]
+               //public object Data_AuditTrails;
                
                [ScaffoldColumn(false)]
                public object Communication_EmailAccounts;
@@ -238,6 +238,7 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           public void Validate(out bool Valid, out string ErrorMessage)
           {
+               System_Users x;
                MembershipUser memUser = Membership.GetUser(Username);
                if (memUser != null)
                {

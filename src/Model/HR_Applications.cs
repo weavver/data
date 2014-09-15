@@ -22,8 +22,8 @@ namespace Weavver.Data
                [ScaffoldColumn(false)]
                public object Id;
 
-               [ScaffoldColumn(false)]
-               public object Logistics_Organizations;
+               //[ScaffoldColumn(false)]
+               //public object Logistics_Organizations;
 
                [Display(Name = "Email Address")]
                public object EmailAddress;

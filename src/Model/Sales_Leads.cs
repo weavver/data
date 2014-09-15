@@ -21,10 +21,10 @@ namespace Weavver.Data
                [ScaffoldColumn(false)]
                public object Id;
 
-               [Display(Name = "Organization", Order = 0)]
-               [ReadOnly(true)]
-               [SecureColumn(ColumnActions.DenyRead, "Guest")]
-               public object Logistics_Organizations;
+               //[Display(Name = "Organization", Order = 0)]
+               //[ReadOnly(true)]
+               //[SecureColumn(ColumnActions.DenyRead, "Guest")]
+               //public object Logistics_Organizations;
 
                [Display(Name = "Source", Order=1)]
                public object Source;

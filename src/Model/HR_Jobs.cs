@@ -67,17 +67,28 @@ namespace Weavver.Data
                return ret;
           }
 //-------------------------------------------------------------------------------------------
+          [DynamicDataWebMethod("Apply 2", "Administrators")]
+          public DynamicDataWebMethodReturnType Apply2()
+          {
+               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
+               ret.RedirectRequest = true;
+               ret.RedirectWidth = 800;
+               ret.RedirectHeight = 500;
+               ret.RedirectURL = "~/HR_Applications/Details.aspx";
+               return ret;
+          }
+//-------------------------------------------------------------------------------------------
           public static List<WeavverMenuItem> GetTableMenu()
           {
                List<WeavverMenuItem> items = new List<WeavverMenuItem>();
 
                //if (HttpContext.Current.User.IsInRole("Administrators"))
-               {
-                    WeavverMenuItem item = new WeavverMenuItem();
-                    item.Name = "Apply";
-                    item.Link = "~/HR_Applications/Details.aspx";
-                    items.Add(item);
-               }
+               //{
+               //     WeavverMenuItem item = new WeavverMenuItem();
+               //     item.Name = "Apply";
+               //     item.Link = "~/HR_Applications/Details.aspx";
+               //     items.Add(item);
+               //}
                return items;
           }
 //-------------------------------------------------------------------------------------------

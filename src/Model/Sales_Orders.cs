@@ -9,7 +9,8 @@ using System.IO;
 
 using Weavver.Utilities;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
+using System.Data.Entity.Core.Objects;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Weavver.Data
 {
@@ -41,8 +42,8 @@ namespace Weavver.Data
                [FilterUIHint("String")]
                public object Status;
 
-               [Display(Name = "Orderee", Order = 4)]
-               public object OrdereeData;
+               //[Display(Name = "Orderee", Order = 4)]
+               //public object OrdereeData;
 
                [DisplayFormat(DataFormatString = "{0:C}")]
                [Display(Order = 5)]
@@ -87,10 +88,10 @@ namespace Weavver.Data
                [ColumnGroup("Primary Contact")]
                public object PrimaryContactPhoneExt;
 
-               [Display(Name = "Address", Order = 16)]
-               [HideColumnIn(PageTemplate.List)]
-               [ColumnGroup("Primary Contact")]
-               public object PrimaryContactAddressData;
+               //[Display(Name = "Address", Order = 16)]
+               //[HideColumnIn(PageTemplate.List)]
+               //[ColumnGroup("Primary Contact")]
+               //public object PrimaryContactAddressData;
 
                [ColumnGroupAttribute("Billing Contact")]
                [Display(Name = "First Name", Order = 20)]
@@ -128,10 +129,10 @@ namespace Weavver.Data
                [FilterUIHint("String")]
                public object BillingContactPhoneExt;
 
-               [ColumnGroupAttribute("Billing Contact")]
-               [Display(Name = "Address", Order = 26)]
-               [HideColumnIn(PageTemplate.List)]
-               public object BillingContactAddressData;
+               //[ColumnGroupAttribute("Billing Contact")]
+               //[Display(Name = "Address", Order = 26)]
+               //[HideColumnIn(PageTemplate.List)]
+               //public object BillingContactAddressData;
 
                [ColumnGroup("Confirmation E-mail")]
                [FilterUIHint("String")]
@@ -177,6 +178,7 @@ namespace Weavver.Data
           /// <summary>
           /// Added convenience accessor to assist with PDF generation
           /// </summary>
+          [NotMapped]
           public List<Accounting_LedgerItems> LineItems
           {
                get
@@ -203,6 +205,7 @@ namespace Weavver.Data
                }
           }
 //-------------------------------------------------------------------------------------------
+          [NotMapped]
           public string PaymentURL
           {
                get
@@ -244,7 +247,7 @@ namespace Weavver.Data
           {
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
                ret.RedirectRequest = true;
-               ret.RedirectURL = "/Accounting_LedgerItems/List.aspx?AccountId=" + Id.ToString() + "&LedgerType=Receivable";
+               ret.RedirectURL = "~/Accounting_LedgerItems/List.aspx?AccountId=" + Id.ToString() + "&LedgerType=Receivable";
                return ret;
           }
 //-------------------------------------------------------------------------------------------
@@ -253,7 +256,7 @@ namespace Weavver.Data
           {
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
                ret.RedirectRequest = true;
-               ret.RedirectURL = "/Accounting_LedgerItems/List.aspx?TransactionId=" + Id.ToString();
+               ret.RedirectURL = "~/Accounting_LedgerItems/List.aspx?TransactionId=" + Id.ToString();
                return ret;
           }
 //-------------------------------------------------------------------------------------------

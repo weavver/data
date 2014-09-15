@@ -118,11 +118,11 @@ namespace Weavver.Data
                [HideColumnIn(PageTemplate.Insert)]
                public object CreatedAt;
 
-               [Display(Name = "Entered By")]
-               [ReadOnly(true)]
-               [HideColumnIn(PageTemplate.List)]
-               [HideColumnIn(PageTemplate.Insert)]
-               public object System_Users;
+               //[Display(Name = "Entered By")]
+               //[ReadOnly(true)]
+               //[HideColumnIn(PageTemplate.List)]
+               //[HideColumnIn(PageTemplate.Insert)]
+               //public object System_Users;
 
                [HideColumnIn(PageTemplate.List)]
                [HideColumnIn(PageTemplate.Insert)]
@@ -139,10 +139,10 @@ namespace Weavver.Data
                [ScaffoldColumn(false)]
                public object Logistics_Organizations;
 
-               [Display(Name = "Updated By")]
-               [ReadOnly(true)]
-               [HideColumnIn(PageTemplate.Insert)]
-               public object System_Users1;
+               //[Display(Name = "Updated By")]
+               //[ReadOnly(true)]
+               //[HideColumnIn(PageTemplate.Insert)]
+               //public object System_Users1;
 
                // add filter:
                //EntryTypeFilter.DataSource = Enum.GetNames(typeof(EntryType));

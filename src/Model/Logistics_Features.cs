@@ -25,8 +25,8 @@ namespace Weavver.Data
                [ScaffoldColumn(false)]
                public object OrganizationId;
 
-               [Display(Name="Product", Order = 1)]
-               public object Logistics_Products;
+               //[Display(Name="Product", Order = 1)]
+               //public object Logistics_Products;
 
                [FilterUIHint("DateTime")]
                [ReadOnly(true)]
@@ -36,8 +36,8 @@ namespace Weavver.Data
                [ReadOnly(true)]
                public object UpdatedAt;
 
-               [ScaffoldColumn(false)]
-               public object Logistics_Organizations;
+               //[ScaffoldColumn(false)]
+               //public object Logistics_Organizations;
           }
 //-------------------------------------------------------------------------------------------
      }

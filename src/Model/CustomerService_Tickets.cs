@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Weavver.Data
 {
@@ -30,6 +31,9 @@ namespace Weavver.Data
 
                [ScaffoldColumn(false)]
                public object OrganizationId;
+
+               [NotMapped]
+               public object Logistics_Organizations;
 
                [Display(Name = "Client", Order=1)]
                [SecureColumn(ColumnActions.DenyRead, "Guest")]
@@ -62,7 +66,7 @@ namespace Weavver.Data
                public object Message;
 
                [FilterUIHint("DateTime")]
-               [Display(Name = "Created At", Order = 27)]
+               [Display(Name = "Created At", Order = 0)]
                [ReadOnly(true)]
                [HideColumnIn(PageTemplate.Insert)]
                [HideColumnIn(PageTemplate.List)]

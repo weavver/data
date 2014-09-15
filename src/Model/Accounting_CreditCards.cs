@@ -136,7 +136,7 @@ namespace Weavver.Data
                     //item.VoidedBy = Guid.Empty;
                     item.Memo += "\r\nPayment failed: Code " + response.ResponseCode + ", " + response.Message;
                }
-               data.Accounting_LedgerItems.AddObject(item);
+               data.Accounting_LedgerItems.Add(item);
                return response;
           }
 //-------------------------------------------------------------------------------------------

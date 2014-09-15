@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.Runtime.Serialization;
-using System.Data.Objects.DataClasses;
+using System.Data.Entity.Core.Objects;
 
 namespace Weavver.Data
 {

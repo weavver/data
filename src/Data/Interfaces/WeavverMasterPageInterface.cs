@@ -15,6 +15,8 @@ namespace Weavver.Data
           void ActionsMenuAdd(WeavverMenuItem item);
           void ToolBarMenuAdd(WeavverMenuItem item);
           void ViewsMenuAdd(WeavverMenuItem item);
+
+          string FormatURLs(string data);
 //-------------------------------------------------------------------------------------------
           void SetToolbarVisibility(bool visible);
           void SetChatVisibility(bool visible);

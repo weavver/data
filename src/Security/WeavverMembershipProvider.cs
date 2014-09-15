@@ -46,7 +46,7 @@ namespace Weavver.Security
                     if (item != null)
                     {
                          item.LastLoggedIn = DateTime.UtcNow;
-                         data.SaveChanges();
+                         //data.SaveChanges();
                     }
                     return (item != null);
                }
@@ -119,7 +119,7 @@ namespace Weavver.Security
                     user.CreatedBy = Guid.Empty;
 
                     // todo: add account note, signed up from "ip address" - user.CreatedBy = userhostaddress;
-                    data.System_Users.AddObject(user);
+                    data.System_Users.Add(user);
                     if (data.SaveChanges() > 0)
                     {
                          status = MembershipCreateStatus.Success;
@@ -244,7 +244,7 @@ namespace Weavver.Security
 
                     if (user != null)
                     {
-                         data.Detach(user);
+                         data.Entry(user).State = System.Data.Entity.EntityState.Detached;
                     }
                     return user;
                }

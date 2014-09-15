@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.DynamicData;
-using System.Data.Objects.DataClasses;
+using System.Data.Entity.Core.Objects.DataClasses;
 using System.Web.UI.WebControls;
 
 namespace Weavver.Data

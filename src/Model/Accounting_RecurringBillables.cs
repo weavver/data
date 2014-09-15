@@ -44,8 +44,8 @@ namespace Weavver.Data
                //[DisplayFormat(DataFormatString = "{0:C}")]
                //public object Debits;
 
-               [ScaffoldColumn(false)]
-               public object Logistics_OrganizationData;
+               //[ScaffoldColumn(false)]
+               //public object Logistics_OrganizationData;
 
                [Display(Name = "Status", Order = -4)]
                [EnumDataType(typeof(RecurringBillableStatus))]
@@ -57,11 +57,11 @@ namespace Weavver.Data
                [UIHint("Enum")]
                public object BillingDirection;
 
-               [Display(Name = "Account From", Order = -1)]
-               public object AccountFromData;
+               //[Display(Name = "Account From", Order = -1)]
+               //public object AccountFromData;
 
-               [Display(Name = "Account To", Order = 0)]
-               public object AccountToData;
+               //[Display(Name = "Account To", Order = 0)]
+               //public object AccountToData;
 
                [Display(Name = "Billing Interval", Order = 3)]
                [EnumDataType(typeof(BillingPeriodType))]
@@ -176,7 +176,7 @@ namespace Weavver.Data
                          var billables = billable.ProjectLedgerItems(unbilledPeriods);
                          foreach (var item in billables)
                          {
-                              data.Accounting_LedgerItems.AddObject(item);
+                              data.Accounting_LedgerItems.Add(item);
                          }
                          // we have to convert it to local time first! or there will have some weird bug where 11/01/11 goes to 11/30/11 instead of 12/01/11
                          billable.Position = billable.Position.ToLocalTime().AddMonths(unbilledPeriods).ToUniversalTime();

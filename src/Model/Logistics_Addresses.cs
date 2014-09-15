@@ -42,8 +42,8 @@ namespace Weavver.Data
                [Display(Name = "Postal Code")]
                public object ZipCode;
 
-               [ScaffoldColumn(false)]
-               public object Logistics_Organizations;
+               //[ScaffoldColumn(false)]
+               //public object Logistics_Organizations;
 
                [ScaffoldColumn(false)]
                public object Sales_Orders;

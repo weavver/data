@@ -40,7 +40,7 @@ namespace Weavver.Data
                     {
                          using (WeavverEntityContainer data = new WeavverEntityContainer())
                          {
-                              data.SearchAllTables("asdf");
+                              //data.SearchAllTables("asdf");
                               // save to database
                               Message m = (Message) client.GetMessage(i);
                               if (m.MessagePart.IsText)

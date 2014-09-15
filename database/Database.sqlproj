@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+    <PostConversionRemoveFromScc>
+    </PostConversionRemoveFromScc>
+    <PostConversionAddToScc>
+    </PostConversionAddToScc>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputType>Database</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>Weavver.DAL</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <ConnectionString>
+    </ConnectionString>
+    <TargetFrameworkProfile />
+    <PermissionSet>SAFE</PermissionSet>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>S:\weavver.git\Backup2\</UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <Name>Database</Name>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{340d4ff9-66d5-445c-8d6d-6b7172baad93}</ProjectGuid>
+    <IncludeSchemaNameInFileName>False</IncludeSchemaNameInFileName>
+    <GenerateDatabaseFile>False</GenerateDatabaseFile>
+    <GenerateCreateScript>False</GenerateCreateScript>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <DefaultSchema>dbo</DefaultSchema>
+    <TargetLanguage>CS</TargetLanguage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>
+    </DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>
+    </DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Database</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>WeavverDAL.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" Condition="'$(SQLDBExtensionsRefPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" Condition="'$(SQLDBExtensionsRefPath)' == ''" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="aspnet_regsql.sql" />
+    <Content Include="Database.sql" />
+    <Content Include="ForeignKeys\Accounting_Checks.sql" />
+    <Content Include="ForeignKeys\Accounting_LedgerItems.sql" />
+    <Content Include="ForeignKeys\Accounting_Reconcilliations.sql" />
+    <Content Include="ForeignKeys\Accounting_RecurringBilables.sql" />
+    <Content Include="ForeignKeys\Accounting_Accounts.sql" />
+    <Content Include="ForeignKeys\Accounting_OFXSettings.sql" />
+    <Content Include="ForeignKeys\HR_Tasks.sql" />
+    <Content Include="ForeignKeys\Sales_LicenseKeyActivations.sql" />
+    <Content Include="ForeignKeys\Sales_LicenseKeys.sql" />
+    <Content Include="ForeignKeys\Data_Links.sql" />
+    <Content Include="ForeignKeys\KnowledgeBase.sql" />
+    <Content Include="ForeignKeys\Logistics_FeatureOptions.sql" />
+    <Content Include="ForeignKeys\Logistics_Products.sql" />
+    <Content Include="ForeignKeys\Marketing_Blogs.sql" />
+    <Content Include="ForeignKeys\Sales_Orders.sql" />
+    <Content Include="ForeignKeys\Sales_ShoppingCartItems.sql" />
+    <Content Include="ForeignKeys\CustomerService_Tickets.sql" />
+    <Compile Include="Functions\Accounting_LedgerItems.cs" />
+    <Compile Include="Functions\Accounting_RecurringBillables.cs" />
+    <Compile Include="Functions\Accounting_AccountBalances.cs" />
+    <Compile Include="Functions\Common.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Functions\Sales_LicenseKeys.cs" />
+    <Compile Include="Functions\HR_TimeLogs.cs" />
+    <Compile Include="Functions\Sales_ShoppingCarts.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="ForeignKeys\CMS_Pages.sql" />
+    <Content Include="ForeignKeys\Communication_EmailAccounts.sql" />
+    <Content Include="ForeignKeys\Data_AuditTrails.sql" />
+    <Content Include="ForeignKeys\Logistics_Organizations.sql" />
+    <Content Include="ForeignKeys\System_URLs.sql" />
+    <Content Include="SchemaUpdates\Update1.sql" />
+    <Content Include="Staging\ForeignKeysCreate.sql" />
+    <Content Include="Staging\ForeignKeysDrop.sql" />
+    <Content Include="Staging\ForeignKeysList.sql" />
+    <Content Include="Stored Procedures\SearchAllTables.sql" />
+    <Content Include="Views\Accounting_AccountBalances.sql" />
+    <Content Include="Views\ShowAllTriggers.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Jobs\ofx-sync.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WeavverDAL.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ForeignKeys\" />
+    <Folder Include="Functions\" />
+    <Folder Include="Properties\" />
+    <Folder Include="SchemaUpdates\" />
+    <Folder Include="Staging\" />
+    <Folder Include="Stored Procedures\" />
+    <Folder Include="Views\" />
+    <Folder Include="Jobs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="aspnet_sessionstate.sql" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>rem "C:\Program Files\Microsoft SQL Server\90\Tools\Binn\sqlcmd.exe" -i "$(ProjectDir)\PrePreDeployScript.sql"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!--<Target Name="BeforeBuild">
+    <PropertyGroup>
+      <PreDeployEvent>sqlcmd.exe -i PrePreDeployScript.sql</PreDeployEvent>
+    </PropertyGroup>
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>-->
+</Project>

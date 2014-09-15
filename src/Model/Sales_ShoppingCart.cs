@@ -104,7 +104,7 @@ namespace Weavver.Data
                                                  select items;
 
                          List<Sales_ShoppingCartItems> _items = shoppingCartItems.ToList<Sales_ShoppingCartItems>();
-                         _items.ForEach(x => data.Sales_ShoppingCartItems.Detach(x));
+                         _items.ForEach(x => data.Entry(x).State = System.Data.Entity.EntityState.Detached);
                          return _items;
                     }
                }

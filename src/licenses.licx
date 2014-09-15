@@ -1,0 +1,10 @@
+﻿nsoftware.InEBank.Account, nsoftware.InEBank
+nsoftware.InEBank.Bankstatement, nsoftware.InEBank
+nsoftware.InEBank.Banktransfer, nsoftware.InEBank
+nsoftware.InEBank.Billpayment, nsoftware.InEBank
+nsoftware.InEBank.Ccstatement, nsoftware.InEBank
+nsoftware.InEBank.Fiprofile, nsoftware.InEBank
+nsoftware.InEBank.Invstatement, nsoftware.InEBank
+nsoftware.InEBank.Loanstatement, nsoftware.InEBank
+nsoftware.InEBank.Ofxaggregate, nsoftware.InEBank
+nsoftware.InEBank.Ofxbatch, nsoftware.InEBank

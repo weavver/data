@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 
 using Weavver.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace Weavver.Data
 {
@@ -27,6 +28,7 @@ namespace Weavver.Data
           [SecureColumn(ColumnActions.DenyWrite)]
           [HideColumnIn(PageTemplate.List)]
           [ReadOnly(true)]
+          [ConcurrencyCheck()]
           DateTime UpdatedAt { get; set; }
 //-------------------------------------------------------------------------------------------
           [SecureColumn(ColumnActions.DenyWrite)]

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using Weavver.Web;
 using Weavver.Data.Interfaces;
 using Weavver.Security;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Weavver.Data
 {
@@ -30,6 +31,9 @@ namespace Weavver.Data
 
                [ScaffoldColumn(false)]
                public object OrganizationId;
+
+               [NotMapped]
+               public object Logistics_Organizations1;
 
                //[ScaffoldColumn(false)]
                //public object ExternalId;
@@ -79,8 +83,8 @@ namespace Weavver.Data
                [Display(Name="Updated At")]
                public object UpdatedAt;
 
-               [ScaffoldColumn(false)]
-               public object Organization;
+               //[ScaffoldColumn(false)]
+               //public object Organization;
 
                [ScaffoldColumn(false)]
                public object Accounting_Reconciliations;
@@ -91,6 +95,7 @@ namespace Weavver.Data
                [Display(Name = "Created By")]
                [ReadOnly(true)]
                [HideColumnIn(PageTemplate.List)]
+               [NotMapped]
                public object Logistics_Organizations;
 
                [ScaffoldColumn(false)]
@@ -113,7 +118,7 @@ namespace Weavver.Data
                                                        select x).FirstOrDefault();
                     if (settings != null)
                     {
-                         data.Accounting_OFXSettings.Detach(settings);
+                         data.Accounting_OFXSettings.Add(settings);
                     }
                     return settings;
                }
@@ -152,7 +157,7 @@ namespace Weavver.Data
                }
           }
 //-------------------------------------------------------------------------------------------
-          [DynamicDataWebMethod("Import Data", "Administrators", "Accountants")]
+          [DynamicDataWebMethod("Import Data Tool", "Administrators", "Accountants")]
           public DynamicDataWebMethodReturnType ImportData()
           {
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
