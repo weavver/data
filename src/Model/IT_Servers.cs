@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 using System.Data.Entity.Core.Objects;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Weavver.Data
 {
@@ -50,6 +51,7 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           //[EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
           [DataMemberAttribute()]
+          [NotMapped]
           public bool IsPoweredOn
           {
                get

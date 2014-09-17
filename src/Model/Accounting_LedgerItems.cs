@@ -51,6 +51,7 @@ namespace Weavver.Data
      [DataAccess(RowAction.Delete, "Administrators", "Accountants", Width = 450, Height = 500)]
      //[DataAccess(RowAction.Insert, "Administrators", "Accountants", Width = 450, Height = 500)]
      [DisplayColumn("Memo", "PostAt", true)]
+     [Serializable]
      public partial class Accounting_LedgerItems : IAuditable, IRowStyle, INavigationActions, IValidator
      {
 //-------------------------------------------------------------------------------------------

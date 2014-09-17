@@ -481,7 +481,7 @@ namespace Weavver.Data
                return ret;
           }
 //-------------------------------------------------------------------------------------------
-          [DynamicDataWebMethod("Run Import", "Administrators", "Accountants")]
+          [DynamicDataWebMethod("Update Cached Balances", "Administrators", "Accountants")]
           public DynamicDataWebMethodReturnType UpdateCachedBalances()
           {
                // call UpdateCachedBalances() instead ??

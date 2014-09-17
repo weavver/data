@@ -7,3 +7,4 @@ build
 *.snk
 *.user
 !src/App-default.config
+~src/packages.config

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Weavver.Data
 {
+     [Serializable]
      public struct Accounting_OFXLedgerItem
      {
           public bool HasBeenImported
