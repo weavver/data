@@ -407,18 +407,6 @@ namespace Weavver.Data
 
 //               return ret;
 //          }
-////-------------------------------------------------------------------------------------------
-//          [DynamicDataWebMethod("Import Bill Payment Data", "Administrators", "Accountants")]
-//          public DynamicDataWebMethodReturnType ImportBillPaymentData()
-//          {
-//               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
-//               ret.Status = "Importing";
-//               ret.Message = "Checks Imported/Updated: ";
-
-//               int addedItems = ImportScheduledPayments();
-//               ret.Message += addedItems.ToString();
-//               return ret;
-//          }
 //-------------------------------------------------------------------------------------------
           [DynamicDataWebMethod("Test Connection", "Administrators", "Accountants")]
           public DynamicDataWebMethodReturnType TestConnection()

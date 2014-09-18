@@ -213,6 +213,27 @@ namespace Weavver.Data
                return ret;
           }
 //-------------------------------------------------------------------------------------------
+          [DynamicDataWebMethod("Import Bill Payment Data", "Administrators", "Accountants")]
+          public DynamicDataWebMethodReturnType ImportBillPaymentData()
+          {
+               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
+               ret.Status = "Bill Payment Import Tool";
+
+               var financialAccount = GetParentAccount();
+               if (financialAccount.LedgerType == LedgerType.Checking.ToString())
+               {
+                    ret.Message = "The import was successful!\r\n\r\nImported/Updated: ";
+
+                    int addedItems = ImportScheduledPayments();
+                    ret.Message += addedItems.ToString();
+               }
+               else
+               {
+                    ret.Message = "This option can only be used on Checking accounts.";
+               }
+               return ret;
+          }
+//-------------------------------------------------------------------------------------------
           public List<Web.WeavverMenuItem> GetTableMenu()
           {
                List<WeavverMenuItem> menuItems = new List<WeavverMenuItem>();
