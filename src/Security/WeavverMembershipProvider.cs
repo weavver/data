@@ -59,14 +59,15 @@ namespace Weavver.Security
                     var user = (from x in data.System_Users
                                where x.Username == username &&
                                      x.Password == oldPassword
-                               select x).First();
+                               select x).FirstOrDefault();
 
                     if (user != null)
                     {
                          user.Password = newPassword;
                          data.SaveChanges();
+                         return true;
                     }
-                    return true;
+                    return false;
                }
           }
 //-------------------------------------------------------------------------------------------
@@ -278,7 +279,10 @@ namespace Weavver.Security
 //-------------------------------------------------------------------------------------------
           public override int MinRequiredNonAlphanumericCharacters
           {
-               get { throw new NotImplementedException(); }
+               get
+               {
+                    return 1;
+               }
           }
 //-------------------------------------------------------------------------------------------
           public override int MinRequiredPasswordLength

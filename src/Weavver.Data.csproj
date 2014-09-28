@@ -69,10 +69,6 @@
     <Reference Include="agsXMPP">
       <HintPath>..\vendors\ag-software\agsXMPP.dll</HintPath>
     </Reference>
-    <Reference Include="AjaxControlToolkit, Version=3.0.20820.16598, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\vendors\microsoft\AjaxControlToolkit.dll</HintPath>
-    </Reference>
     <Reference Include="AuthorizeNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\vendors\authorize.net\AuthorizeNet.dll</HintPath>
@@ -104,9 +100,9 @@
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\vendors\microsoft\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
-       <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-            <HintPath>..\vendors\microsoft\Microsoft.ReportViewer.WebForms.dll</HintPath>
-       </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\vendors\microsoft\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>..\vendors\mysql\MySql.Data.dll</HintPath>
     </Reference>
