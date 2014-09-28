@@ -26,6 +26,7 @@ namespace Weavver.Data
      [DataAccess(RowView.Details, "Administrators", Width=400)]
      [DataAccess(RowAction.Delete, "Administrators")]
      [DataAccess(RowAction.Insert, "Administrators")]
+     [Serializable()]
      //[AutoLinkToView("OrganizationPayables"]
      //"Organizations are used to create profiles for your personal, work, family, and/or other data."
      partial class Logistics_Organizations : IAuditable
