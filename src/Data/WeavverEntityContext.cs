@@ -118,15 +118,21 @@ namespace Weavver.Data
                return log;
           }
 //-------------------------------------------------------------------------------------------
+          protected override System.Data.Entity.Validation.DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)
+          {
+               return base.ValidateEntity(entityEntry, items);
+          }
+//-------------------------------------------------------------------------------------------
           public override int SaveChanges()
           {
+               ChangeTracker.DetectChanges();
                var objects = ChangeTracker.Entries();
                
                var addedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Added || x.State == EntityState.Modified));
                var modifiedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Modified));
                var deletedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Deleted));
 
-               AuditUtility.ProcessAuditFields(addedObjects);
+               AuditUtility.ProcessAuditFields(addedObjects, InsertMode: true);
                AuditUtility.ProcessAuditFields(modifiedObjects, InsertMode: false);
 
                using (WeavverEntityContainer data = new WeavverEntityContainer())
@@ -188,6 +194,11 @@ namespace Weavver.Data
                //     }
                //}
                //return ret;
+          }
+//-------------------------------------------------------------------------------------------
+          public override System.Threading.Tasks.Task<int> SaveChangesAsync()
+          {
+               return base.SaveChangesAsync();
           }
 //-------------------------------------------------------------------------------------------
      }

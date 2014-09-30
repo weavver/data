@@ -42,40 +42,18 @@ namespace Weavver.Data
                return guid;
           }
 //-------------------------------------------------------------------------------------------
-          internal static void ProcessAuditFields(IEnumerable<DbEntityEntry> list, bool InsertMode = true)
+          public static void ProcessAuditFields(IEnumerable<DbEntityEntry> list, bool InsertMode = true)
           {
                foreach (DbEntityEntry item in list)
                {
                     var entity = item.Entity as IAuditable;
                     if (entity != null)
                     {
-                         var appUserID = GetUserId();
                          // deal with insert and update entities
                          var auditEntity = item.Entity as IAuditable;
                          if (auditEntity != null)
                          {
-                              if (InsertMode)
-                              {
-                                   if (auditEntity.Id == Guid.Empty)
-                                        auditEntity.Id = Guid.NewGuid(); // alternative method: http://leedumond.com/blog/using-a-guid-as-an-entitykey-in-entity-framework-4/
-                                   //  or [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // http://stackoverflow.com/questions/5270721/using-guid-as-pk-with-ef4-code-first
-                                   // auditEntity.OrganizationId = Session["OrganizationId"] = HttpContext.Current.Session["SelectedOrganizationId"];
-                                   
-                                   // we do this to enforce security so data can't be inserted into an organization that we are not associated with
-                                   // -- warning this is currently buggy and disabled it's changing system_user row's organizationid to organizations that they do not belong to
-                                   //auditEntity.OrganizationId = GetOrganizationId();
-                                   auditEntity.CreatedAt = DateTime.Now.ToUniversalTime();
-
-                                   if (auditEntity.CreatedBy == Guid.Empty)
-                                   {
-                                        auditEntity.CreatedBy = appUserID;
-                                   }
-                              }
-                              auditEntity.UpdatedAt = DateTime.Now.ToUniversalTime();
-                              if (auditEntity.UpdatedBy == Guid.Empty)
-                              {
-                                   auditEntity.UpdatedBy = appUserID;
-                              }
+                              UpdateAuditFields(auditEntity, InsertMode);
                          }
                     }
 
@@ -90,6 +68,33 @@ namespace Weavver.Data
                               throw new IValidatorException(errorMessage);
                          }
                     }
+               }
+          }
+//-------------------------------------------------------------------------------------------
+          public static void UpdateAuditFields(IAuditable auditEntity, bool InsertMode = true)
+          {
+               var appUserID = GetUserId();
+               if (InsertMode)
+               {
+                    if (auditEntity.Id == Guid.Empty)
+                         auditEntity.Id = Guid.NewGuid(); // alternative method: http://leedumond.com/blog/using-a-guid-as-an-entitykey-in-entity-framework-4/
+                    //  or [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // http://stackoverflow.com/questions/5270721/using-guid-as-pk-with-ef4-code-first
+                    // auditEntity.OrganizationId = Session["OrganizationId"] = HttpContext.Current.Session["SelectedOrganizationId"];
+
+                    // we do this to enforce security so data can't be inserted into an organization that we are not associated with
+                    // -- warning this is currently buggy and disabled it's changing system_user row's organizationid to organizations that they do not belong to
+                    //auditEntity.OrganizationId = GetOrganizationId();
+                    auditEntity.CreatedAt = DateTime.Now.ToUniversalTime();
+
+                    if (auditEntity.CreatedBy == Guid.Empty)
+                    {
+                         auditEntity.CreatedBy = appUserID;
+                    }
+               }
+               auditEntity.UpdatedAt = DateTime.Now.ToUniversalTime();
+               if (auditEntity.UpdatedBy == Guid.Empty)
+               {
+                    auditEntity.UpdatedBy = appUserID;
                }
           }
 //-------------------------------------------------------------------------------------------
