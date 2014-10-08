@@ -8,10 +8,6 @@ using Weavver.Testing;
 
 namespace Weavver.Testing.Accounting
 {
-     
-     testing if this will break the build - test #3
-
-
      //[TestFixture]
      public class Accounting_OFXSettingsTest
      {
