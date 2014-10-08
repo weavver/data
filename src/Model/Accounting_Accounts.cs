@@ -8,6 +8,7 @@ using Weavver.Web;
 using Weavver.Data.Interfaces;
 using Weavver.Security;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Security;
 
 namespace Weavver.Data
 {
@@ -22,7 +23,7 @@ namespace Weavver.Data
      //"An overview of your bank, reserve, and credit card accounts."
      //"Use an account to track your checking and savings accounts."
      [CSS("width: 475px; height: 872;")]
-     partial class Accounting_Accounts : IAuditable, INavigationActions
+     partial class Accounting_Accounts : IAuditable, INavigationActions, IValidator
      {
           public class Metadata
           {
@@ -177,20 +178,36 @@ namespace Weavver.Data
 //               return ret;
 //          }
 ////-------------------------------------------------------------------------------------------
-          //public List<Web.WeavverMenuItem> GetItemMenu(WeavverMembershipUser securityUser)
-          //{
-          //     List<Web.WeavverMenuItem> items = new List<WeavverMenuItem>();
-               
-          //     WeavverMenuItem exportIIF = new WeavverMenuItem();
-          //     exportIIF.Name = "Export IIF";
-          //     exportIIF.Link = "#";
+          public List<Web.WeavverMenuItem> GetItemMenu(WeavverMembershipUser securityUser)
+          {
+               List<Web.WeavverMenuItem> items = new List<WeavverMenuItem>();
 
-          //     return items;
-          //}
+               WeavverMenuItem exportIIF = new WeavverMenuItem();
+               exportIIF.Name = "Export IIF";
+               exportIIF.Link = "#";
+
+               return items;
+
+
+          }
 //-------------------------------------------------------------------------------------------
           public static List<WeavverMenuItem> GetTableMenu()
           {
                List<WeavverMenuItem> items = new List<WeavverMenuItem>();
+
+               if (Roles.IsUserInRole("Accountants"))
+               {
+                    WeavverMenuItem item1 = new WeavverMenuItem("Financial Overview", "url://~/Reports/Accounting_FinancialOverview.aspx");
+                    items.Add(item1);
+
+                    WeavverMenuItem item2 = new WeavverMenuItem("Expenses", "url:~/Reports/Accounting_Expenses.aspx");
+                    items.Add(item2);
+
+                    //WeavverMenuItem item = new WeavverMenuItem("Human Resources", null);
+                    //WeavverMenuItem item = new WeavverMenuItem("Labor Overview", "/Reports/HR_LaborOverview");
+
+                    // AddLinkToTable(menuTools, "Accounting", "Enter Payment", "/workflows/accounting_enterpayment");
+               }
 
                WeavverMenuItem item = new WeavverMenuItem();
                item.Name = "Quick Transfer";
@@ -218,6 +235,12 @@ namespace Weavver.Data
           public List<WeavverMenuItem> GetItemMenu()
           {
                return null;
+          }
+//-------------------------------------------------------------------------------------------
+          public void Validate(out bool Valid, out string ErrorMessage)
+          {
+               ErrorMessage = null;
+               Valid = true;
           }
 //-------------------------------------------------------------------------------------------
      }

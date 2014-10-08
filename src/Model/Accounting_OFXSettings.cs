@@ -141,7 +141,7 @@ namespace Weavver.Data
           public List<Accounting_OFXLedgerItem> GetRemoteLedgerItems(DateTime startDate, DateTime endDate)
           {
                Accounting_Accounts account = GetParentAccount();
-               if (((LedgerType)Enum.Parse(typeof(LedgerType), account.LedgerType)) == LedgerType.CreditCard)
+               if ((LedgerType)Enum.Parse(typeof(LedgerType), account.LedgerType) == LedgerType.CreditCard)
                {
                     return LoadCreditCardStatement(startDate, endDate);
                }
