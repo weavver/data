@@ -43,6 +43,9 @@ namespace Weavver.Data
                [Display(Name = "Number", Order = 10)]
                public object CheckNumber;
 
+               [ScaffoldColumn(false)]
+               public object PayeeName;
+
                [Display(Name="Payee", Order=11)]
                public object PayeeData;
 
