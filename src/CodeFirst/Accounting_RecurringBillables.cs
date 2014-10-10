@@ -57,13 +57,13 @@ namespace Weavver.Data
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public decimal? UnbilledAmount { get; set; }
 
-        public virtual Logistics_Organizations Logistics_Organizations { get; set; }
+        public virtual Logistics_Organizations AccountFromData { get; set; }
 
-        public virtual Logistics_Organizations Logistics_Organizations1 { get; set; }
+        public virtual Logistics_Organizations AccountToData { get; set; }
 
         public virtual System_Users System_Users { get; set; }
 
-        public virtual Logistics_Organizations Logistics_Organizations2 { get; set; }
+        public virtual Logistics_Organizations OrganizationData { get; set; }
 
         public virtual System_Users System_Users1 { get; set; }
     }
