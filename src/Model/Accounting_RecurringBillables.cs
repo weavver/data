@@ -14,7 +14,7 @@ namespace Weavver.Data
           Disabled
      }
 //-------------------------------------------------------------------------------------------
-     public enum BillingDirection :  byte
+     public enum BillingDirectionEnum :  byte
      {
           [Description("Post-Bill")]
           PostBill,
@@ -44,8 +44,8 @@ namespace Weavver.Data
                //[DisplayFormat(DataFormatString = "{0:C}")]
                //public object Debits;
 
-               //[ScaffoldColumn(false)]
-               //public object Logistics_OrganizationData;
+               [ScaffoldColumn(false)]
+               public object OrganizationData;
 
                [Display(Name = "Status", Order = -4)]
                [EnumDataType(typeof(RecurringBillableStatus))]
@@ -53,15 +53,16 @@ namespace Weavver.Data
                public object Status;
 
                [Display(Name = "Direction", Order = -3)]
-               [EnumDataType(typeof(BillingDirection))]
+               [EnumDataType(typeof(BillingDirectionEnum))]
+               [FilterUIHint("Enum")]
                [UIHint("Enum")]
                public object BillingDirection;
 
-               //[Display(Name = "Account From", Order = -1)]
-               //public object AccountFromData;
+               [Display(Name = "Account From", Order = -1)]
+               public object AccountFromData;
 
-               //[Display(Name = "Account To", Order = 0)]
-               //public object AccountToData;
+               [Display(Name = "Account To", Order = 0)]
+               public object AccountToData;
 
                [Display(Name = "Billing Interval", Order = 3)]
                [EnumDataType(typeof(BillingPeriodType))]
@@ -144,11 +145,11 @@ namespace Weavver.Data
                     };
 
                     string timespan = "";
-                    if (BillingDirection == "Pre-Bill")
+                    if (BillingDirection == BillingDirectionEnum.PreBill.ToString())
                     {
                          timespan = Position.ToLocalTime().AddMonths(i).ToString("MM/dd/yy") + " to " + Position.ToLocalTime().AddMonths(i + 1).ToString("MM/dd/yy");
                     }
-                    else if (BillingDirection == "Post-Bill")
+                    else if (BillingDirection == BillingDirectionEnum.PostBill.ToString())
                     {
                          timespan = Position.ToLocalTime().AddMonths(i - 1).ToString("MM/dd/yy") + " to " + Position.ToLocalTime().AddMonths(i).ToString("MM/dd/yy");
                     }
@@ -229,79 +230,8 @@ namespace Weavver.Data
                ret.Message = "Total periods billed: " + periodsBilled.ToString();
 
                ret.RefreshData = true;
-               //ret.RedirectRequest = true;
-               //ret.RedirectURL = "~/Accounting_RecurringBillables/Details.aspx?Id=" + Id.ToString();
                return ret;
           }
-//-------------------------------------------------------------------------------------------
-          //     public void BillingProcess_Click(object sender, EventArgs e)
-          //     {
-          //          decimal totalBilled = 0;
-
-          //          int pages = 1;
-          //          for (int page = 1; page <= pages; page++)
-          //          {
-          //               IList<RecurringBill> billables = GetBillables(page);
-          //               for (int i = 0; i < billables.Count; i++)
-          //               {
-          //                    RecurringBill subscription = (RecurringBill) billables[i];
-
-          //                    LedgerItem newBill = new LedgerItem();
-          //                    newBill.DatabaseHelper = DatabaseHelper;
-          //                    if (subscription.NextBill.HasValue)
-          //                    {
-          //                         newBill.PostAt = subscription.NextBill.Value.AddMonths(1);
-          //                         subscription.NextBill = newBill.PostAt;
-          //                    }
-          //                    newBill.Amount = subscription.Amount;
-
-          //                    newBill.CreatedAt = DateTime.UtcNow;
-          //                    newBill.CreatedBy = subscription.Id;
-          //                    newBill.UpdatedAt = DateTime.UtcNow;
-          //                    newBill.UpdatedBy = subscription.Id;
-
-          //                    DataLink dataLink = new DataLink();
-          //                    dataLink.DatabaseHelper = DatabaseHelper;
-          //                    dataLink.Object1 = subscription.Id;
-          //                    dataLink.Object1Type = subscription.Type;
-          //                    dataLink.Object2 = newBill.Id;
-          //                    dataLink.Object2Type = newBill.Type;
-          //                    dataLink.CreatedAt = DateTime.UtcNow;
-          //                    dataLink.CreatedBy = subscription.Id;
-          //                    dataLink.UpdatedAt = DateTime.UtcNow;
-          //                    dataLink.UpdatedBy = subscription.Id;
-
-          //                    //ITransaction billingTransaction = DatabaseHelper.Session.BeginTransaction();
-          //                    //subscription.Commit();
-          //                    //newBill.Commit();
-          //                    //dataLink.Commit();
-          //                    //billingTransaction.Commit();
-
-          //                    //if (billingTransaction.WasCommitted)
-          //                    {
-          //                         totalBilled += subscription.Amount;
-          //                    }
-          //               }
-          //          }
-          //          ShowError("The total mock billed was " + totalBilled.ToString() + ".");
-          //     }
-//-------------------------------------------------------------------------------------------
-          //     /// <summary>
-          //     /// Processes billables in batches of 50. Pass page 1 to get the very first results.
-          //     /// </summary>
-          //     /// <returns></returns>
-          //     private IList<RecurringBill> GetBillables(int page)
-          //     {
-          //          ICriteria criteria = DatabaseHelper.Session.CreateCriteria(typeof(RecurringBill))
-          //               .Add(NHibernate.Criterion.Restrictions.Eq("OrganizationId", SelectedOrganization.Id))
-          //               .Add(NHibernate.Criterion.Restrictions.Eq("Status", "Active"))
-          //               .Add(NHibernate.Criterion.Restrictions.Or(NHibernate.Criterion.Restrictions.IsNull("NextBill"), NHibernate.Criterion.Restrictions.Lt("NextBill", DateTime.Now)))
-          //               .SetFirstResult((page - 1) * 50)
-          //               .SetMaxResults(50)
-          //               .AddOrder(NHibernate.Criterion.Order.Asc("Name"));
-
-          //          return criteria.List<RecurringBill>();
-          //     }
 //-------------------------------------------------------------------------------------------
           public void Validate(out bool Valid, out string ErrorMessage)
           {

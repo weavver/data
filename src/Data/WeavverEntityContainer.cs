@@ -853,19 +853,19 @@ namespace Weavver.Data
 
                modelBuilder.Entity<Logistics_Organizations>()
                    .HasMany(e => e.Accounting_RecurringBillables)
-                   .WithRequired(e => e.Logistics_Organizations)
+                   .WithRequired(e => e.AccountFromData)
                    .HasForeignKey(e => e.AccountFrom)
                    .WillCascadeOnDelete(false);
 
                modelBuilder.Entity<Logistics_Organizations>()
                    .HasMany(e => e.Accounting_RecurringBillables1)
-                   .WithRequired(e => e.Logistics_Organizations1)
+                   .WithRequired(e => e.AccountToData)
                    .HasForeignKey(e => e.AccountTo)
                    .WillCascadeOnDelete(false);
 
                modelBuilder.Entity<Logistics_Organizations>()
                    .HasMany(e => e.Accounting_RecurringBillables2)
-                   .WithRequired(e => e.Logistics_Organizations2)
+                   .WithRequired(e => e.OrganizationData)
                    .HasForeignKey(e => e.OrganizationId)
                    .WillCascadeOnDelete(false);
 
