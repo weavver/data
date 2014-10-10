@@ -18,6 +18,7 @@ IF EXISTS(select * from Sys.Columns where Object_ID = Object_ID(N'Accounting_Acc
 --if EXISTS(select * from sys.columns where Object_ID = Object_ID(N'Accounting_Accounts') and Name = N'BankAvailableBalance') BEGIN ALTER TABLE Accounting_Accounts DROP COLUMN BankAvailableBalance END
 
 IF EXISTS(select * from Sys.Columns where Object_ID = Object_ID(N'Accounting_Checks') and Name = N'PayeeName') BEGIN ALTER TABLE Accounting_Checks DROP COLUMN PayeeName END
+IF EXISTS(select * from Sys.Columns where Object_ID = Object_ID(N'Accounting_LedgerItems') and Name = N'AccountName') BEGIN ALTER TABLE Accounting_Checks DROP COLUMN AccountName END
 
 IF EXISTS(select * from sys.columns where Object_ID = Object_ID(N'Accounting_RecurringBillables') and Name = N'UnbilledPeriods') BEGIN ALTER TABLE Accounting_RecurringBillables DROP COLUMN UnbilledPeriods END
 IF EXISTS(select * from sys.columns where Object_ID = Object_ID(N'Accounting_RecurringBillables') and Name = N'UnbilledAmount') BEGIN ALTER TABLE Accounting_RecurringBillables DROP COLUMN UnbilledAmount END
@@ -89,6 +90,7 @@ ALTER TABLE Accounting_Accounts ADD AvailableBalance AS (dbo.Total_ForLedger(Org
 --ALTER TABLE Accounting_RecurringBillables ADD AccountFromName AS (dbo.GetName(AccountFrom))
 --ALTER TABLE Accounting_RecurringBillables ADD AccountToName AS (dbo.GetName(AccountTo))
 ALTER TABLE Accounting_Checks ADD PayeeName AS (dbo.GetName(Payee))
+ALTER TABLE Accounting_LedgerItems ADD AccountName AS (dbo.GetName(AccountId))
 ALTER TABLE Accounting_RecurringBillables ADD UnbilledPeriods AS (dbo.Accounting_RecurringBillables_UnbilledPeriods(StartAt,Position,EndAt,BillingDirection))
 ALTER TABLE Accounting_RecurringBillables ADD UnbilledAmount AS (dbo.Accounting_RecurringBillables_UnbilledAmount(StartAt,Position,EndAt,Amount,BillingDirection))
 ALTER TABLE HR_TimeLogs ADD Duration AS (dbo.HR_TimeLogs_TimeSpan(Start, [End]))
