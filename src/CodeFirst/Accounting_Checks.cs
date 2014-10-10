@@ -43,10 +43,10 @@ namespace Weavver.Data
         [StringLength(75)]
         public string ExternalId { get; set; }
 
-        public virtual Accounting_Accounts Accounting_Accounts { get; set; }
+        public virtual Accounting_Accounts FundingSourceData { get; set; }
 
-        public virtual Logistics_Organizations Logistics_Organizations { get; set; }
-
-        public virtual Logistics_Organizations Logistics_Organizations1 { get; set; }
+        public virtual Logistics_Organizations PayeeData { get; set; }
+        
+        public virtual Logistics_Organizations OrganizationData { get; set; }
     }
 }

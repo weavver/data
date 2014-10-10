@@ -8,6 +8,9 @@ GO
 RECONFIGURE;
 GO
 
+-- Is this enabled?
+-- ALTER DATABASE WEAVVERDB SET ENABLE_BROKER; 
+
 IF EXISTS(select * from Sys.Columns where Object_ID = Object_ID(N'Accounting_Accounts') and Name = N'Balance') BEGIN ALTER TABLE Accounting_Accounts DROP COLUMN Balance END
 IF EXISTS(select * from Sys.Columns where Object_ID = Object_ID(N'Accounting_Accounts') and Name = N'AvailableBalance') BEGIN ALTER TABLE Accounting_Accounts DROP COLUMN AvailableBalance END
 
@@ -37,7 +40,9 @@ IF OBJECT_ID('[LocalizeDT]') IS NOT NULL DROP FUNCTION [dbo].[LocalizeDT];
 IF OBJECT_ID('[HR_TimeLogs_TimeSpan]') IS NOT NULL DROP FUNCTION [dbo].[HR_TimeLogs_TimeSpan];
 IF OBJECT_ID('[Total_ForLedger]') IS NOT NULL DROP FUNCTION [dbo].[Total_ForLedger];
 IF OBJECT_ID('[Sales_LicenseKeys_Activations]') IS NOT NULL DROP FUNCTION [dbo].[Sales_LicenseKeys_Activations];
-
+IF OBJECT_ID('[StoredProcedures_HttpPost]') IS NOT NULL DROP FUNCTION [dbo].[StoredProcedures_HttpPost];
+IF OBJECT_ID('[QueueHttpPost]') IS NOT NULL DROP PROCEDURE [dbo].[QueueHttpPost];
+GO
 
 IF EXISTS (SELECT * FROM sys.assemblies asms WHERE asms.name = N'Weavver.DAL')
      DROP ASSEMBLY [Weavver.DAL]
@@ -52,10 +57,10 @@ GO
 CREATE FUNCTION [dbo].[Account_AccountBalances_GetRelativeBalance] (@b1 TINYINT)
      RETURNS MONEY AS EXTERNAL NAME [Weavver.DAL].[UserDefinedFunctions].[Account_AccountBalances_GetRelativeBalance]
 GO
-CREATE FUNCTION [dbo].[Accounting_RecurringBillables_UnbilledAmount] (@startDate DATETIME, @position DATETIME, @endAt DATETIME, @amount NUMERIC (18))
+CREATE FUNCTION [dbo].[Accounting_RecurringBillables_UnbilledAmount] (@startDate DATETIME, @position DATETIME, @endAt DATETIME, @amount NUMERIC (18), @billingDirection NVARCHAR)
      RETURNS NUMERIC (18) AS EXTERNAL NAME [Weavver.DAL].[UserDefinedFunctions].[Accounting_RecurringBillables_UnbilledAmount]
 GO
-CREATE FUNCTION [dbo].[Accounting_RecurringBillables_UnbilledPeriods] (@startDate DATETIME, @position DATETIME, @endAt DATETIME)
+CREATE FUNCTION [dbo].[Accounting_RecurringBillables_UnbilledPeriods] (@startDate DATETIME, @position DATETIME, @endAt DATETIME, @billingDirection NVARCHAR)
      RETURNS INT AS EXTERNAL NAME [Weavver.DAL].[UserDefinedFunctions].[Accounting_RecurringBillables_UnbilledPeriods]
 GO
 CREATE FUNCTION [dbo].[Total_ForLedger] (@organizationId UNIQUEIDENTIFIER, @accountId UNIQUEIDENTIFIER, @ledgerType NVARCHAR (4000), @includeCredits BIT, @includeDebits BIT, @includeReservedFunds BIT, @startDate DATETIME, @endDate DATETIME)
@@ -73,18 +78,16 @@ GO
 CREATE FUNCTION [dbo].[Sales_LicenseKeys_Activations] (@licenseKeyId UNIQUEIDENTIFIER)
      RETURNS INT AS EXTERNAL NAME [Weavver.DAL].[UserDefinedFunctions].[Sales_LicenseKeys_Activations]
 GO
-
-DROP PROCEDURE QueueHttpPost
+CREATE FUNCTION [dbo].[StoredProcedures_HttpPost] (@licenseKeyId UNIQUEIDENTIFIER)
+     RETURNS INT AS EXTERNAL NAME [Weavver.DAL].[StoredProcedures].[StoredProcedures_HttpPost]
 GO
 
 ALTER TABLE Accounting_Accounts ADD Balance AS (dbo.Total_ForLedger(OrganizationId,Id,LedgerType,1,1,0,null,null))
 ALTER TABLE Accounting_Accounts ADD AvailableBalance AS (dbo.Total_ForLedger(OrganizationId,Id,LedgerType,1,1,1,null,null))
-ALTER TABLE Accounting_Checks ADD PayeeName AS (dbo.GetName(AccountId))
-ALTER TABLE Accounting_LedgerItems ADD AccountName AS (dbo.GetName(AccountId))
 --ALTER TABLE Accounting_RecurringBillables ADD AccountFromName AS (dbo.GetName(AccountFrom))
 --ALTER TABLE Accounting_RecurringBillables ADD AccountToName AS (dbo.GetName(AccountTo))
-ALTER TABLE Accounting_RecurringBillables ADD UnbilledPeriods AS (dbo.Accounting_RecurringBillables_UnbilledPeriods(StartAt,Position,EndAt))
-ALTER TABLE Accounting_RecurringBillables ADD UnbilledAmount AS (dbo.Accounting_RecurringBillables_UnbilledAmount(StartAt,Position,EndAt,Amount))
+ALTER TABLE Accounting_RecurringBillables ADD UnbilledPeriods AS (dbo.Accounting_RecurringBillables_UnbilledPeriods(StartAt,Position,EndAt,BillingDirection))
+ALTER TABLE Accounting_RecurringBillables ADD UnbilledAmount AS (dbo.Accounting_RecurringBillables_UnbilledAmount(StartAt,Position,EndAt,Amount,BillingDirection))
 ALTER TABLE HR_TimeLogs ADD Duration AS (dbo.HR_TimeLogs_TimeSpan(Start, [End]))
 ALTER TABLE Logistics_Organizations ADD PayableBalance AS (dbo.Total_ForLedger(OrganizationId,Id,'Payable',1,1,1,null,null))
 ALTER TABLE Logistics_Organizations ADD ReceivableBalance AS (dbo.Total_ForLedger(OrganizationId,Id,'Receivable',1,1,1,null,null))
@@ -125,26 +128,28 @@ month(dbo.LocalizeDT(PostAt))
 GO
 
 
-CREATE PROCEDURE QueueHttpPost
-     @messageBody NVARCHAR(MAX)
+CREATE PROCEDURE QueueHttpPost @messageBody NVARCHAR(MAX)
 AS
      -- Begin Dialog using service on contract
      DECLARE @SBDialog uniqueidentifier
      BEGIN DIALOG CONVERSATION @SBDialog
           FROM SERVICE SBSendService
-          TO SERVICE 'SBReceiveService'
-          ON CONTRACT SBContract
+          TO SERVICE 'HttpReceiveService'
+          ON CONTRACT SBHttpContract
           WITH ENCRYPTION = OFF;
      SEND ON CONVERSATION @SBDialog
           MESSAGE TYPE SBMessage (@messageBody)
 GO
 
-ALTER QUEUE SBReceiveQueue
+IF NOT EXISTS (SELECT * FROM sys.service_queues WHERE name = 'HttpPostReceiveQueue')
+     BEGIN CREATE QUEUE HttpPostReceiveQueue WITH STATUS=OFF, RETENTION=ON; END;
+
+ALTER QUEUE HttpPostReceiveQueue
     WITH STATUS = ON,
          ACTIVATION
          (
            STATUS = ON,
-           PROCEDURE_NAME = HttpPost,
+           PROCEDURE_NAME = StoredProcedures_HttpPost,
            MAX_QUEUE_READERS = 10,
            EXECUTE AS SELF
          );

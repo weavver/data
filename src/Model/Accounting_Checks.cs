@@ -32,7 +32,7 @@ namespace Weavver.Data
                public object Status;
 
                [Display(Name = "Funding Source", Order = 2)]
-               public object Accounting_Accounts;
+               public object FundingSourceData;
 
                [Display(Name = "Posted", Order = 5)]
                [DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
@@ -44,7 +44,7 @@ namespace Weavver.Data
                public object CheckNumber;
 
                [Display(Name="Payee", Order=11)]
-               public object PayeeName;
+               public object PayeeData;
 
                [Display(Order=20)]
                [DefaultValue("[no memo]")]
@@ -65,10 +65,7 @@ namespace Weavver.Data
                public object UpdatedAt;
 
                [ScaffoldColumn(false)]
-               public object Logistics_Organizations;
-
-               [ScaffoldColumn(false)]
-               public object Logistics_Organizations1;
+               public object OrganizationData;
           }
 //-------------------------------------------------------------------------------------------
           public Logistics_Addresses BillingAddress

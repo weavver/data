@@ -142,6 +142,9 @@
     <Folder Include="Views\" />
     <Folder Include="Jobs\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Stored Procedures\HttpPost.cs" />
+  </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>rem "C:\Program Files\Microsoft SQL Server\90\Tools\Binn\sqlcmd.exe" -i "$(ProjectDir)\PrePreDeployScript.sql"</PostBuildEvent>
   </PropertyGroup>

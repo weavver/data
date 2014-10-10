@@ -8,7 +8,7 @@ public partial class UserDefinedFunctions
 {
 //-------------------------------------------------------------------------------------------
      [Microsoft.SqlServer.Server.SqlFunction]
-     public static SqlInt32 Accounting_RecurringBillables_UnbilledPeriods(SqlDateTime startDate, SqlDateTime position, SqlDateTime endAt)
+     public static SqlInt32 Accounting_RecurringBillables_UnbilledPeriods(SqlDateTime startDate, SqlDateTime position, SqlDateTime endAt, string billingDirection)
      {
           DateTime utcNow = DateTime.UtcNow; // record the current moment
           DateTime utcPosition = position.Value.ToUniversalTime();
@@ -17,7 +17,11 @@ public partial class UserDefinedFunctions
           {
                int monthsNewPos = (utcMaxPosition.Year * 12) + utcMaxPosition.Month;
                int monthsOldPos = (utcPosition.Year * 12) + utcPosition.Month;
-               int periods = monthsNewPos - monthsOldPos + 1;
+               int periods = monthsNewPos - monthsOldPos;
+               if (billingDirection == "PreBill")
+               {
+                    periods += 1;
+               }
                return new SqlInt32(periods);
           }
           else
@@ -27,9 +31,9 @@ public partial class UserDefinedFunctions
      }
 //-------------------------------------------------------------------------------------------
      [Microsoft.SqlServer.Server.SqlFunction]
-     public static SqlDecimal Accounting_RecurringBillables_UnbilledAmount(SqlDateTime startDate, SqlDateTime position, SqlDateTime endAt, Decimal amount)
+     public static SqlDecimal Accounting_RecurringBillables_UnbilledAmount(SqlDateTime startDate, SqlDateTime position, SqlDateTime endAt, Decimal amount, string billingDirection)
      {
-          SqlInt32 unbilledPeriods = Accounting_RecurringBillables_UnbilledPeriods(startDate, position, endAt);
+          SqlInt32 unbilledPeriods = Accounting_RecurringBillables_UnbilledPeriods(startDate, position, endAt, billingDirection);
           return new SqlDecimal(unbilledPeriods.Value * amount);
      }
 //-------------------------------------------------------------------------------------------

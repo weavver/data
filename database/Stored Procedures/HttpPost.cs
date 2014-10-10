@@ -24,7 +24,7 @@ public partial class StoredProcedures
                SqlCommand receiveCommand = connection.CreateCommand();
                SqlTransaction trans = connection.BeginTransaction();
                receiveCommand.Transaction = trans;
-               receiveCommand.CommandText = "RECEIVE TOP(1) CONVERT(NVARCHAR(MAX), message_body), conversation_handle FROM dbo.SBReceiveQueue";
+               receiveCommand.CommandText = "RECEIVE TOP(1) CONVERT(NVARCHAR(MAX), message_body), conversation_handle FROM dbo.HttpPostReceiveQueue";
                using (SqlDataReader reader = receiveCommand.ExecuteReader())
                {
                     if (reader.Read())
