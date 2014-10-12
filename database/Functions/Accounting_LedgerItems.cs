@@ -16,7 +16,8 @@ public partial class StoredProcedures
                                               bool includeDebits,
                                               bool includeReservedFunds,
                                               SqlDateTime startDate,
-                                              SqlDateTime endDate)
+                                              SqlDateTime endDate,
+                                              bool includeItemsOnEndDate)
      {
           string query = @"select isnull(sum(Amount),0) from Accounting_LedgerItems
                            where OrganizationId = @OrganizationId";
@@ -58,7 +59,14 @@ public partial class StoredProcedures
           if (!endDate.IsNull)
           {
                DateTime UtcEndDateTime = DateTime.SpecifyKind(endDate.Value, DateTimeKind.Utc);
-               cmd.CommandText += " and PostAt <= @EndDate";
+               if (includeItemsOnEndDate)
+               {
+                    cmd.CommandText += " and PostAt <= @EndDate";
+               }
+               else
+               {
+                    cmd.CommandText += " and PostAt < @EndDate";
+               }
                cmd.Parameters.AddWithValue("@EndDate", UtcEndDateTime);
           }
 

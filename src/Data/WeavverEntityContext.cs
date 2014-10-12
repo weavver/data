@@ -80,14 +80,17 @@ namespace Weavver.Data
                                          bool includeDebits,
                                          bool includeReservedFunds,
                                          DateTime? startAt,
-                                         DateTime? endAt)
+                                         DateTime? endAt,
+                                         bool includeItemsOnEndDate)
           {
                var totalOut = new SqlParameter("outTotal", SqlDbType.Decimal)
                {
-                    Direction = System.Data.ParameterDirection.Output
+                    Direction = System.Data.ParameterDirection.Output,
+                    Precision = 18,
+                    Scale = 2
                };
 
-               this.Database.ExecuteSqlCommand("exec @outTotal = Total_ForLedger @organizationId, @accountId, @ledgerType, @includeCredits, @includeDebits, @includeReservedFunds, @startAt, @endAt",
+               this.Database.ExecuteSqlCommand("exec @outTotal = Total_ForLedger @organizationId, @accountId, @ledgerType, @includeCredits, @includeDebits, @includeReservedFunds, @startAt, @endAt, @includeItemsOnEndDate",
                          new SqlParameter("OrganizationId", organizationId),
                          new SqlParameter("accountId", accountId),
                          new SqlParameter("ledgerType", ledgerType),
@@ -96,6 +99,7 @@ namespace Weavver.Data
                          new SqlParameter("includeReservedFunds", includeReservedFunds),
                          new SqlParameter("startAt", startAt.HasValue ? (object) startAt.Value : DBNull.Value),
                          new SqlParameter("endAt", endAt.HasValue ? (object) endAt.Value : DBNull.Value),
+                         new SqlParameter("includeItemsOnEndDate", includeItemsOnEndDate),
                          totalOut);
 
                return (decimal)totalOut.Value;

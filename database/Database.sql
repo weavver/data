@@ -18,7 +18,12 @@ IF EXISTS(select * from Sys.Columns where Object_ID = Object_ID(N'Accounting_Acc
 --if EXISTS(select * from sys.columns where Object_ID = Object_ID(N'Accounting_Accounts') and Name = N'BankAvailableBalance') BEGIN ALTER TABLE Accounting_Accounts DROP COLUMN BankAvailableBalance END
 
 IF EXISTS(select * from Sys.Columns where Object_ID = Object_ID(N'Accounting_Checks') and Name = N'PayeeName') BEGIN ALTER TABLE Accounting_Checks DROP COLUMN PayeeName END
-IF EXISTS(select * from Sys.Columns where Object_ID = Object_ID(N'Accounting_LedgerItems') and Name = N'AccountName') BEGIN ALTER TABLE Accounting_Checks DROP COLUMN AccountName END
+IF EXISTS(select * from Sys.Columns where Object_ID = Object_ID(N'Accounting_LedgerItems') and Name = N'AccountName') BEGIN ALTER TABLE Accounting_LedgerItems DROP COLUMN AccountName END
+
+IF EXISTS(select * from sys.columns where Object_ID = Object_ID(N'Accounting_Reconciliations') and Name = N'EnteredStartingBalance') BEGIN ALTER TABLE Accounting_Reconciliations DROP COLUMN EnteredStartingBalance END
+IF EXISTS(select * from sys.columns where Object_ID = Object_ID(N'Accounting_Reconciliations') and Name = N'EnteredCredits') BEGIN ALTER TABLE Accounting_Reconciliations DROP COLUMN EnteredCredits END
+IF EXISTS(select * from sys.columns where Object_ID = Object_ID(N'Accounting_Reconciliations') and Name = N'EnteredDebits') BEGIN ALTER TABLE Accounting_Reconciliations DROP COLUMN EnteredDebits END
+IF EXISTS(select * from sys.columns where Object_ID = Object_ID(N'Accounting_Reconciliations') and Name = N'EnteredEndingBalance') BEGIN ALTER TABLE Accounting_Reconciliations DROP COLUMN EnteredEndingBalance END
 
 IF EXISTS(select * from sys.columns where Object_ID = Object_ID(N'Accounting_RecurringBillables') and Name = N'UnbilledPeriods') BEGIN ALTER TABLE Accounting_RecurringBillables DROP COLUMN UnbilledPeriods END
 IF EXISTS(select * from sys.columns where Object_ID = Object_ID(N'Accounting_RecurringBillables') and Name = N'UnbilledAmount') BEGIN ALTER TABLE Accounting_RecurringBillables DROP COLUMN UnbilledAmount END
@@ -38,13 +43,13 @@ IF OBJECT_ID('[YearMonth]') IS NOT NULL DROP FUNCTION [dbo].[YearMonth];
 IF OBJECT_ID('[Account_AccountBalances_GetRelativeBalance]') IS NOT NULL DROP FUNCTION [dbo].[Account_AccountBalances_GetRelativeBalance];
 IF OBJECT_ID('[Accounting_RecurringBillables_UnbilledAmount]') IS NOT NULL DROP FUNCTION [dbo].[Accounting_RecurringBillables_UnbilledAmount];
 IF OBJECT_ID('[Accounting_RecurringBillables_UnbilledPeriods]') IS NOT NULL DROP FUNCTION [dbo].[Accounting_RecurringBillables_UnbilledPeriods];
+IF OBJECT_ID('[Accounting_Statements_EnteredTotal]') IS NOT NULL DROP FUNCTION [dbo].Accounting_Statements_EnteredTotal;
 IF OBJECT_ID('[GetName]') IS NOT NULL DROP FUNCTION [dbo].[GetName];
 IF OBJECT_ID('[LocalizeDT]') IS NOT NULL DROP FUNCTION [dbo].[LocalizeDT];
 IF OBJECT_ID('[HR_TimeLogs_TimeSpan]') IS NOT NULL DROP FUNCTION [dbo].[HR_TimeLogs_TimeSpan];
 IF OBJECT_ID('[Total_ForLedger]') IS NOT NULL DROP FUNCTION [dbo].[Total_ForLedger];
 IF OBJECT_ID('[Sales_LicenseKeys_Activations]') IS NOT NULL DROP FUNCTION [dbo].[Sales_LicenseKeys_Activations];
-IF OBJECT_ID('[StoredProcedures_HttpPost]') IS NOT NULL DROP FUNCTION [dbo].[StoredProcedures_HttpPost];
-IF OBJECT_ID('[QueueHttpPost]') IS NOT NULL DROP PROCEDURE [dbo].[QueueHttpPost];
+IF OBJECT_ID('[StoredProcedures_HttpPost]') IS NOT NULL DROP PROCEDURE [dbo].[StoredProcedures_HttpPost];
 GO
 
 IF EXISTS (SELECT * FROM sys.assemblies asms WHERE asms.name = N'Weavver.DAL')
@@ -66,8 +71,8 @@ GO
 CREATE FUNCTION [dbo].[Accounting_RecurringBillables_UnbilledPeriods] (@startDate DATETIME, @position DATETIME, @endAt DATETIME, @billingDirection NVARCHAR)
      RETURNS INT AS EXTERNAL NAME [Weavver.DAL].[UserDefinedFunctions].[Accounting_RecurringBillables_UnbilledPeriods]
 GO
-CREATE FUNCTION [dbo].[Total_ForLedger] (@organizationId UNIQUEIDENTIFIER, @accountId UNIQUEIDENTIFIER, @ledgerType NVARCHAR (4000), @includeCredits BIT, @includeDebits BIT, @includeReservedFunds BIT, @startDate DATETIME, @endDate DATETIME)
-     RETURNS NUMERIC (18, 2) AS EXTERNAL NAME [Weavver.DAL].[StoredProcedures].[Total_ForLedger]
+CREATE FUNCTION [dbo].[Total_ForLedger] (@organizationId UNIQUEIDENTIFIER, @accountId UNIQUEIDENTIFIER, @ledgerType NVARCHAR (4000), @includeCredits BIT, @includeDebits BIT, @includeReservedFunds BIT, @startDate DATETIME, @endDate DATETIME, @includeItemsOnEndDate bit)
+     RETURNS DECIMAL (18, 2) AS EXTERNAL NAME [Weavver.DAL].[StoredProcedures].[Total_ForLedger]
 GO
 CREATE FUNCTION [dbo].[GetName] (@id UNIQUEIDENTIFIER)
      RETURNS NVARCHAR (4000) AS EXTERNAL NAME [Weavver.DAL].[UserDefinedFunctions].[GetName]
@@ -81,23 +86,46 @@ GO
 CREATE FUNCTION [dbo].[Sales_LicenseKeys_Activations] (@licenseKeyId UNIQUEIDENTIFIER)
      RETURNS INT AS EXTERNAL NAME [Weavver.DAL].[UserDefinedFunctions].[Sales_LicenseKeys_Activations]
 GO
-CREATE FUNCTION [dbo].[StoredProcedures_HttpPost] (@licenseKeyId UNIQUEIDENTIFIER)
-     RETURNS INT AS EXTERNAL NAME [Weavver.DAL].[StoredProcedures].[StoredProcedures_HttpPost]
+--CREATE FUNCTION [dbo].[StoredProcedures_HttpPost] (@licenseKeyId UNIQUEIDENTIFIER)
+--     RETURNS INT AS EXTERNAL NAME [Weavver.DAL].[StoredProcedures].[StoredProcedures_HttpPost]
+--GO
+CREATE FUNCTION dbo.Accounting_Statements_EnteredTotal(@organizationId uniqueidentifier, @accountId uniqueidentifier, @includeCredits bit, @includeDebits bit, @includeProjections bit, @startAt DATETIME, @endAt DATETIME, @includeItemsOnEndDate BIT)
+RETURNS decimal(12, 2)
+AS 
+BEGIN
+
+	declare @ledgerType varchar(max)
+	select @ledgerType = (select TOP 1 ledgertype from accounting_accounts where id=@accountId)
+
+	declare @total decimal(12, 2)
+	select @total = [dbo].[Total_ForLedger](@organizationId, @accountId, @ledgerType, @includeCredits, @includeDebits, @includeProjections, @startAt, @endAt, @includeItemsOnEndDate)
+
+	return @total
+END
 GO
 
-ALTER TABLE Accounting_Accounts ADD Balance AS (dbo.Total_ForLedger(OrganizationId,Id,LedgerType,1,1,0,null,null))
-ALTER TABLE Accounting_Accounts ADD AvailableBalance AS (dbo.Total_ForLedger(OrganizationId,Id,LedgerType,1,1,1,null,null))
+
+--###################################################################################################################################
+--##                                                     COMPUTED COLUMNS                                                          ##
+--###################################################################################################################################
+
+ALTER TABLE Accounting_Accounts ADD Balance AS (dbo.Total_ForLedger(OrganizationId,Id,LedgerType,1,1,0,null,null,0))
+ALTER TABLE Accounting_Accounts ADD AvailableBalance AS (dbo.Total_ForLedger(OrganizationId,Id,LedgerType,1,1,1,null,null,0))
 --ALTER TABLE Accounting_RecurringBillables ADD AccountFromName AS (dbo.GetName(AccountFrom))
 --ALTER TABLE Accounting_RecurringBillables ADD AccountToName AS (dbo.GetName(AccountTo))
 ALTER TABLE Accounting_Checks ADD PayeeName AS (dbo.GetName(Payee))
 ALTER TABLE Accounting_LedgerItems ADD AccountName AS (dbo.GetName(AccountId))
+Alter TABLE Accounting_Reconciliations ADD EnteredStartingBalance as (dbo.Accounting_Statements_EnteredTotal(OrganizationId, Account, 1, 1, 0, null, StartAt, 0))
+ALTER TABLE Accounting_Reconciliations ADD EnteredCredits as (dbo.Accounting_Statements_EnteredTotal(OrganizationId, Account, 1, 0, 0, StartAt, EndAt, 1))
+ALTER TABLE Accounting_Reconciliations ADD EnteredDebits as (dbo.Accounting_Statements_EnteredTotal(OrganizationId, Account, 0, 1, 0, StartAt, EndAt, 1))
+ALTER TABLE Accounting_Reconciliations ADD EnteredEndingBalance as (dbo.Accounting_Statements_EnteredTotal(OrganizationId, Account, 1, 1, 0, null, EndAt, 1))
 ALTER TABLE Accounting_RecurringBillables ADD UnbilledPeriods AS (dbo.Accounting_RecurringBillables_UnbilledPeriods(StartAt,Position,EndAt,BillingDirection))
 ALTER TABLE Accounting_RecurringBillables ADD UnbilledAmount AS (dbo.Accounting_RecurringBillables_UnbilledAmount(StartAt,Position,EndAt,Amount,BillingDirection))
 ALTER TABLE HR_TimeLogs ADD Duration AS (dbo.HR_TimeLogs_TimeSpan(Start, [End]))
-ALTER TABLE Logistics_Organizations ADD PayableBalance AS (dbo.Total_ForLedger(OrganizationId,Id,'Payable',1,1,1,null,null))
-ALTER TABLE Logistics_Organizations ADD ReceivableBalance AS (dbo.Total_ForLedger(OrganizationId,Id,'Receivable',1,1,1,null,null))
+ALTER TABLE Logistics_Organizations ADD PayableBalance AS (dbo.Total_ForLedger(OrganizationId,Id,'Payable',1,1,1,null,null,0))
+ALTER TABLE Logistics_Organizations ADD ReceivableBalance AS (dbo.Total_ForLedger(OrganizationId,Id,'Receivable',1,1,1,null,null,0))
 ALTER TABLE Sales_LicenseKeys ADD Activations AS (dbo.Sales_LicenseKeys_Activations(Id))
-ALTER TABLE Sales_Orders ADD Total AS ([dbo].[Total_ForLedger]([OrganizationId],[Id],'Receivable',(1),(1),(0),NULL,NULL))
+ALTER TABLE Sales_Orders ADD Total AS ([dbo].[Total_ForLedger]([OrganizationId],[Id],'Receivable',(1),(1),(0),NULL,NULL,0))
 ALTER TABLE Sales_ShoppingCartItems ADD Total AS ((([UnitCost]+[SetUp])+[Deposit]+[Monthly])*[Quantity])
 
 GO
@@ -133,29 +161,29 @@ month(dbo.LocalizeDT(PostAt))
 GO
 
 
-CREATE PROCEDURE QueueHttpPost @messageBody NVARCHAR(MAX)
-AS
-     -- Begin Dialog using service on contract
-     DECLARE @SBDialog uniqueidentifier
-     BEGIN DIALOG CONVERSATION @SBDialog
-          FROM SERVICE SBSendService
-          TO SERVICE 'HttpReceiveService'
-          ON CONTRACT SBHttpContract
-          WITH ENCRYPTION = OFF;
-     SEND ON CONVERSATION @SBDialog
-          MESSAGE TYPE SBMessage (@messageBody)
-GO
+--CREATE PROCEDURE StoredProcedures_HttpPost @messageBody NVARCHAR(MAX)
+--AS
+--     -- Begin Dialog using service on contract
+--     DECLARE @SBDialog uniqueidentifier
+--     BEGIN DIALOG CONVERSATION @SBDialog
+--          FROM SERVICE SBSendService
+--          TO SERVICE 'HttpReceiveService'
+--          ON CONTRACT SBHttpContract
+--          WITH ENCRYPTION = OFF;
+--     SEND ON CONVERSATION @SBDialog
+--          MESSAGE TYPE SBMessage (@messageBody)
+--GO
 
-IF NOT EXISTS (SELECT * FROM sys.service_queues WHERE name = 'HttpPostReceiveQueue')
-     BEGIN CREATE QUEUE HttpPostReceiveQueue WITH STATUS=OFF, RETENTION=ON; END;
+--IF NOT EXISTS (SELECT * FROM sys.service_queues WHERE name = 'HttpPostReceiveQueue')
+--     BEGIN CREATE QUEUE HttpPostReceiveQueue WITH STATUS=OFF, RETENTION=ON; END;
 
-ALTER QUEUE HttpPostReceiveQueue
-    WITH STATUS = ON,
-         ACTIVATION
-         (
-           STATUS = ON,
-           PROCEDURE_NAME = StoredProcedures_HttpPost,
-           MAX_QUEUE_READERS = 10,
-           EXECUTE AS SELF
-         );
+--ALTER QUEUE HttpPostReceiveQueue
+--    WITH STATUS = ON,
+--         ACTIVATION
+--         (
+--           STATUS = ON,
+--           PROCEDURE_NAME = StoredProcedures.HttpPost,
+--           MAX_QUEUE_READERS = 10,
+--           EXECUTE AS SELF
+--         );
 GO

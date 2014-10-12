@@ -30,6 +30,22 @@ namespace Weavver.Data
         [Column(TypeName = "money")]
         public decimal? Debits { get; set; }
 
+        [Column(TypeName = "money")]
+        [ScaffoldColumn(false)]
+        public decimal? EnteredStartingBalance { get; set; }
+
+        [Column(TypeName = "money")]
+        [ScaffoldColumn(false)]
+        public decimal? EnteredDebits { get; set; }
+
+        [Column(TypeName = "money")]
+        [ScaffoldColumn(false)]
+        public decimal? EnteredCredits { get; set; }
+
+        [Column(TypeName = "money")]
+        [ScaffoldColumn(false)]
+        public decimal? EnteredEndingBalance { get; set; }
+
         public DateTime CreatedAt { get; set; }
 
         public Guid CreatedBy { get; set; }

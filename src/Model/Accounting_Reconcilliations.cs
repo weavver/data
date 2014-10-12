@@ -54,6 +54,14 @@ namespace Weavver.Data
                [DisplayFormat(DataFormatString = "{0:C}")]
                public object Debits;
 
+               [ScaffoldColumn(false)]
+               [DisplayFormat(DataFormatString = "{0:C}")]
+               public object EnteredCredits;
+
+               [ScaffoldColumn(false)]
+               [DisplayFormat(DataFormatString = "{0:C}")]
+               public object EnteredDebits;
+
                [Display(Name = "Ending Balance (=)", Order = 20)]
                [DisplayFormat(DataFormatString = "{0:C}")]
                public object EndingBalance;
@@ -99,7 +107,7 @@ namespace Weavver.Data
 
                     if (fieldName == "Starting Balance (=)")
                     {
-                         decimal startBalance = data.Total_ForLedger(OrganizationId, Account, accountType, true, true, false, null, StartAt.Subtract(TimeSpan.FromDays(1)));
+                         decimal startBalance = EnteredStartingBalance.Value;
                          if (startBalance == StartingBalance)
                          {
                               cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#c9f4d7");
@@ -113,7 +121,7 @@ namespace Weavver.Data
                     }
                     if (fieldName == "Ending Balance (=)")
                     {
-                         decimal endBalance = data.Total_ForLedger(OrganizationId, Account, accountType, true, true, false, null, EndAt);
+                         decimal endBalance = EnteredEndingBalance.Value;
                          if (endBalance == EndingBalance)
                          {
                               cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#c9f4d7");
@@ -127,7 +135,7 @@ namespace Weavver.Data
                     }
                     if (fieldName == "Total Credits (+)")
                     {
-                         decimal credits = data.Total_ForLedger(OrganizationId, Account, accountType, true, false, false, StartAt, EndAt);
+                         decimal credits = EnteredCredits.Value;
                          if (credits == Credits.Value)
                          {
                               cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#c9f4d7");
@@ -142,9 +150,7 @@ namespace Weavver.Data
 
                     if (fieldName == "Total Debits (-)")
                     {
-                         decimal debits = data.Total_ForLedger(OrganizationId, Account, accountType, false, true, false, StartAt, EndAt);
-                         debits = debits * -1.0m;
-
+                         decimal debits = EnteredDebits.Value * -1.0m;
                          if (debits < 0)
                          {
                               cell.ForeColor = System.Drawing.Color.Red;
