@@ -1,10 +1,11 @@
 namespace Weavver.Data
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+     using System;
+     using System.Collections.Generic;
+     using System.ComponentModel;
+     using System.ComponentModel.DataAnnotations;
+     using System.ComponentModel.DataAnnotations.Schema;
+     using System.Data.Entity.Spatial;
 
     public partial class Accounting_Reconciliations
     {
@@ -32,18 +33,22 @@ namespace Weavver.Data
 
         [Column(TypeName = "money")]
         [ScaffoldColumn(false)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public decimal? EnteredStartingBalance { get; set; }
 
         [Column(TypeName = "money")]
         [ScaffoldColumn(false)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public decimal? EnteredDebits { get; set; }
 
         [Column(TypeName = "money")]
         [ScaffoldColumn(false)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public decimal? EnteredCredits { get; set; }
 
         [Column(TypeName = "money")]
         [ScaffoldColumn(false)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public decimal? EnteredEndingBalance { get; set; }
 
         public DateTime CreatedAt { get; set; }
