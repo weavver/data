@@ -81,6 +81,7 @@ namespace Weavver.Data
                //[DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
                [UIHint("Date")]
                [FilterUIHint("DateRange")]
+               [DataTypeAttribute(DataType.DateTime)]
                public object PostAt;
 
                [ScaffoldColumn(true)]
@@ -130,7 +131,7 @@ namespace Weavver.Data
                public object CreatedBy;
 
                [FilterUIHint("DateTime")]
-               //[UIHint("Date")]
+               [UIHint("Date")]
                [Display(Name = "Updated At")]
                //[DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
                [ReadOnly(true)]
