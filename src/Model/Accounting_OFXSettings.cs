@@ -138,6 +138,46 @@ namespace Weavver.Data
                return item.ListId;
           }
 //-------------------------------------------------------------------------------------------
+          [DynamicDataWebMethod("List Remote Accounts", "Administrators", "Accountants")]
+          public DynamicDataWebMethodReturnType ListAccounts()
+          {
+               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
+               Accounting_Accounts account = GetParentAccount();
+
+               nsoftware.InEBank.Account remoteAccount = new Account();
+               remoteAccount.OFXAppId = "QWIN";
+               remoteAccount.OFXAppVersion = "1800";
+               remoteAccount.FIUrl = Url;
+               remoteAccount.FIId = FinancialInstitutionId.ToString();
+               remoteAccount.FIOrganization = FinancialInstitutionName;
+               remoteAccount.OFXUser = Username;
+               remoteAccount.OFXPassword = Password;
+
+               remoteAccount.GetInfo();
+
+               string acctList = "<br />No accounts found";
+               if (remoteAccount.Accounts.Count > 0)
+               {
+                    acctList = "<br />";
+                    foreach (var acct in remoteAccount.Accounts)
+                    {
+                         acctList += acct.Id;
+                         if (!String.IsNullOrEmpty(acct.Description))
+                         {
+                              acctList += ": " + acct.Description;
+                         }
+                         acctList += "<br />";
+                         acctList += " - Type: " + acct.AccType + "<br />";
+                         acctList += " - Status: " + acct.Status + "<br />";
+                         acctList += " - Is Checking: " + (acct.Checking ? "yes" : "no") + "<br /><br />";
+                    }
+               }
+
+               ret.Status = "Remote Account List";
+               ret.Message = acctList;
+               return ret;
+          }
+//-------------------------------------------------------------------------------------------
           public List<Accounting_OFXLedgerItem> GetRemoteLedgerItems(DateTime startDate, DateTime endDate)
           {
                Accounting_Accounts account = GetParentAccount();

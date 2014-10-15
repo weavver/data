@@ -36,10 +36,14 @@ namespace Weavver.Data
 
                [Display(Name = "Starting Date", Order = 2)]
                [DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
+               [UIHint("Date")]
+               [DataTypeAttribute(DataType.DateTime)]
                public object StartAt;
 
                [Display(Name = "Ending Date", Order = 3)]
                [DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
+               [UIHint("Date")]
+               [DataTypeAttribute(DataType.DateTime)]
                public object EndAt;
 
                [Display(Name = "Starting Balance (=)", Order = 5)]
