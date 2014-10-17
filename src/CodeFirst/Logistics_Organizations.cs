@@ -97,14 +97,17 @@ namespace Weavver.Data
 
         [Column(TypeName = "numeric")]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [FilterUIHint("Range")]
         public decimal? PayableBalance { get; set; }
 
         [Column(TypeName = "numeric")]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [FilterUIHint("Range")]
         public decimal? ReceivableBalance { get; set; }
 
         public virtual ICollection<Accounting_Accounts> Accounting_Accounts { get; set; }
 
+         [ScaffoldColumn(false)]
         public virtual ICollection<Accounting_Accounts> Accounting_Accounts1 { get; set; }
 
         public virtual ICollection<Accounting_Checks> Accounting_Checks { get; set; }
@@ -121,26 +124,32 @@ namespace Weavver.Data
 
         public virtual ICollection<Accounting_RecurringBillables> Accounting_RecurringBillables2 { get; set; }
 
+         [ScaffoldColumn(false)]
         public virtual ICollection<CustomerService_Tickets> CustomerService_Tickets { get; set; }
 
+         [ScaffoldColumn(false)]
         public virtual ICollection<CustomerService_Tickets> CustomerService_Tickets1 { get; set; }
 
         public virtual ICollection<HR_Jobs> HR_Jobs { get; set; }
 
         public virtual ICollection<HR_Staff> HR_Staff { get; set; }
 
+         [ScaffoldColumn(false)]
         public virtual ICollection<HR_Tasks> HR_Tasks { get; set; }
 
         public virtual ICollection<HR_TimeLogs> HR_TimeLogs { get; set; }
 
+         [ScaffoldColumn(false)]
         public virtual ICollection<Accounting_LedgerItemTags> Accounting_LedgerItemTags { get; set; }
 
         public virtual ICollection<Logistics_Products> Logistics_Products { get; set; }
 
         public virtual ICollection<Marketing_Blogs> Marketing_Blogs { get; set; }
 
+         [ScaffoldColumn(false)]
         public virtual ICollection<Sales_Discounts> Sales_Discounts { get; set; }
 
+         [ScaffoldColumn(false)]
         public virtual ICollection<Sales_Resellers> Sales_Resellers { get; set; }
 
         public virtual ICollection<Sales_Resellers> Sales_Resellers1 { get; set; }
