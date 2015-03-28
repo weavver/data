@@ -1,110 +1,219 @@
-﻿<Activity mc:Ignorable="sap" x:Class="Weavver.Workflows.ReimbursementRequest" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:local="clr-namespace:Weavver.Workflows" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="clr-namespace:Microsoft.VisualBasic;assembly=System" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:s1="clr-namespace:System;assembly=System" xmlns:s2="clr-namespace:System;assembly=System.Xml" xmlns:s3="clr-namespace:System;assembly=System.Core" xmlns:s4="clr-namespace:System;assembly=System.ServiceModel" xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System" xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=System.ServiceModel" xmlns:scg2="clr-namespace:System.Collections.Generic;assembly=System.Core" xmlns:scg3="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core" xmlns:st="clr-namespace:System.Text;assembly=mscorlib" xmlns:wca="clr-namespace:Weavver.Company.Accounting" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Weavver.Workflows.ReimbursementRequest"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:local="clr-namespace:Weavver.Workflows"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="Amount" Type="InArgument(x:String)" />
     <x:Property Name="Memo" Type="InArgument(x:String)" />
     <x:Property Name="Purchased" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>654,742</sap:VirtualizedContainerService.HintSize>
-  <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
-  <Flowchart DisplayName="Request" sad:XamlDebuggerXmlReader.FileName="W:\Projects\Weavver\Main\Projects\WeavverLib\Workflows\Accounting_ReimbursementRequest.xaml" sap:VirtualizedContainerService.HintSize="614,702">
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Windows.Shapes</x:String>
+      <x:String>System.Windows.Controls</x:String>
+      <x:String>System.Windows.Documents</x:String>
+      <x:String>System.Windows.Shell</x:String>
+      <x:String>System.Windows.Navigation</x:String>
+      <x:String>System.Windows.Data</x:String>
+      <x:String>System.Windows</x:String>
+      <x:String>System.Windows.Controls.Primitives</x:String>
+      <x:String>System.Windows.Media.Animation</x:String>
+      <x:String>System.Windows.Input</x:String>
+      <x:String>System.Windows.Media</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Windows.Automation</x:String>
+      <x:String>System.Windows.Media.TextFormatting</x:String>
+      <x:String>System.Windows.Ink</x:String>
+      <x:String>System.Windows.Media.Effects</x:String>
+      <x:String>System.Windows.Media.Imaging</x:String>
+      <x:String>System.Windows.Media.Media3D</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System.ServiceModel</x:String>
+      <x:String>System.ServiceModel.Activities</x:String>
+      <x:String>System.ServiceModel.Channels</x:String>
+      <x:String>System.ServiceModel.Description</x:String>
+      <x:String>System.ServiceModel.Security</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities.Debugger</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Weavver.Workflows</x:String>
+      <x:String>Weavver.Company.Accounting</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Weavver.Data</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart DisplayName="Request">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Default="Denied" Name="Approval" />
     </Flowchart.Variables>
-    <sap:WorkflowViewStateService.ViewState>
-      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
-        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-        <av:Point x:Key="ShapeLocation">30,2.5</av:Point>
-        <av:Size x:Key="ShapeSize">60,75</av:Size>
-        <av:PointCollection x:Key="ConnectorLocation">60,77.5 60,107.5 130,107.5 130,144.5</av:PointCollection>
-        <x:Double x:Key="Height">666</x:Double>
-      </scg3:Dictionary>
-    </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
       <FlowStep x:Name="__ReferenceID0">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">30,144.5</av:Point>
-            <av:Size x:Key="ShapeSize">200,51</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">130,195.5 130,225.5 195,225.5 195,252.5</av:PointCollection>
-          </scg3:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <Sequence DisplayName="GetApproval" sap:VirtualizedContainerService.HintSize="200,51">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg3:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg3:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Persist sap:VirtualizedContainerService.HintSize="200,22">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg3:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </Persist>
-          <local:SendMail Body="Please approve this request: {workflowid}" From="mitcheloc@gmail.com" sap:VirtualizedContainerService.HintSize="200,22" Subject="Please approve this reimbursement." To="mitcheloc@gmail.com" />
-          <local:WebResponse x:TypeArguments="x:String" BookmarkName="RequestApproval" DisplayName="Wait on Approval" sap:VirtualizedContainerService.HintSize="200,22" Result="[Approval]" />
+        <Sequence DisplayName="GetApproval">
+          <Persist sap2010:WorkflowViewState.IdRef="Persist_1" />
+          <local:SendMail Body="Please approve this request: {workflowid}" From="mitcheloc@gmail.com" Subject="Please approve this reimbursement." To="mitcheloc@gmail.com" sap2010:WorkflowViewState.IdRef="SendMail_1" />
+          <local:WebResponse x:TypeArguments="x:String" BookmarkName="RequestApproval" DisplayName="Wait on Approval" Result="[Approval]" sap2010:WorkflowViewState.IdRef="WebResponse`1_1" />
+          <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
         </Sequence>
         <FlowStep.Next>
-          <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID1" Expression="[Approval]" sap:VirtualizedContainerService.HintSize="60,75">
+          <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID1" Expression="[Approval]">
             <FlowSwitch.Default>
               <FlowStep x:Name="__ReferenceID2">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
-                    <av:Point x:Key="ShapeLocation">380,214.5</av:Point>
-                    <av:Size x:Key="ShapeSize">200,51</av:Size>
-                  </scg3:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <Sequence DisplayName="Denied" sap:VirtualizedContainerService.HintSize="200,51">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg3:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg3:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <local:SendMail Body="Your request was denied." From="mitcheloc@gmail.com" sap:VirtualizedContainerService.HintSize="200,22" Subject="Your request was denied." To="mitcheloc@gmail.com" />
+                <Sequence DisplayName="Denied">
+                  <local:SendMail Body="Your request was denied." From="mitcheloc@gmail.com" Subject="Your request was denied." To="mitcheloc@gmail.com" sap2010:WorkflowViewState.IdRef="SendMail_2" />
+                  <sap2010:WorkflowViewState.IdRef>Sequence_2</sap2010:WorkflowViewState.IdRef>
                 </Sequence>
+                <sap2010:WorkflowViewState.IdRef>FlowStep_1</sap2010:WorkflowViewState.IdRef>
               </FlowStep>
             </FlowSwitch.Default>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <av:Point x:Key="ShapeLocation">180,252.5</av:Point>
-                <av:Size x:Key="ShapeSize">60,75</av:Size>
-                <av:PointCollection x:Key="EscalateConnector">225,252.5 225,222.5 266,222.5 266,120.04 130,120.04 130,144.5</av:PointCollection>
-                <av:PointCollection x:Key="ApprovedConnector">210,327.5 210,357.5 340,357.5 340,444.5 310,444.5 310,474.5</av:PointCollection>
-                <av:PointCollection x:Key="Default">240,290 270,290 270,240 380,240</av:PointCollection>
-              </scg3:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
             <x:Reference>__ReferenceID0<x:Key>Escalate</x:Key></x:Reference>
             <FlowStep x:Key="Approved" x:Name="__ReferenceID3">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg3:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">210,474.5</av:Point>
-                  <av:Size x:Key="ShapeSize">200,51</av:Size>
-                </scg3:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap:VirtualizedContainerService.HintSize="200,51">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg3:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <Persist sap:VirtualizedContainerService.HintSize="200,22">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg3:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg3:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </Persist>
-                <local:SendMail Body="Your request was aproved." From="mitcheloc@gmail.com" sap:VirtualizedContainerService.HintSize="200,22" Subject="Your request was approved." To="mitcheloc@gmail.com" />
+              <Sequence>
+                <Persist sap2010:WorkflowViewState.IdRef="Persist_2" />
+                <local:SendMail Body="Your request was aproved." From="mitcheloc@gmail.com" Subject="Your request was approved." To="mitcheloc@gmail.com" sap2010:WorkflowViewState.IdRef="SendMail_3" />
+                <sap2010:WorkflowViewState.IdRef>Sequence_3</sap2010:WorkflowViewState.IdRef>
               </Sequence>
+              <sap2010:WorkflowViewState.IdRef>FlowStep_2</sap2010:WorkflowViewState.IdRef>
             </FlowStep>
+            <sap2010:WorkflowViewState.IdRef>FlowSwitch`1_1</sap2010:WorkflowViewState.IdRef>
           </FlowSwitch>
         </FlowStep.Next>
+        <sap2010:WorkflowViewState.IdRef>FlowStep_3</sap2010:WorkflowViewState.IdRef>
       </FlowStep>
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
     <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID3</x:Reference>
+    <sap2010:WorkflowViewState.IdRef>Flowchart_1</sap2010:WorkflowViewState.IdRef>
+    <sads:DebugSymbol.Symbol>d0FXOlxTb3VyY2VcZGF0YVxzcmNcV29ya2Zsb3dzXEFjY291bnRpbmdfUmVpbWJ1cnNlbWVudFJlcXVlc3QueGFtbBpRA30PAgEBUzRTPAIBAlcJXBQCARJeVV5hAgEQYRFkHAIBCmoPbhoCAQNYC1hCAgEcWQtZ3AECARdaC1q/AQIBE2ITYskBAgELaxFrSAIBCWwRbMoBAgEEWZcBWawBAgEbWSBZSwIBGllvWZMBAgEZWVFZZgIBGFpGWlcCARZaflqKAQIBFGKEAWKZAQIBD2IoYkICAQ5iZmKAAQIBDWJIYl0CAQxshQFsmgECAQhsJmxBAgEHbGVsgQECAQZsR2xcAgEF</sads:DebugSymbol.Symbol>
   </Flowchart>
+  <sap2010:WorkflowViewState.IdRef>Weavver.Workflows.ReimbursementRequest_1</sap2010:WorkflowViewState.IdRef>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Persist_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SendMail_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="WebResponse`1_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="200.123076923077,51.6923076923077">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SendMail_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="200.123076923077,51.6923076923077">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">380,214.5</av:Point>
+            <av:Size x:Key="ShapeSize">200.123076923077,51.6923076923077</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Persist_2" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SendMail_3" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="200.123076923077,51.6923076923077">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">210,474.5</av:Point>
+            <av:Size x:Key="ShapeSize">200.123076923077,51.6923076923077</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowSwitch`1_1" sap:VirtualizedContainerService.HintSize="70.1538461538461,87.1384615384615">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">180,252.5</av:Point>
+            <av:Size x:Key="ShapeSize">70.1538461538461,87.1384615384615</av:Size>
+            <av:PointCollection x:Key="EscalateConnector">215.076923076923,252.5 215.076923076923,222.5 245.076923076923,222.5 245.076923076923,132.5 130.061538461538,132.5 130.061538461538,144.5</av:PointCollection>
+            <av:PointCollection x:Key="ApprovedConnector">232.615384615385,339.638461538462 232.615384615385,369.638461538462 310.061538461538,369.638461538462 310.061538461538,474.5</av:PointCollection>
+            <av:PointCollection x:Key="Default">250.153846153846,274.284615384615 280.153846153846,274.284615384615 280.153846153846,240.346153846154 380,240.346153846154</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">30,144.5</av:Point>
+            <av:Size x:Key="ShapeSize">200.123076923077,51.6923076923077</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">130.061538461538,196.192307692308 130.061538461538,226.192307692308 197.538461538462,226.192307692308 197.538461538462,252.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="613.661538461538,702.276923076923">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">30,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">59.8153846153846,75.3230769230769</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">60,77.5 60,107.5 130,107.5 130,144.5</av:PointCollection>
+            <x:Double x:Key="Height">666</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Weavver.Workflows.ReimbursementRequest_1" sap:VirtualizedContainerService.HintSize="653.538461538462,782.030769230769" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

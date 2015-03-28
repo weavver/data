@@ -142,7 +142,7 @@ namespace Weavver.Data
           public DynamicDataWebMethodReturnType ListAccounts()
           {
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
-               Accounting_Accounts account = GetParentAccount();
+               Accounting_Accounts account = GetAccount();
 
                nsoftware.InEBank.Account remoteAccount = new Account();
                remoteAccount.OFXAppId = "QWIN";
@@ -180,7 +180,7 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           public List<Accounting_OFXLedgerItem> GetRemoteLedgerItems(DateTime startDate, DateTime endDate)
           {
-               Accounting_Accounts account = GetParentAccount();
+               Accounting_Accounts account = GetAccount();
                if ((LedgerType)Enum.Parse(typeof(LedgerType), account.LedgerType) == LedgerType.CreditCard)
                {
                     return LoadCreditCardStatement(startDate, endDate);
@@ -193,7 +193,7 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           private List<Accounting_OFXLedgerItem> LoadCreditCardStatement(DateTime startAt, DateTime endAt)
           {
-               Accounting_Accounts account = GetParentAccount();
+               Accounting_Accounts account = GetAccount();
                List<Accounting_OFXLedgerItem> items = new List<Accounting_OFXLedgerItem>();
                nsoftware.InEBank.Ccstatement statement = GetCreditCardStatement(account, startAt, endAt);
                for (int i = 0; i < statement.Transactions.Count; i++)
@@ -248,7 +248,7 @@ namespace Weavver.Data
                return item;
           }
 //-------------------------------------------------------------------------------------------
-          private Accounting_Accounts GetParentAccount()
+          private Accounting_Accounts GetAccount()
           {
                using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
@@ -256,14 +256,17 @@ namespace Weavver.Data
                                                 where x.Id == AccountId.Value
                                                 select x).FirstOrDefault();
 
-                    data.Entry(acct).State = System.Data.Entity.EntityState.Detached;
+                    if (acct != null)
+                    {
+                         data.Entry(acct).State = System.Data.Entity.EntityState.Detached;
+                    }
                     return acct;
                }
           }
 //-------------------------------------------------------------------------------------------
           private List<Accounting_OFXLedgerItem> LoadBankStatement(DateTime startDate, DateTime endDate)
           {
-               Accounting_Accounts account = GetParentAccount();
+               Accounting_Accounts account = GetAccount();
                nsoftware.InEBank.Bankstatement statement = GetBankStatement(account, startDate, endDate);
 
                List<Accounting_OFXLedgerItem> items = new List<Accounting_OFXLedgerItem>();
@@ -454,7 +457,7 @@ namespace Weavver.Data
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
                ret.Status = "OFX Check";
 
-               var financialAccount = GetParentAccount();
+               var financialAccount = GetAccount();
 
                if (financialAccount.LedgerType == LedgerType.Checking.ToString() ||
                    financialAccount.LedgerType == LedgerType.Savings.ToString())
@@ -483,7 +486,7 @@ namespace Weavver.Data
 
                if (financialAccount.LedgerType == LedgerType.CreditCard.ToString())
                {
-                    Accounting_Accounts ccAccount = GetParentAccount();
+                    Accounting_Accounts ccAccount = GetAccount();
 
                     nsoftware.InEBank.Ccstatement ccStatement = new nsoftware.InEBank.Ccstatement();
                     ccStatement.OFXAppId = "QWIN";
@@ -518,7 +521,7 @@ namespace Weavver.Data
                ret.Status = "Balance Update";
                decimal remoteAvailableBalance = 0.0m;
                decimal remoteLedgerBalance = 0.0m;
-               bool retrieved = GetBalances(GetParentAccount(), out remoteAvailableBalance, out remoteLedgerBalance);
+               bool retrieved = GetBalances(GetAccount(), out remoteAvailableBalance, out remoteLedgerBalance);
                if (retrieved)
                {
                     using (WeavverEntityContainer data = new WeavverEntityContainer())

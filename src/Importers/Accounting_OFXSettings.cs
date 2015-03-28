@@ -6,6 +6,10 @@ using System.Text;
 using nsoftware.InEBank;
 using Weavver.Utilities;
 using Weavver.Web;
+using System.Configuration;
+using System.Web.Mail;
+using System.Web.Security;
+using System.Net.Mail;
 
 namespace Weavver.Data
 {
@@ -18,26 +22,58 @@ namespace Weavver.Data
           {
                using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
+                    DateTime sleepDateTime = DateTime.Now.Subtract(TimeSpan.FromMinutes(60));
+
                     // only load ofx enabled accounts
                     var ofxBanks = from x in data.Accounting_OFXSettings
-                                   where x.Enabled == true
+                                   where x.Enabled == true && x.LastSuccessfulConnection < sleepDateTime
                                    select x;
 
+                    Console.WriteLine("-Processing " + ofxBanks.Count() + " OFXSettings objects");
                     foreach (Accounting_OFXSettings ofxSetting in data.Accounting_OFXSettings)
                     {
-                         data.Entry(ofxSetting).State = System.Data.Entity.EntityState.Detached;
+                         Console.WriteLine("--Processing ofxSetting item " + ofxSetting.Id.ToString());
+                         //data.Entry(ofxSetting) = System.Data.Entity.EntityState.Detached;
 
                          // 1. Only import Bill Payment data for checking accounts
                          // We do this before ImportingLedgerItems so we can sync the check numbers
-                         var financialAccount = ofxSetting.GetParentAccount();
-                         if (financialAccount.LedgerType == LedgerType.Checking.ToString())
+                         var account = ofxSetting.GetAccount();
+                         if (account != null)
                          {
-                              ofxSetting.ImportScheduledPayments();
-                         }
+                              if (account.LedgerType == LedgerType.Checking.ToString())
+                              {
+                                   int count = ofxSetting.ImportScheduledPayments();
+                                   Console.WriteLine("---Imported " + count.ToString() + " scheduled payments");
+                              }
 
-                         // 2. Import any Ledger Items && Match to checks in our database
-                         // -- this should be done AFTER Bill Payment data is imported
-                         ofxSetting.ImportLedgerItems();
+                              // 2. Import any Ledger Items && Match to checks in our database
+                              // -- this should be done AFTER Bill Payment data is imported
+
+
+                               System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage("Weavver Cron <cron@weavver.com>", ConfigurationManager.AppSettings["audit_address"]);
+
+                              try
+                              {
+                                   DynamicDataWebMethodReturnType response = ofxSetting.ImportLedgerItems();
+
+                                   ofxSetting.LastSuccessfulConnection = DateTime.UtcNow;
+                                   data.SaveChanges();
+
+                                   Console.WriteLine("---Imported " + response.Message);
+                                   message.Subject = "Daily Accounting Import Ledger Items Result";
+                                   message.Body = response.Message;
+                              }
+                              catch (Exception ex)
+                              {
+                                   Console.WriteLine("---Error " + ex.Message);
+
+                                   message.Subject = "Daily Accounting Import Ledger Items Result - ERROR";
+                                   message.Body = "ObjectId: " + ofxSetting.Id.ToString() + "\r\n\r\n" +  ex.ToString();
+                              }
+
+                              SmtpClient smtpClient = new SmtpClient(ConfigurationManager.AppSettings["smtp_server"]);
+                              smtpClient.Send(message);
+                         }
                     }
                }
           }
@@ -67,7 +103,7 @@ namespace Weavver.Data
           {
                using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
-                    Accounting_Accounts account = GetParentAccount();
+                    Accounting_Accounts account = GetAccount();
 
                     Billpayment billPaymentData = new Billpayment();
                     billPaymentData.OFXAppId = "QWIN";
@@ -92,7 +128,7 @@ namespace Weavver.Data
           /// <returns>Returns added check count</returns>
           private int ImportScheduledPayments()
           {
-               var financialAccount = GetParentAccount();
+               var financialAccount = GetAccount();
                if (financialAccount.LedgerType != LedgerType.Checking.ToString())
                     return -1;
 
@@ -219,7 +255,7 @@ namespace Weavver.Data
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
                ret.Status = "Bill Payment Import Tool";
 
-               var financialAccount = GetParentAccount();
+               var financialAccount = GetAccount();
                if (financialAccount.LedgerType == LedgerType.Checking.ToString())
                {
                     ret.Message = "The import was successful!\r\n\r\nImported/Updated: ";
