@@ -252,9 +252,10 @@ namespace Weavver.Data
           {
                using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
-                    Accounting_Accounts acct = (from x in data.Accounting_Accounts
+                    var query = (from x in data.Accounting_Accounts
                                                 where x.Id == AccountId.Value
-                                                select x).FirstOrDefault();
+                                                select x);
+                    Accounting_Accounts acct = query.FirstOrDefault();
 
                     if (acct != null)
                     {

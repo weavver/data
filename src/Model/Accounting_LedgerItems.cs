@@ -173,7 +173,7 @@ namespace Weavver.Data
           public void GenerateMenu(WeavverMasterPageInterface masterPage)
           {
                //LedgerItemPanel.Visible = (LoggedInUser.OrganizationId == org1.OrganizationId);
-               string accountName = "";
+               //string accountName = "";
                //if (acct == null)
                //{
                //     WeavverMenuItem wMakePayment = new WeavverMenuItem("Make Payment", "~/company/accounting/payment");

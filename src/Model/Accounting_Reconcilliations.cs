@@ -105,7 +105,7 @@ namespace Weavver.Data
 
                     string ledgerlink = "<a href=\"~/Accounting_LedgerItems/List.aspx?AccountId={0}&LedgerType={1}&PostAt_Start={2}&PostAt_End={3}\">{4}</a>";
                     string period = StartAt.ToLocalTime().ToString("MM/dd/yy") + " - " + EndAt.ToLocalTime().ToString("MM/dd/yy");
-                    //e.Item.Cells[1].Text = String.Format(ledgerlink, item.Account.ToString(), acct.AccountType.ToString(), item.StartAt.ToLocalTime().ToString("MM/dd/yy"), item.EndAt.ToLocalTime().ToString("MM/dd/yy"), period);
+                    cell.Text = String.Format(ledgerlink, Account.ToString(), account.LedgerType.ToString(), StartAt.ToLocalTime().ToString("MM/dd/yy"), EndAt.ToLocalTime().ToString("MM/dd/yy"), period);
                     
                     string accountType = account.LedgerType;
 

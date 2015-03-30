@@ -21,19 +21,19 @@ namespace Weavver.Data
           public static Boolean ColumnIsVisible(this MetaColumn column)
           {
                return false;
-               var userRoles = Roles.GetRolesForUser();
-               var activeColumnActions = column.GetColumnPermissions(userRoles);
-               if (activeColumnActions.Contains(ColumnActions.DenyRead))
-                    return false;
-               else
-                    return true;
+               //var userRoles = Roles.GetRolesForUser();
+               //var activeColumnActions = column.GetColumnPermissions(userRoles);
+               //if (activeColumnActions.Contains(ColumnActions.DenyRead))
+               //     return false;
+               //else
+               //     return true;
           }
 
           public static Boolean ColumnIsInPage(this MetaColumn column, PageTemplate currentPage)
           {
                return false;
-               var hideIn = column.Attributes.OfType<HideColumnInAttribute>().DefaultIfEmpty(new HideColumnInAttribute()).First() as HideColumnInAttribute;
-               return hideIn.PageTemplates.Contains(currentPage);
+               //var hideIn = column.Attributes.OfType<HideColumnInAttribute>().DefaultIfEmpty(new HideColumnInAttribute()).First() as HideColumnInAttribute;
+               //return hideIn.PageTemplates.Contains(currentPage);
           }
 
           public static Boolean IsSecureColumnReadOnly(this MetaColumn column)

@@ -15,7 +15,7 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           public void RunCronTasks(CommandLineArguments args)
           {
-               return;
+               Console.WriteLine("Starting to import e-mails..");
                using (WeavverEntityContainer entity = new WeavverEntityContainer())
                {
                     var accounts = from x in entity.Communication_EmailAccounts
@@ -27,6 +27,7 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           private void ImportEmails(Communication_EmailAccounts account)
           {
+               Console.WriteLine("Importing e-mails for " + account.Id + " -- " + account.Host);
                using (Pop3Client client = new Pop3Client())
                {
                     // connect

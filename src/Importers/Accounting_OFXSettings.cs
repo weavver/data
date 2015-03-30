@@ -29,7 +29,17 @@ namespace Weavver.Data
                                    where x.Enabled == true && x.LastSuccessfulConnection < sleepDateTime
                                    select x;
 
-                    Console.WriteLine("-Processing " + ofxBanks.Count() + " OFXSettings objects");
+                    try
+                    {
+                         int totalBanksInSystem = ofxBanks.Count();
+                         Console.WriteLine("-Processing " + totalBanksInSystem + " OFXSettings objects (database wide count)");
+                    }
+                    catch (Exception ex)
+                    {
+                         Console.WriteLine("Exception .." + ex.Message);
+                         return;
+                    }
+
                     foreach (Accounting_OFXSettings ofxSetting in data.Accounting_OFXSettings)
                     {
                          Console.WriteLine("--Processing ofxSetting item " + ofxSetting.Id.ToString());
