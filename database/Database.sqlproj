@@ -54,6 +54,8 @@
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
@@ -85,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aspnet_regsql.sql" />
-    <Content Include="Database.sql" />
+    <Content Include="server_load.sql" />
     <Content Include="ForeignKeys\Accounting_Checks.sql" />
     <Content Include="ForeignKeys\Accounting_LedgerItems.sql" />
     <Content Include="ForeignKeys\Accounting_Reconcilliations.sql" />
@@ -144,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Stored Procedures\HttpPost.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="server_unload.sql" />
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>rem "C:\Program Files\Microsoft SQL Server\90\Tools\Binn\sqlcmd.exe" -i "$(ProjectDir)\PrePreDeployScript.sql"</PostBuildEvent>

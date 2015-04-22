@@ -43,6 +43,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -122,6 +124,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Presentation" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Configuration.Install" />
@@ -317,6 +320,8 @@
     <Compile Include="Utilities\InstallerHelper.cs" />
     <Compile Include="Utilities\QRUtility.cs" />
     <Compile Include="Data\WeavverEntityContainer.cs" />
+    <Compile Include="Workflows\CodeActivity1.cs" />
+    <Compile Include="Workflows\Divide.cs" />
     <Compile Include="Workflows\Extensions\GetFeed.cs" />
     <Compile Include="Workflows\Extensions\SendMail.cs" />
     <Compile Include="Workflows\Extensions\WebResponse.cs" />
@@ -456,11 +461,6 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <XamlAppDef Include="Workflows\Accounting_ReimbursementRequest.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </XamlAppDef>
-  </ItemGroup>
-  <ItemGroup>
     <XamlAppDef Include="Workflows\HR_FieldChangeRequested.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -470,6 +470,18 @@
       <SubType>Designer</SubType>
     </XamlAppDef>
     <XamlAppDef Include="Workflows\System_UserRegistration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="Workflows\Accounting_ReimbursementRequest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="Workflows\TestFlow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </XamlAppDef>
