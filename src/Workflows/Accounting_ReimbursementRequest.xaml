@@ -18,6 +18,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Weavver.Workflows.ReimbursementRequest_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities.XamlIntegration</x:String>
@@ -78,52 +79,43 @@
       <AssemblyReference>Weavver.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="Request">
+  <Flowchart DisplayName="Request" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Default="Denied" Name="Approval" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
-      <FlowStep x:Name="__ReferenceID0">
-        <Sequence DisplayName="GetApproval">
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+        <Sequence DisplayName="GetApproval" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <Persist sap2010:WorkflowViewState.IdRef="Persist_1" />
-          <local:SendMail Body="Please approve this request: {workflowid}" From="mitcheloc@gmail.com" Subject="Please approve this reimbursement." To="mitcheloc@gmail.com" sap2010:WorkflowViewState.IdRef="SendMail_1" />
-          <local:WebResponse x:TypeArguments="x:String" BookmarkName="RequestApproval" DisplayName="Wait on Approval" Result="[Approval]" sap2010:WorkflowViewState.IdRef="WebResponse`1_1" />
-          <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
+          <local:SendMail Body="Please approve this request: {workflowid}" From="mitcheloc@gmail.com" sap2010:WorkflowViewState.IdRef="SendMail_1" Subject="Please approve this reimbursement." To="mitcheloc@gmail.com" />
+          <local:WebResponse x:TypeArguments="x:String" BookmarkName="RequestApproval" DisplayName="Wait on Approval" sap2010:WorkflowViewState.IdRef="WebResponse`1_1" Result="[Approval]" />
         </Sequence>
         <FlowStep.Next>
-          <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID1" Expression="[Approval]">
+          <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID1" Expression="[Approval]" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
             <FlowSwitch.Default>
-              <FlowStep x:Name="__ReferenceID2">
-                <Sequence DisplayName="Denied">
-                  <local:SendMail Body="Your request was denied." From="mitcheloc@gmail.com" Subject="Your request was denied." To="mitcheloc@gmail.com" sap2010:WorkflowViewState.IdRef="SendMail_2" />
-                  <sap2010:WorkflowViewState.IdRef>Sequence_2</sap2010:WorkflowViewState.IdRef>
+              <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                <Sequence DisplayName="Denied" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <local:SendMail Body="Your request was denied." From="mitcheloc@gmail.com" sap2010:WorkflowViewState.IdRef="SendMail_2" Subject="Your request was denied." To="mitcheloc@gmail.com" />
                 </Sequence>
-                <sap2010:WorkflowViewState.IdRef>FlowStep_1</sap2010:WorkflowViewState.IdRef>
               </FlowStep>
             </FlowSwitch.Default>
             <x:Reference>__ReferenceID0<x:Key>Escalate</x:Key></x:Reference>
-            <FlowStep x:Key="Approved" x:Name="__ReferenceID3">
-              <Sequence>
+            <FlowStep x:Key="Approved" x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <Persist sap2010:WorkflowViewState.IdRef="Persist_2" />
-                <local:SendMail Body="Your request was aproved." From="mitcheloc@gmail.com" Subject="Your request was approved." To="mitcheloc@gmail.com" sap2010:WorkflowViewState.IdRef="SendMail_3" />
-                <sap2010:WorkflowViewState.IdRef>Sequence_3</sap2010:WorkflowViewState.IdRef>
+                <local:SendMail Body="Your request was aproved." From="mitcheloc@gmail.com" sap2010:WorkflowViewState.IdRef="SendMail_3" Subject="Your request was approved." To="mitcheloc@gmail.com" />
               </Sequence>
-              <sap2010:WorkflowViewState.IdRef>FlowStep_2</sap2010:WorkflowViewState.IdRef>
             </FlowStep>
-            <sap2010:WorkflowViewState.IdRef>FlowSwitch`1_1</sap2010:WorkflowViewState.IdRef>
           </FlowSwitch>
         </FlowStep.Next>
-        <sap2010:WorkflowViewState.IdRef>FlowStep_3</sap2010:WorkflowViewState.IdRef>
       </FlowStep>
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
     <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID3</x:Reference>
-    <sap2010:WorkflowViewState.IdRef>Flowchart_1</sap2010:WorkflowViewState.IdRef>
-    <sads:DebugSymbol.Symbol>d0FXOlxTb3VyY2VcZGF0YVxzcmNcV29ya2Zsb3dzXEFjY291bnRpbmdfUmVpbWJ1cnNlbWVudFJlcXVlc3QueGFtbBpRA30PAgEBUzRTPAIBAlcJXBQCARJeVV5hAgEQYRFkHAIBCmoPbhoCAQNYC1hCAgEcWQtZ3AECARdaC1q/AQIBE2ITYskBAgELaxFrSAIBCWwRbMoBAgEEWZcBWawBAgEbWSBZSwIBGllvWZMBAgEZWVFZZgIBGFpGWlcCARZaflqKAQIBFGKEAWKZAQIBD2IoYkICAQ5iZmKAAQIBDWJIYl0CAQxshQFsmgECAQhsJmxBAgEHbGVsgQECAQZsR2xcAgEF</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d0FXOlxTb3VyY2VcZGF0YVxzcmNcV29ya2Zsb3dzXEFjY291bnRpbmdfUmVpbWJ1cnNlbWVudFJlcXVlc3QueGFtbBpSA3YPAgEBVDRUPAIBAlgJXBQCARJeVV5hAgEQYRFjHAIBCmgPaxoCAQNZC1lCAgEcWgta3AECARdbC1u/AQIBE2ITYskBAgELaRFpSAIBCWoRasoBAgEEWsQBWtkBAgEbWiBaSwIBGlqcAVrAAQIBGVpRWmYCARhbRltXAgEWW7ABW7wBAgEUYrEBYsYBAgEPYihiQgIBDmKTAWKtAQIBDWJIYl0CAQxqsgFqxwECAQhqJmpBAgEHapIBaq4BAgEGakdqXAIBBQ==</sads:DebugSymbol.Symbol>
   </Flowchart>
-  <sap2010:WorkflowViewState.IdRef>Weavver.Workflows.ReimbursementRequest_1</sap2010:WorkflowViewState.IdRef>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="Persist_1" sap:VirtualizedContainerService.HintSize="200,22">
