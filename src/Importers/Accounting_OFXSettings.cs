@@ -50,20 +50,19 @@ namespace Weavver.Data
                          var account = ofxSetting.GetAccount();
                          if (account != null)
                          {
-                              if (account.LedgerType == LedgerType.Checking.ToString())
-                              {
-                                   int count = ofxSetting.ImportScheduledPayments();
-                                   Console.WriteLine("---Imported " + count.ToString() + " scheduled payments");
-                              }
-
-                              // 2. Import any Ledger Items && Match to checks in our database
-                              // -- this should be done AFTER Bill Payment data is imported
-
-
-                               System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage("Weavver Cron <cron@weavver.com>", ConfigurationManager.AppSettings["audit_address"]);
-
+                              System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage("Weavver Cron <cron@weavver.com>", ConfigurationManager.AppSettings["audit_address"]);
                               try
                               {
+                                   if (account.LedgerType == LedgerType.Checking.ToString())
+                                   {
+                                        int count = ofxSetting.ImportScheduledPayments();
+                                        string importMsg = "---Imported " + count.ToString() + " scheduled payments";
+                                        Console.WriteLine(importMsg);
+                                        message.Body += importMsg + "\r\n\r\n";
+                                   }
+
+                                   // 2. Import any Ledger Items && Match to checks in our database
+                                   // -- this should be done AFTER Bill Payment data is imported
                                    DynamicDataWebMethodReturnType response = ofxSetting.ImportLedgerItems();
 
                                    ofxSetting.LastSuccessfulConnection = DateTime.UtcNow;
@@ -71,14 +70,14 @@ namespace Weavver.Data
 
                                    Console.WriteLine("---Imported " + response.Message);
                                    message.Subject = "Daily Accounting Import Ledger Items Result";
-                                   message.Body = response.Message;
+                                   message.Body += response.Message + "\r\n\r\n";
                               }
                               catch (Exception ex)
                               {
                                    Console.WriteLine("---Error " + ex.Message);
 
                                    message.Subject = "Daily Accounting Import Ledger Items Result - ERROR";
-                                   message.Body = "ObjectId: " + ofxSetting.Id.ToString() + "\r\n\r\n" +  ex.ToString();
+                                   message.Body += "ObjectId: " + ofxSetting.Id.ToString() + "\r\n\r\n" +  ex.ToString() + "\r\n\r\n";
                               }
 
                               SmtpClient smtpClient = new SmtpClient(ConfigurationManager.AppSettings["smtp_server"]);
