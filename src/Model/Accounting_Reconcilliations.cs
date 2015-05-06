@@ -36,10 +36,14 @@ namespace Weavver.Data
 
                [Display(Name = "Starting Date", Order = 2)]
                [DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
+               [UIHint("Date")]
+               [DataTypeAttribute(DataType.DateTime)]
                public object StartAt;
 
                [Display(Name = "Ending Date", Order = 3)]
                [DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
+               [UIHint("Date")]
+               [DataTypeAttribute(DataType.DateTime)]
                public object EndAt;
 
                [Display(Name = "Starting Balance (=)", Order = 5)]
@@ -53,6 +57,14 @@ namespace Weavver.Data
                [Display(Name = "Total Debits (-)", Order = 15)]
                [DisplayFormat(DataFormatString = "{0:C}")]
                public object Debits;
+
+               [ScaffoldColumn(false)]
+               [DisplayFormat(DataFormatString = "{0:C}")]
+               public object EnteredCredits;
+
+               [ScaffoldColumn(false)]
+               [DisplayFormat(DataFormatString = "{0:C}")]
+               public object EnteredDebits;
 
                [Display(Name = "Ending Balance (=)", Order = 20)]
                [DisplayFormat(DataFormatString = "{0:C}")]
@@ -93,13 +105,13 @@ namespace Weavver.Data
 
                     string ledgerlink = "<a href=\"~/Accounting_LedgerItems/List.aspx?AccountId={0}&LedgerType={1}&PostAt_Start={2}&PostAt_End={3}\">{4}</a>";
                     string period = StartAt.ToLocalTime().ToString("MM/dd/yy") + " - " + EndAt.ToLocalTime().ToString("MM/dd/yy");
-                    //e.Item.Cells[1].Text = String.Format(ledgerlink, item.Account.ToString(), acct.AccountType.ToString(), item.StartAt.ToLocalTime().ToString("MM/dd/yy"), item.EndAt.ToLocalTime().ToString("MM/dd/yy"), period);
+                    cell.Text = String.Format(ledgerlink, Account.ToString(), account.LedgerType.ToString(), StartAt.ToLocalTime().ToString("MM/dd/yy"), EndAt.ToLocalTime().ToString("MM/dd/yy"), period);
                     
                     string accountType = account.LedgerType;
 
                     if (fieldName == "Starting Balance (=)")
                     {
-                         decimal startBalance = data.Total_ForLedger(OrganizationId, Account, accountType, true, true, false, null, StartAt.Subtract(TimeSpan.FromDays(1)));
+                         decimal startBalance = EnteredStartingBalance.Value;
                          if (startBalance == StartingBalance)
                          {
                               cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#c9f4d7");
@@ -113,7 +125,7 @@ namespace Weavver.Data
                     }
                     if (fieldName == "Ending Balance (=)")
                     {
-                         decimal endBalance = data.Total_ForLedger(OrganizationId, Account, accountType, true, true, false, null, EndAt);
+                         decimal endBalance = EnteredEndingBalance.Value;
                          if (endBalance == EndingBalance)
                          {
                               cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#c9f4d7");
@@ -127,7 +139,7 @@ namespace Weavver.Data
                     }
                     if (fieldName == "Total Credits (+)")
                     {
-                         decimal credits = data.Total_ForLedger(OrganizationId, Account, accountType, true, false, false, StartAt, EndAt);
+                         decimal credits = EnteredCredits.Value;
                          if (credits == Credits.Value)
                          {
                               cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#c9f4d7");
@@ -142,9 +154,7 @@ namespace Weavver.Data
 
                     if (fieldName == "Total Debits (-)")
                     {
-                         decimal debits = data.Total_ForLedger(OrganizationId, Account, accountType, false, true, false, StartAt, EndAt);
-                         debits = debits * -1.0m;
-
+                         decimal debits = EnteredDebits.Value * -1.0m;
                          if (debits < 0)
                          {
                               cell.ForeColor = System.Drawing.Color.Red;

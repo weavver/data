@@ -10,9 +10,12 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
      public enum OrganizationTypes
      {
+          [Description("Sole Proprietorship")]
           SoleProprietorship,
+          [Description("S-Corp")]
           SCorp,
           LLC,
+          [Description("Nonprofit")]
           NonProfit,
           Family,
           Personal

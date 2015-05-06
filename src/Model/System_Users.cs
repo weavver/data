@@ -238,7 +238,6 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           public void Validate(out bool Valid, out string ErrorMessage)
           {
-               System_Users x;
                MembershipUser memUser = Membership.GetUser(Username);
                if (memUser != null)
                {

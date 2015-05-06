@@ -10,7 +10,6 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           public void RunCronTasks(Utilities.CommandLineArguments args)
           {
-               return;
                using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
                     var results = (from billables in data.Accounting_RecurringBillables

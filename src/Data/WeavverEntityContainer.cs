@@ -115,7 +115,7 @@ namespace Weavver.Data
 
                modelBuilder.Entity<Accounting_Accounts>()
                    .HasMany(e => e.Accounting_Checks)
-                   .WithRequired(e => e.Accounting_Accounts)
+                   .WithRequired(e => e.FundingSourceData)
                    .HasForeignKey(e => e.AccountId)
                    .WillCascadeOnDelete(false);
 
@@ -829,13 +829,13 @@ namespace Weavver.Data
 
                modelBuilder.Entity<Logistics_Organizations>()
                    .HasMany(e => e.Accounting_Checks)
-                   .WithRequired(e => e.Logistics_Organizations)
+                   .WithRequired(e => e.PayeeData)
                    .HasForeignKey(e => e.Payee)
                    .WillCascadeOnDelete(false);
 
                modelBuilder.Entity<Logistics_Organizations>()
                    .HasMany(e => e.Accounting_Checks1)
-                   .WithRequired(e => e.Logistics_Organizations1)
+                   .WithRequired(e => e.OrganizationData)
                    .HasForeignKey(e => e.OrganizationId)
                    .WillCascadeOnDelete(false);
 

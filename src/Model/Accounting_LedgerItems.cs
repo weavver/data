@@ -81,6 +81,7 @@ namespace Weavver.Data
                //[DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
                [UIHint("Date")]
                [FilterUIHint("DateRange")]
+               [DataTypeAttribute(DataType.DateTime)]
                public object PostAt;
 
                [ScaffoldColumn(true)]
@@ -130,7 +131,7 @@ namespace Weavver.Data
                public object CreatedBy;
 
                [FilterUIHint("DateTime")]
-               //[UIHint("Date")]
+               [UIHint("Date")]
                [Display(Name = "Updated At")]
                //[DisplayFormat(DataFormatString = "{0:MM/dd/yy}")]
                [ReadOnly(true)]
@@ -172,7 +173,7 @@ namespace Weavver.Data
           public void GenerateMenu(WeavverMasterPageInterface masterPage)
           {
                //LedgerItemPanel.Visible = (LoggedInUser.OrganizationId == org1.OrganizationId);
-               string accountName = "";
+               //string accountName = "";
                //if (acct == null)
                //{
                //     WeavverMenuItem wMakePayment = new WeavverMenuItem("Make Payment", "~/company/accounting/payment");

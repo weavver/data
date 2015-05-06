@@ -138,9 +138,49 @@ namespace Weavver.Data
                return item.ListId;
           }
 //-------------------------------------------------------------------------------------------
+          [DynamicDataWebMethod("List Remote Accounts", "Administrators", "Accountants")]
+          public DynamicDataWebMethodReturnType ListAccounts()
+          {
+               DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
+               Accounting_Accounts account = GetAccount();
+
+               nsoftware.InEBank.Account remoteAccount = new Account();
+               remoteAccount.OFXAppId = "QWIN";
+               remoteAccount.OFXAppVersion = "1800";
+               remoteAccount.FIUrl = Url;
+               remoteAccount.FIId = FinancialInstitutionId.ToString();
+               remoteAccount.FIOrganization = FinancialInstitutionName;
+               remoteAccount.OFXUser = Username;
+               remoteAccount.OFXPassword = Password;
+
+               remoteAccount.GetInfo();
+
+               string acctList = "<br />No accounts found";
+               if (remoteAccount.Accounts.Count > 0)
+               {
+                    acctList = "<br />";
+                    foreach (var acct in remoteAccount.Accounts)
+                    {
+                         acctList += acct.Id;
+                         if (!String.IsNullOrEmpty(acct.Description))
+                         {
+                              acctList += ": " + acct.Description;
+                         }
+                         acctList += "<br />";
+                         acctList += " - Type: " + acct.AccType + "<br />";
+                         acctList += " - Status: " + acct.Status + "<br />";
+                         acctList += " - Is Checking: " + (acct.Checking ? "yes" : "no") + "<br /><br />";
+                    }
+               }
+
+               ret.Status = "Remote Account List";
+               ret.Message = acctList;
+               return ret;
+          }
+//-------------------------------------------------------------------------------------------
           public List<Accounting_OFXLedgerItem> GetRemoteLedgerItems(DateTime startDate, DateTime endDate)
           {
-               Accounting_Accounts account = GetParentAccount();
+               Accounting_Accounts account = GetAccount();
                if ((LedgerType)Enum.Parse(typeof(LedgerType), account.LedgerType) == LedgerType.CreditCard)
                {
                     return LoadCreditCardStatement(startDate, endDate);
@@ -153,7 +193,7 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           private List<Accounting_OFXLedgerItem> LoadCreditCardStatement(DateTime startAt, DateTime endAt)
           {
-               Accounting_Accounts account = GetParentAccount();
+               Accounting_Accounts account = GetAccount();
                List<Accounting_OFXLedgerItem> items = new List<Accounting_OFXLedgerItem>();
                nsoftware.InEBank.Ccstatement statement = GetCreditCardStatement(account, startAt, endAt);
                for (int i = 0; i < statement.Transactions.Count; i++)
@@ -208,22 +248,26 @@ namespace Weavver.Data
                return item;
           }
 //-------------------------------------------------------------------------------------------
-          private Accounting_Accounts GetParentAccount()
+          private Accounting_Accounts GetAccount()
           {
                using (WeavverEntityContainer data = new WeavverEntityContainer())
                {
-                    Accounting_Accounts acct = (from x in data.Accounting_Accounts
+                    var query = (from x in data.Accounting_Accounts
                                                 where x.Id == AccountId.Value
-                                                select x).FirstOrDefault();
+                                                select x);
+                    Accounting_Accounts acct = query.FirstOrDefault();
 
-                    data.Entry(acct).State = System.Data.Entity.EntityState.Detached;
+                    if (acct != null)
+                    {
+                         data.Entry(acct).State = System.Data.Entity.EntityState.Detached;
+                    }
                     return acct;
                }
           }
 //-------------------------------------------------------------------------------------------
           private List<Accounting_OFXLedgerItem> LoadBankStatement(DateTime startDate, DateTime endDate)
           {
-               Accounting_Accounts account = GetParentAccount();
+               Accounting_Accounts account = GetAccount();
                nsoftware.InEBank.Bankstatement statement = GetBankStatement(account, startDate, endDate);
 
                List<Accounting_OFXLedgerItem> items = new List<Accounting_OFXLedgerItem>();
@@ -414,7 +458,7 @@ namespace Weavver.Data
                DynamicDataWebMethodReturnType ret = new DynamicDataWebMethodReturnType();
                ret.Status = "OFX Check";
 
-               var financialAccount = GetParentAccount();
+               var financialAccount = GetAccount();
 
                if (financialAccount.LedgerType == LedgerType.Checking.ToString() ||
                    financialAccount.LedgerType == LedgerType.Savings.ToString())
@@ -443,7 +487,7 @@ namespace Weavver.Data
 
                if (financialAccount.LedgerType == LedgerType.CreditCard.ToString())
                {
-                    Accounting_Accounts ccAccount = GetParentAccount();
+                    Accounting_Accounts ccAccount = GetAccount();
 
                     nsoftware.InEBank.Ccstatement ccStatement = new nsoftware.InEBank.Ccstatement();
                     ccStatement.OFXAppId = "QWIN";
@@ -478,7 +522,7 @@ namespace Weavver.Data
                ret.Status = "Balance Update";
                decimal remoteAvailableBalance = 0.0m;
                decimal remoteLedgerBalance = 0.0m;
-               bool retrieved = GetBalances(GetParentAccount(), out remoteAvailableBalance, out remoteLedgerBalance);
+               bool retrieved = GetBalances(GetAccount(), out remoteAvailableBalance, out remoteLedgerBalance);
                if (retrieved)
                {
                     using (WeavverEntityContainer data = new WeavverEntityContainer())
