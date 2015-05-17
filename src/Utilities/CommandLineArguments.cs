@@ -7,16 +7,11 @@ namespace Weavver.Utilities
     public class CommandLineArguments
     {
           public string[] RawArguments { get; set; }
-          public StringDictionary Parameters = new StringDictionary();
+          public StringDictionary Parameters = null;
 //--------------------------------------------------------------------------------------------
-          public CommandLineArguments(string[] Args)
+          public void Parse(string[] arguments)
           {
-               RawArguments = Args;
-               Parse(Args);
-          }
-//--------------------------------------------------------------------------------------------
-          private void Parse(string[] arguments)
-          {
+               RawArguments = arguments;
                Regex Spliter = new Regex(@"^-{1,2}|^/|=|:", RegexOptions.IgnoreCase | RegexOptions.Compiled);
                Regex Remover = new Regex(@"^['""]?(.*?)['""]?$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
                string Parameter = null;
