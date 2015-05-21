@@ -150,6 +150,12 @@
   <ItemGroup>
     <Content Include="server_unload.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="aspnet_sessionstate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Accounting_Checks_Overview.sql" />
+  </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>rem "C:\Program Files\Microsoft SQL Server\90\Tools\Binn\sqlcmd.exe" -i "$(ProjectDir)\PrePreDeployScript.sql"</PostBuildEvent>
   </PropertyGroup>

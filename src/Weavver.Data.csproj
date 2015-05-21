@@ -257,6 +257,7 @@
     <Compile Include="Model\System_Tests.cs" />
     <Compile Include="Model\Sales_LicenseKeyActivations.cs" />
     <Compile Include="Model\System_Users.cs" />
+    <Compile Include="Security\WeavverSqlRoleProvider.cs" />
     <Compile Include="Units\Accounting_OFXSettings.cs" />
     <Compile Include="Units\Database.cs" />
     <Compile Include="Units\DeployTriggers.cs" />
@@ -450,8 +451,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Units\Backup.sql" />
     <Content Include="Units\DBSetUp.txt" />
     <Content Include="Units\Notes.sql" />
+    <Content Include="Units\Restore.sql" />
     <Content Include="Units\Test.sql" />
   </ItemGroup>
   <ItemGroup>

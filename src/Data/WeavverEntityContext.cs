@@ -105,6 +105,25 @@ namespace Weavver.Data
                return (decimal)totalOut.Value;
           }
 //-------------------------------------------------------------------------------------------
+          [DbFunction("WeavverEntityContainer.Store", "aspnet_UsersInRoles_IsUserInRole")]
+          public bool aspnet_UsersInRoles_IsUserInRole(string ApplicationName, string username, string Role)
+          {
+               var res = new SqlParameter("outResult", SqlDbType.Int)
+               {
+                    Direction = System.Data.ParameterDirection.Output,
+                    Precision = 18,
+                    Scale = 2
+               };
+
+               this.Database.ExecuteSqlCommand("exec @outResult = aspnet_UsersInRoles_IsUserInRole @ApplicationName, @username, @role",
+                         new SqlParameter("ApplicationName", ApplicationName),
+                         new SqlParameter("username", username),
+                         new SqlParameter("role", Role),
+                         res);
+
+               return ((int) res.Value == 1);
+          }
+//-------------------------------------------------------------------------------------------
           private static void ObjectContext_SavingChanges(object sender, EventArgs e)
           {
           }

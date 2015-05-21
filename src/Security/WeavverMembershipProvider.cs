@@ -26,7 +26,10 @@ namespace Weavver.Security
           {
                get
                {
-                    return "Weavver";
+                    if (HttpContext.Current.Items.Contains("ApplicationName"))
+                         return (string) HttpContext.Current.Items["ApplicationName"];
+                    else
+                         return "Weavver";
                }
                set
                {
