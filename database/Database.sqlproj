@@ -157,7 +157,7 @@
     <None Include="Views\Accounting_Checks_Overview.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="SqlWorkflowInstanceStoreSchemaUpgrade.sql" />
+    <None Include="SqlWorkflowInstanceStoreSchemaUpgrade.sql" />
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>rem "C:\Program Files\Microsoft SQL Server\90\Tools\Binn\sqlcmd.exe" -i "$(ProjectDir)\PrePreDeployScript.sql"</PostBuildEvent>
