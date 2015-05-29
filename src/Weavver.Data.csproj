@@ -231,6 +231,7 @@
     <Compile Include="CodeFirst\sysdiagram.cs" />
     <Compile Include="CodeFirst\System_Tests.cs" />
     <Compile Include="CodeFirst\System_URLs.cs" />
+    <Compile Include="CodeFirst\Vendors_Microsoft_SignalrConnections.cs" />
     <Compile Include="CodeFirst\System_Users.cs" />
     <Compile Include="CodeFirst\Vendors_PayPal_IPNs.cs" />
     <Compile Include="CodeFirst\vw_aspnet_Applications.cs" />

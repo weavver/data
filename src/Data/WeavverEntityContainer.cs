@@ -78,6 +78,7 @@ namespace Weavver.Data
           public virtual DbSet<System_Tests> System_Tests { get; set; }
           public virtual DbSet<System_URLs> System_URLs { get; set; }
           public virtual DbSet<System_Users> System_Users { get; set; }
+          public virtual DbSet<Vendors_Microsoft_SignalrConnections> Vendors_Microsoft_SignalrConnections { get; set; }
           public virtual DbSet<Vendors_PayPal_IPNs> Vendors_PayPal_IPNs { get; set; }
           public virtual DbSet<Accounting_LedgerItemTags> Accounting_LedgerItemTags { get; set; }
           public virtual DbSet<Logistics_DIDs> Logistics_DIDs { get; set; }
