@@ -17,13 +17,12 @@ namespace Weavver.Data
                                          billables.Position <= DateTime.UtcNow
                                    select billables);
 
-                    while (results.Count() > 0)
+                    Console.WriteLine("Total ARB items to process: " + results.Count() + " (100 processed at a time only)");
+                    var set = results.Take<Accounting_RecurringBillables>(100);
+                    foreach (Accounting_RecurringBillables billable in set)
                     {
-                         var set = results.Take<Accounting_RecurringBillables>(10);
-                         foreach (Accounting_RecurringBillables billable in set)
-                         {
-                              billable.PushUnbilledItems();
-                         }
+                         Console.WriteLine("Pushing unbilled items for ARB Item " + billable.Id.ToString());
+                         billable.PushUnbilledItems();
                     }
                }
           }
