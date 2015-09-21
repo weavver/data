@@ -148,51 +148,51 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           public override int SaveChanges()
           {
-               ChangeTracker.DetectChanges();
-               var objects = ChangeTracker.Entries();
-               
-               var addedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Added || x.State == EntityState.Modified));
-               var modifiedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Modified));
-               var deletedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Deleted));
-
-               AuditUtility.ProcessAuditFields(addedObjects, InsertMode: true);
-               AuditUtility.ProcessAuditFields(modifiedObjects, InsertMode: false);
-
-               using (WeavverEntityContainer data = new WeavverEntityContainer())
+               if (ConfigurationManager.AppSettings["audit_database_changes"] == "true")
                {
-                    Communication_MessageTemplates template = (from x in data.Communication_MessageTemplates
-                                                               where x.Name == "Data_ChangeLog"
-                                                               select x).FirstOrDefault();
+                    ChangeTracker.DetectChanges();
+                    var objects = ChangeTracker.Entries();
+               
+                    var addedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Added || x.State == EntityState.Modified));
+                    var modifiedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Modified));
+                    var deletedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Deleted));
 
-                    if (template != null)
+                    AuditUtility.ProcessAuditFields(addedObjects, InsertMode: true);
+                    AuditUtility.ProcessAuditFields(modifiedObjects, InsertMode: false);
+
+                    using (WeavverEntityContainer data = new WeavverEntityContainer())
                     {
-                         string changeLogSubject = template.Subject;
-                         string changeLogBody = template.Body.Replace("[addedobjects]", GetLogItems(addedObjects))
-                                                             .Replace("[modifiedobjects]", GetLogItems(modifiedObjects))
-                                                             .Replace("[deletedobjects]", GetLogItems(deletedObjects));
+                         Communication_MessageTemplates template = (from x in data.Communication_MessageTemplates
+                                                                    where x.Name == "Data_ChangeLog"
+                                                                    select x).FirstOrDefault();
 
-                         MailMessage message = new MailMessage("Weavver <therobots@weavver.com>", ConfigurationManager.AppSettings["audit_address"]);
+                         if (template != null)
+                         {
+                              string changeLogSubject = template.Subject;
+                              string changeLogBody = template.Body.Replace("[addedobjects]", GetLogItems(addedObjects))
+                                                                  .Replace("[modifiedobjects]", GetLogItems(modifiedObjects))
+                                                                  .Replace("[deletedobjects]", GetLogItems(deletedObjects));
 
-                         var context = System.Web.HttpContext.Current;
-                         if (context != null)
-                         {
-                              var user = Membership.GetUser(context.User.Identity.Name);
-                              string username = (user != null) ? user.UserName : "anonymous";
-                              message.Subject = changeLogSubject.Replace("[user]", username);
+                              MailMessage message = new MailMessage("Weavver <therobots@weavver.com>", ConfigurationManager.AppSettings["audit_address"]);
+
+                              var context = System.Web.HttpContext.Current;
+                              if (context != null)
+                              {
+                                   var user = Membership.GetUser(context.User.Identity.Name);
+                                   string username = (user != null) ? user.UserName : "anonymous";
+                                   message.Subject = changeLogSubject.Replace("[user]", username);
+                              }
+                              else
+                              {
+                                   message.Subject = changeLogSubject.Replace("[user]", "Session_End");
+                              }
+                              message.Body = changeLogBody;
+                              message.IsBodyHtml = true;
+                              SmtpClient smtpClient = new SmtpClient(ConfigurationManager.AppSettings["smtp_server"]);
+                              smtpClient.Send(message);
                          }
-                         else
-                         {
-                              message.Subject = changeLogSubject.Replace("[user]", "Session_End");
-                         }
-                         message.Body = changeLogBody;
-                         message.IsBodyHtml = true;
-                         SmtpClient smtpClient = new SmtpClient(ConfigurationManager.AppSettings["smtp_address"]);
-                         smtpClient.Send(message);
                     }
                }
-
-
-               
 
                //foreach (var entity in objects)
                //{
