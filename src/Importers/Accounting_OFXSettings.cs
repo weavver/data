@@ -25,10 +25,7 @@ namespace Weavver.Data
                     DateTime sleepDateTime = DateTime.Now.Subtract(TimeSpan.FromMinutes(60));
 
                     // only load ofx enabled accounts
-                    var ofxBanks = from x in data.Accounting_OFXSettings
-                                   where x.Enabled == true && x.LastSuccessfulConnection < sleepDateTime
-                                   select x;
-
+                    var ofxBanks = data.Accounting_OFXSettings.Where(x => x.Enabled == true && x.LastSuccessfulConnection == null || x.LastSuccessfulConnection < sleepDateTime);
                     try
                     {
                          int totalBanksInSystem = ofxBanks.Count();
@@ -40,19 +37,28 @@ namespace Weavver.Data
                          return;
                     }
 
-                    foreach (Accounting_OFXSettings ofxSetting in data.Accounting_OFXSettings)
+                    foreach (Accounting_OFXSettings ofxSetting in ofxBanks.ToList())
                     {
                          Console.WriteLine("--Processing ofxSetting item " + ofxSetting.Id.ToString());
                          //data.Entry(ofxSetting) = System.Data.Entity.EntityState.Detached;
 
-                         // 1. Only import Bill Payment data for checking accounts
-                         // We do this before ImportingLedgerItems so we can sync the check numbers
                          var account = ofxSetting.GetAccount();
+                         if (account == null)
+                         {
+                              ofxSetting.Enabled = false;
+                              data.SaveChanges();
+                         }
+
                          if (account != null)
                          {
                               System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage("Weavver Cron <cron@weavver.com>", ConfigurationManager.AppSettings["audit_address"]);
                               try
                               {
+                                   // 1. Update the local account balance
+                                   ofxSetting.UpdateCachedBalances();
+
+                                   // 2. Only import Bill Payment data for checking accounts
+                                   //        We do this before ImportingLedgerItems so we can sync the check numbers
                                    if (account.LedgerType == LedgerType.Checking.ToString())
                                    {
                                         int count = ofxSetting.ImportScheduledPayments();
@@ -61,20 +67,23 @@ namespace Weavver.Data
                                         message.Body += importMsg + "\r\n\r\n";
                                    }
 
-                                   // 2. Import any Ledger Items && Match to checks in our database
+                                   // 3. Import any Ledger Items && Match to checks in our database
                                    // -- this should be done AFTER Bill Payment data is imported
                                    DynamicDataWebMethodReturnType response = ofxSetting.ImportLedgerItems();
 
                                    ofxSetting.LastSuccessfulConnection = DateTime.UtcNow;
                                    data.SaveChanges();
 
-                                   Console.WriteLine("---Imported " + response.Message);
+                                   Console.WriteLine("---" + response.Message);
+                                   Console.WriteLine("----------Import success!");
+
                                    message.Subject = "Daily Accounting Import Ledger Items Result";
                                    message.Body += response.Message + "\r\n\r\n";
                               }
                               catch (Exception ex)
                               {
                                    Console.WriteLine("---Error " + ex.Message);
+                                   // TODO: Log the error message to the data object so the end user can access it from the Web UI
 
                                    message.Subject = "Daily Accounting Import Ledger Items Result - ERROR";
                                    message.Body += "ObjectId: " + ofxSetting.Id.ToString() + "\r\n\r\n" +  ex.ToString() + "\r\n\r\n";

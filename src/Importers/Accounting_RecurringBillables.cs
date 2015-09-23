@@ -14,7 +14,7 @@ namespace Weavver.Data
                {
                     var results = (from billables in data.Accounting_RecurringBillables
                                    where billables.Status == "Enabled" &&
-                                         billables.Position <= DateTime.UtcNow
+                                         billables.UnbilledPeriods > 0
                                    select billables);
 
                     Console.WriteLine("Total ARB items to process: " + results.Count() + " (100 processed at a time only)");

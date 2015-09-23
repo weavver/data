@@ -148,13 +148,24 @@ namespace Weavver.Data
 //-------------------------------------------------------------------------------------------
           public override int SaveChanges()
           {
+               ChangeTracker.DetectChanges();
+               var objects = ChangeTracker.Entries();
+               var addedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Added));
+               var modifiedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Modified));
+
+               foreach (var entity in addedObjects)
+               {
+                    ((IAuditable)entity.Entity).CreatedAt = DateTime.UtcNow;
+                    ((IAuditable)entity.Entity).UpdatedAt = DateTime.UtcNow;
+               }
+
+               foreach (var entity in modifiedObjects)
+               {
+                    ((IAuditable)entity.Entity).UpdatedAt = DateTime.UtcNow;
+               }
+
                if (ConfigurationManager.AppSettings["audit_database_changes"] == "true")
                {
-                    ChangeTracker.DetectChanges();
-                    var objects = ChangeTracker.Entries();
-               
-                    var addedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Added || x.State == EntityState.Modified));
-                    var modifiedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Modified));
                     var deletedObjects = objects.Where(x => x.Entity is IAuditable && (x.State == EntityState.Deleted));
 
                     AuditUtility.ProcessAuditFields(addedObjects, InsertMode: true);
@@ -193,16 +204,6 @@ namespace Weavver.Data
                          }
                     }
                }
-
-               //foreach (var entity in objects)
-               //{
-               //     if (entity.State == EntityState.Added)
-               //     {
-               //          ((IAuditable)entity.Entity).CreatedAt = DateTime.Now;
-               //     }
-
-               //     ((IAuditable)entity.Entity).UpdatedAt = DateTime.Now;
-               //}
                
                return base.SaveChanges();
 
